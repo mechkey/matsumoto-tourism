@@ -1,38 +1,25 @@
-<html>
-<head>
-</head>
+<?php
 
-<body>		
-<form action="process_family.php">
-	<label for="name">Full Name:</label><br />
-	<input type="text" id="name" name="name" placeholder="Jane Smith"> <br />
-	<label for="phone">Phone number:</label><br />
-	<input type="tel" id="phone" name="phone" placeholder="0740 111 2233"> <br />
+include 'dbconn.php';
 
-	<label for="adults">Num of adults</label><br />
-	<select name="adults" id="adults">
-		<option value="0">0</option>
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-	</select> <br />
+$sql = 'SELECT Animalname FROM ANIMAL';
+<table>
+	<tr>
+		<th>Animal Name</th>
+		<th>Age</th>
+	</tr>
 
-	<label for="children">Num of children</label><br />
-	<select name="children" id="children">
-		<option value="0">0</option>
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-		<option value="5">5</option>	
-		<option value="6">6</option>
-		<option value="7">7</option>
-		<option value="8">8</option>
-	</select> <br />
+$queryresult = mysqli_query($conn, $sql)) 
+	if ($queryresult) {
+		while ($currentrow = mysqli_fetch_assoc($queryresult)) {
+			
+				$name = $currentrow['Animalname'];
+				echo "<tr><td>$name</td>";
+				echo "</tr>";
+				
+			
+		}
+	}
 
-	<input type="submit" value="Submit">
-
-</form>
-</body>
-</html>
+</table>
+?>
