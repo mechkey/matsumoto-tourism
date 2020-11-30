@@ -14,19 +14,16 @@
 <body class="<?php echo $themeType; ?>">
 	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
 		<?php 
-		echo makeNavBar();
+		echo makeNavBar(); 
+
+		$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
+		echo '<a href="?theme=' . $changeTheme . '">Change Theme</a>';
+		
+		echo '</nav>';
 		?>
 		<main id="content"> <!-- Beginning of page content -->
 			<p> Some main stuff 
-			<?php 		
-
-			$changeTheme = '';
-			echo $changeTheme;
-
-			$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
-			echo '<a href="?theme=' . $changeTheme . '">Change Theme</a>';
-
-			?>
+			
 		</p>
 		</main>
 

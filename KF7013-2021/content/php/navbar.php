@@ -38,6 +38,7 @@ function makeNavBar () {
 			1 => "./activities.php",
 			2 => "./events.php",
 			3 => "./sightseeing.php",
+			4 => "./attribution.php",
 		];
 	}
 
@@ -47,9 +48,11 @@ function makeNavBar () {
 			1 => "./content/activities.php",
 			2 => "./content/events.php",
 			3 => "./content/sightseeing.php",
+			3 => "./content/attribution.php",
 		];
 	}
-	echo "<ul>";
+	echo "<nav>";
+	echo '<ul id="nav-ul">';
 	foreach ($pageArray as $value) {
 		$name = str_replace('.php', '', $value);
 		$name = str_replace('./content/', '', $name);
@@ -65,8 +68,12 @@ function makeNavBar () {
 
 	}
 	echo "</ul>";
+	echo "<br />";
 
+	//for some reason I cannot get this to work in navbar.php... but it works in html...
 	
+	//$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
+	//echo '<a href="?theme=' . $changeTheme . '">Change Theme</a>';
 	
 	//return $navContent;
 }
