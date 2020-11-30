@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php include './content/php/head.php'; 
+	<link rel="stylesheet" href="./assets/stylesheets/main.css">
+	<?php 
+	foreach (glob("./content/php/*.php") as $filename)
+	{
+		include $filename;
+	} 
 	echo makeHead("Matsumoto Tourism - Home");
+
 	?>
 </head>
-<body>
+<body class="<?php echo $themeType; ?>">
 	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
-		<p>Page with head</p>
 		<?php 
-$page = $_SERVER['REQUEST_URI']; 
-$page = str_replace('/', '', $page); 
-$page = str_replace('.php', '', $page); 
-$page = str_replace('?s=', '', $page); 
-$page = $page ? $page : 'default'; 
-echo $page;
-?>
+		echo makeNavBar();
+		?>
 		<main id="content"> <!-- Beginning of page content -->
+			<p> Some main stuff 
+			<?php 		
 
+			$changeTheme = '';
+			echo $changeTheme;
+
+			$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
+			echo '<a href="?theme=' . $changeTheme . '">Change Theme</a>';
+
+			?>
+		</p>
 		</main>
 
 		<footer id="footer"> <!-- Beginning of footer -->

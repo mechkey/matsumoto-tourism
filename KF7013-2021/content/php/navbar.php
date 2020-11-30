@@ -1,22 +1,74 @@
 <?php
 
 
-function makeNavBar ($headerText) {
-	$navContent = <<<NAV
-	<nav class="topnav">
-		<ul>
-			<li><a href="index.html" id="current"><b>1</b></a></li>
-			<li><a href="2.html">2</a></li>
-			<li><a href="3.html">3</a></li>
-			<li><a href="4.html">4</a></li>
-			<li><a href="5.html">5</a></li>
-			<li><a href="6.html">6</a></li>
-			<li><a href="7.html">7</a></li>
-		</ul>
-	</nav>
+function makeNavBar () {
 
-	NAV;
-	return $navContent;
+	//Main Nav bar gen
+
+	$path = $_SERVER['REQUEST_URI'];
+	$path = str_replace('/index', 'index', $path);
+	//echo "path is " . $path . "<br />";
+	//$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
+	
+	$listart = '<li><a href="';
+	$limid = '" >';
+	$limidcur = '" id="current">';
+	$liend = '</a></li>';
+
+	/*
+	$index = "index.php";
+	$sightseeing = "./content/sightseeing.php";
+	
+	$name1 = str_replace('.php', '', $index);
+	$name1 = str_replace('./content/', '', $name1);
+	echo $name1;
+
+	$name2 = str_replace('.php', '', $sightseeing);
+	$name2 = str_replace('./content/', '', $name2);
+	echo $name2;
+
+	$dirlevel = str_replace('./', '', $path);
+	$dirlevel = str_replace('', '', $dirlevel);
+
+	*/
+
+	if (preg_match('/content/', $path)) {
+		$pageArray = [
+			0 => "../index.php",
+			1 => "./activities.php",
+			2 => "./events.php",
+			3 => "./sightseeing.php",
+		];
+	}
+
+	else {
+		$pageArray = [
+			0 => "index.php",
+			1 => "./content/activities.php",
+			2 => "./content/events.php",
+			3 => "./content/sightseeing.php",
+		];
+	}
+	echo "<ul>";
+	foreach ($pageArray as $value) {
+		$name = str_replace('.php', '', $value);
+		$name = str_replace('./content/', '', $name);
+		$name = str_replace('./', '', $name);
+		$name = str_replace('.', '', $name);
+		$name = ucfirst($name);
+		//echo "vlaue is " . $value;
+		if ($value == $path) {
+			echo $listart . $value . $limidcur . $name . $liend;
+		} else {
+			echo $listart . $value . $limid . $name . $liend;
+		}
+
+	}
+	echo "</ul>";
+
+	
+	
+	//return $navContent;
 }
 
 ?>
