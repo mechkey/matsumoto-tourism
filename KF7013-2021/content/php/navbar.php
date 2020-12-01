@@ -42,6 +42,7 @@ function makeNavBar ($themeType) {
 			3 => "./sightseeing.php",
 			4 => "./attribution.php",
 			5 => "./login.php",
+			6 => "./account.php",
 		];
 	}
 
@@ -53,6 +54,8 @@ function makeNavBar ($themeType) {
 			3 => "./content/sightseeing.php",
 			4 => "./content/attribution.php",
 			5 => "./content/login.php",
+			6 => "./content/account.php",
+
 
 		];
 	}
