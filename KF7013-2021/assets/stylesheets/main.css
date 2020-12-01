@@ -28,19 +28,29 @@
 }
 
 #topnav li {
-	height: 1em;
 	float: left;
-	padding: 1em;
 	border: #FFFFBF solid 1px;
 	border-radius: 5px;
 	margin-right: 1em;
-	padding-bottom: 1em	;
-
 }
 
  
 #topnav a {  
-	font-size: 20px;
+	display: block;
+	color: gray;
+	text-align: center;
+  	text-decoration: none;
+	font-size: 18px;
+	padding: 4px 8px 8px 4px;
+
+}
+
+#topnav a:hover {
+	background-color: #dedede;
+	color: black;
+  	border: 0px;
+  	border-radius: 5px;
+	padding: 4px 8px 8px 4px;
 }
 
 
@@ -54,7 +64,7 @@ main {
 	margin-top: var(--top-bar-height);
 	width: 90%;
 	position: fixed;
-	background-color: blue;
+	background-color: lightgray;
 }
 
 .dark {
@@ -64,11 +74,23 @@ main {
 .topnav li {
 	background-color: gold;
 	border: lightgray solid 1px;
+	padding: 4px 8px 8px 4px;
+
 
 }
 
 .dark a {
-	color: lightgray;
+	color: white;
+	padding: 4px 8px 8px 4px;
+
+}
+
+.dark #topnav a:hover {
+	background-color: #dedede;
+	color: black;
+  	border: 0px;
+  	border-radius: 5px;
+	padding: 4px 8px 8px 4px;
 }
 
 .dark main{

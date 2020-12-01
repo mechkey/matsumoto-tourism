@@ -1,10 +1,11 @@
 <?php
 
-$gPageTitle;
-
 function makeHead ($pageTitle) {
-	//global $gPageTitle = $pageTitle;
 	$headContent = <<<HEAD
+		<!DOCTYPE html>
+		<html lang="en">
+		<head>
+		<link rel="stylesheet" href="./assets/stylesheets/main.css">
 		<title>$pageTitle</title>
 		<meta charset="utf-8">
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">

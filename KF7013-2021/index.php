@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +9,7 @@
 	<?php 
 	include './content/php/head.php';
 	include './content/php/navbar.php';
-
 	echo makeHead("Matsumoto Tourism - Home");
-
-
-
 	?>
 </head>
 <body class="<?php echo $themeType; ?>">
@@ -22,7 +22,9 @@
 		
 		<main id="content"> <!-- Beginning of page content -->
 			<p> Some main stuff 
-			<img src="./assets/images/logo.png" alt="Visit Matsumoto Logo">	</img>
+			<?php
+				echo 'Username: ' . $_SESSION['userName'];
+			?>
 		</p>
 		</main>
 

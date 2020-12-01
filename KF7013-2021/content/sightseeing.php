@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +21,9 @@
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
 			<p> Some main stuff </p>
+			<?php
+				echo 'Username: ' . $_SESSION['userName'];
+			?>
 		</main>
 
 		<footer id="footer"> <!-- Beginning of footer -->

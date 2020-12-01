@@ -1,8 +1,8 @@
 <?php
 
 	$connection = mysqli_connect ('localhost', 'root', 'root', 'zoo');
-	if($conn) {
-		mysqli_set_charset($conn, 'utf8');
+	if($connection) {
+		mysqli_set_charset($connection, 'utf8');
 	}
 
 	if($connection === false) {

@@ -13,7 +13,7 @@ function makeNavBar ($themeType) {
 	//$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
 	
 	$listart = '<li><a href="';
-	$limid = '" >';
+	$limid = '">';
 	$limidcur = '" id="current">';
 	$liend = '</a></li>';
 
@@ -41,6 +41,7 @@ function makeNavBar ($themeType) {
 			2 => "./events.php",
 			3 => "./sightseeing.php",
 			4 => "./attribution.php",
+			5 => "./login.php",
 		];
 	}
 
@@ -50,7 +51,9 @@ function makeNavBar ($themeType) {
 			1 => "./content/activities.php",
 			2 => "./content/events.php",
 			3 => "./content/sightseeing.php",
-			3 => "./content/attribution.php",
+			4 => "./content/attribution.php",
+			5 => "./content/login.php",
+
 		];
 	}
 	echo '<ul>';
@@ -64,14 +67,10 @@ function makeNavBar ($themeType) {
 
 	//If the page is locat
 	if (preg_match('/content/', $path) ) {
-		echo '<li><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="25">	</img></li>';
+		echo '<li><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/> </li>';
 		}
-	/*if (preg_match('/content/', $path) ) {
-		echo '<li><img id="logo" src="../assets/images/logo.png" alt="Visit Matsumoto Logo" height="25">	</img></li>';
-		}
-		*/
 	else {
-		echo '<li><img id="logo" src="' . $logosrc . '"" alt="Visit Matsumoto Logo" height="25">	</img></li>';
+		echo '<li><img id="logo" src="' . $logosrc . '"" alt="Visit Matsumoto Logo" height="30" /></li>';
 		}
 
 
@@ -92,7 +91,13 @@ function makeNavBar ($themeType) {
 
 	echo '<li>';
 	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
-	echo '<a id="ctheme" href="?theme=' . $changeTheme . '">Change Theme</a></li>';
+	if ($themeType == 'light') {
+		echo '<a id="ctheme" href="?theme=' . $changeTheme . '">Dark Mode</a></li>';
+	} else {
+		echo '<a id="ctheme" href="?theme=' . $changeTheme . '">Light Mode</a></li>';
+	}
+
+	
 
 	echo "</ul>";
 	
