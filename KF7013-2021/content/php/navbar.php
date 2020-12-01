@@ -1,7 +1,9 @@
 <?php
 
+include 'main.php';
 
-function makeNavBar () {
+function makeNavBar ($themeType) {
+
 
 	//Main Nav bar gen
 
@@ -51,8 +53,28 @@ function makeNavBar () {
 			3 => "./content/attribution.php",
 		];
 	}
-	echo "<nav>";
-	echo '<ul id="nav-ul">';
+	echo '<ul>';
+
+	$logosrc = '';
+	if ($themeType == 'dark') {
+		$logosrc = '../assets/images/logogray.png';
+	} else {
+		$logosrc = '../assets/images/logo.png';
+	}
+
+	//If the page is locat
+	if (preg_match('/content/', $path) ) {
+		echo '<li><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="25">	</img></li>';
+		}
+	/*if (preg_match('/content/', $path) ) {
+		echo '<li><img id="logo" src="../assets/images/logo.png" alt="Visit Matsumoto Logo" height="25">	</img></li>';
+		}
+		*/
+	else {
+		echo '<li><img id="logo" src="' . $logosrc . '"" alt="Visit Matsumoto Logo" height="25">	</img></li>';
+		}
+
+
 	foreach ($pageArray as $value) {
 		$name = str_replace('.php', '', $value);
 		$name = str_replace('./content/', '', $name);
@@ -67,13 +89,12 @@ function makeNavBar () {
 		}
 
 	}
-	echo "</ul>";
-	echo "<br />";
 
-	//for some reason I cannot get this to work in navbar.php... but it works in html...
-	
-	//$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
-	//echo '<a href="?theme=' . $changeTheme . '">Change Theme</a>';
+	echo '<li>';
+	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
+	echo '<a id="ctheme" href="?theme=' . $changeTheme . '">Change Theme</a></li>';
+
+	echo "</ul>";
 	
 	//return $navContent;
 }

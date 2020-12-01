@@ -1,10 +1,80 @@
-html, body {
-	background-color: silver;
-
+:root {
+  --top-bar-height: 4em;
 }
 
 
-#nav-ul {
-  list-style-type: none;
+
+#container {
+	min-height: 100%;
+	position: relative;
+	background-color: transparent;
 }
 
+.topnav {
+	z-index: 9000;
+	background-color: black;
+	height: 4em;
+	width: 100%;
+	position: fixed;
+}
+
+
+
+#topnav ul {
+	list-style-type: none;
+	margin: 0;
+	width: 100%;
+
+}
+
+#topnav li {
+	height: 1em;
+	float: left;
+	padding: 1em;
+	border: #FFFFBF solid 1px;
+	border-radius: 5px;
+	margin-right: 1em;
+	padding-bottom: 1em	;
+
+}
+
+ 
+#topnav a {  
+	font-size: 20px;
+}
+
+
+#topnav img {
+	background-color: transparent;
+
+
+}
+
+main {
+	margin-top: var(--top-bar-height);
+	width: 90%;
+	position: fixed;
+	background-color: blue;
+}
+
+.dark {
+	background-color: #0f0f0f
+}
+
+.topnav li {
+	background-color: gold;
+	border: lightgray solid 1px;
+
+}
+
+.dark a {
+	color: lightgray;
+}
+
+.dark main{
+	background-color: #212121;
+}
+
+.dark p {
+	color: lightgray;
+}

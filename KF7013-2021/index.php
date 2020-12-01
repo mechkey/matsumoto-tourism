@@ -3,27 +3,26 @@
 <head>
 	<link rel="stylesheet" href="./assets/stylesheets/main.css">
 	<?php 
-	foreach (glob("./content/php/*.php") as $filename)
-	{
-		include $filename;
-	} 
+	include './content/php/head.php';
+	include './content/php/navbar.php';
+
 	echo makeHead("Matsumoto Tourism - Home");
+
+
 
 	?>
 </head>
 <body class="<?php echo $themeType; ?>">
 	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
-		<?php 
-		echo makeNavBar(); 
-
-		$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
-		echo '<a href="?theme=' . $changeTheme . '">Change Theme</a>';
+		<nav id="topnav">
+			<?php 
+			makeNavBar($themeType); 
+			?>
+		</nav>
 		
-		echo '</nav>';
-		?>
 		<main id="content"> <!-- Beginning of page content -->
 			<p> Some main stuff 
-			
+			<img src="./assets/images/logo.png" alt="Visit Matsumoto Logo">	</img>
 		</p>
 		</main>
 

@@ -9,6 +9,7 @@
 		echo "<p>Connection failed:" . mysqli_connect_error() . " </p>\n";
 	}
 
+	
 	$themeType = '';
 	$changeTheme = '';
 
@@ -17,5 +18,7 @@
 	} else {
 		$themeType = 'light';
 	}
+
+
 
 ?>
