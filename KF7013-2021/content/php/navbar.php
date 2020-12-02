@@ -91,12 +91,13 @@ function makeNavBar ($themeType) {
 	//Dark mode / light mode button
 	echo '<li>';
 	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
+	$ctstring = '<a id="ctheme" href="?theme=' . $changeTheme;
 	if ($themeType == 'light') {
-		echo '<a id="ctheme" href="?theme=' . $changeTheme . '">Dark Mode</a></li>';
+		$ctstring .= '">Dark Mode';
 	} else {
-		echo '<a id="ctheme" href="?theme=' . $changeTheme . '">Light Mode</a></li>';
+		$ctstring .= '">Light Mode';
 	}
-
+	echo $ctstring . '</a></li>';
 
 	$mpath = '';
 

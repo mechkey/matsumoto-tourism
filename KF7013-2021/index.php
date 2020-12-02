@@ -23,7 +23,7 @@
 		<main id="content"> <!-- Beginning of page content -->
 			<p> Some main stuff 
 			<?php
-				echo 'Username: ' . $_SESSION['userName'];
+				echo 'Username: ' . $_SESSION['username'];
 			?>
 		</p>
 		</main>
