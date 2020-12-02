@@ -21,7 +21,7 @@
 	$themeType = '';
 	$changeTheme = '';
 	//If 
-	if ((isset($_GET['theme'])) && ($_GET['theme'] == 'dark')) {
+	if ((isset($_POST['theme'])) && ($_POST['theme'] == 'dark')) {
 		$themeType = 'dark';
 	} else {
 		$themeType = 'light';

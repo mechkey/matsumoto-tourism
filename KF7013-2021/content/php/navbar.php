@@ -89,6 +89,7 @@ function makeNavBar ($themeType) {
 
 
 	//Dark mode / light mode button
+	/*
 	echo '<li>';
 	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
 	$ctstring = '<a id="ctheme" href="?theme=' . $changeTheme;
@@ -98,6 +99,40 @@ function makeNavBar ($themeType) {
 		$ctstring .= '">Light Mode';
 	}
 	echo $ctstring . '</a></li>';
+	*/
+
+	//$tttt = '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><input type="submit" value="Dark Mode" /> </form></li>';
+
+	//<form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/>
+
+	$themestring = '<li><button name="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '" value=';
+
+	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
+	if ($changeTheme == 'light') {
+		$themestring .= '"light">';
+		$themestring .= 'Light Mode';
+	} else {
+		$themestring .= '"dark">';
+		$themestring .= 'Dark Mode';
+	}
+	$themestring .= '</button></li>';
+	echo $themestring;
+
+	//$dark;
+	/*
+	 if($_POST['darkmode']) {
+	 	$themeType = 'dark';
+	 } else {
+	 	$themeType = 'light';
+	 }
+	 /*
+	 if ($dark = true;) {
+	 	$themeType = 'dark';
+	 } else {
+	 	$themeType = 'light';
+	 }
+	 */
+
 
 	$mpath = '';
 

@@ -22,9 +22,22 @@
 		
 		<main id="content"> <!-- Beginning of page content -->
 			<p> Some main stuff 
-			<?php
-				echo 'Username: ' . $_SESSION['username'];
-			?>
+
+			
+			
+				<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>
+
+				<?php
+
+
+				$themestring = '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><input type="submit" name="theme" value="';
+
+	//echo $themestring;
+
+				$tt = $_POST['theme'];
+				echo $tt;
+				//echo 'Username: ' . $_SESSION['username'];
+				?>
 		</p>
 		</main>
 
