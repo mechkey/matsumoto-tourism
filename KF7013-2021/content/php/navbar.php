@@ -1,13 +1,13 @@
 <?php
 
 include 'main.php';
-
 function makeNavBar ($themeType) {
 
-
-	//Main Nav bar gen
+	//Navigation bar generation
 
 	$path = $_SERVER['REQUEST_URI'];
+	$fpath = $path;
+
 	$path = str_replace('/index', 'index', $path);
 	//echo "path is " . $path . "<br />";
 	//$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
@@ -20,41 +20,33 @@ function makeNavBar ($themeType) {
 	/*
 	$index = "index.php";
 	$sightseeing = "./content/sightseeing.php";
-	
 	$name1 = str_replace('.php', '', $index);
 	$name1 = str_replace('./content/', '', $name1);
 	echo $name1;
-
 	$name2 = str_replace('.php', '', $sightseeing);
 	$name2 = str_replace('./content/', '', $name2);
 	echo $name2;
-
 	$dirlevel = str_replace('./', '', $path);
 	$dirlevel = str_replace('', '', $dirlevel);
-
 	*/
 
 	if (preg_match('/content/', $path)) {
 		$pageArray = [
-			0 => "../index.php",
-			1 => "./activities.php",
-			2 => "./events.php",
-			3 => "./sightseeing.php",
-			4 => "./attribution.php",
-			5 => "./login.php",
-			6 => "./account.php",
+			0 => "./activities.php",
+			1 => "./events.php",
+			2 => "./sightseeing.php",
+			3 => "./attribution.php",
+			4 => "./account.php",
 		];
 	}
 
 	else {
 		$pageArray = [
-			0 => "index.php",
-			1 => "./content/activities.php",
-			2 => "./content/events.php",
-			3 => "./content/sightseeing.php",
-			4 => "./content/attribution.php",
-			5 => "./content/login.php",
-			6 => "./content/account.php",
+			0 => "./content/activities.php",
+			1 => "./content/events.php",
+			2 => "./content/sightseeing.php",
+			3 => "./content/attribution.php",
+			4 => "./content/account.php",
 
 
 		];
@@ -63,27 +55,28 @@ function makeNavBar ($themeType) {
 
 	$logosrc = '';
 	if ($themeType == 'dark') {
-		$logosrc = '../assets/images/logogray.png';
+		$logosrc = './assets/images/logogray.png';
 	} else {
-		$logosrc = '../assets/images/logo.png';
+		$logosrc = './assets/images/logo.png';
 	}
 
-	//If the page is locat
+	//The website logo.
+	//If the page is located in the content folder, append another . to the logo src to make ../
 	if (preg_match('/content/', $path) ) {
-		echo '<li><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/> </li>';
+		echo '<li><a href="../index.php"><img id="logo" src=".' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
 		}
 	else {
-		echo '<li><img id="logo" src="' . $logosrc . '"" alt="Visit Matsumoto Logo" height="30" /></li>';
+		echo '<li><a href="../index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
 		}
 
-
+	//Create the links from the array.
 	foreach ($pageArray as $value) {
 		$name = str_replace('.php', '', $value);
 		$name = str_replace('./content/', '', $name);
 		$name = str_replace('./', '', $name);
 		$name = str_replace('.', '', $name);
 		$name = ucfirst($name);
-		//echo "vlaue is " . $value;
+		//echo " vlaue is " . $value;
 		if ($value == $path) {
 			echo $listart . $value . $limidcur . $name . $liend;
 		} else {
@@ -92,6 +85,10 @@ function makeNavBar ($themeType) {
 
 	}
 
+
+
+
+	//Dark mode / light mode button
 	echo '<li>';
 	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
 	if ($themeType == 'light') {
@@ -100,11 +97,44 @@ function makeNavBar ($themeType) {
 		echo '<a id="ctheme" href="?theme=' . $changeTheme . '">Light Mode</a></li>';
 	}
 
-	
 
+	$mpath = '';
+
+	if (preg_match('/content/', $fpath)) {
+			$mpath = './';
+		} else {
+			$mpath = './content/';
+		}
+
+		/*
+		echo '<li>';
+		echo 'mpath is';
+		echo $mpath;
+		echo '</li>';
+		*/
+
+	echo '<li>';
+	//Logic to determine whether the login form's action should include the content folder.
+	if(isset($_SESSION['username'])) {
+		echo 'Username: ' . $_SESSION['username'];
+		echo '</li><li>';
+		navbarlogoutform($mpath);
+		//echo 'session set';
+		//navbarloginform($mpath);
+	} else {
+		//echo 'session not set';
+		navbarloginform($mpath);
+
+
+		//logoutform($fpath);
+	}
+	echo '</li>';
+
+
+	//echo '<li> fpath is ' . $fpath . '</li>';
 	echo "</ul>";
 	
 	//return $navContent;
-}
+	}
 
 ?>

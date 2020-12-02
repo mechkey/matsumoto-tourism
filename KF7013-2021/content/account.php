@@ -1,13 +1,13 @@
 <?php
-/*
+
 	session_start();
 	
 	if (isset($_SESSION['username'])) {
 		//echo 'Session set';
 	} else {
-		//header("Location: ./login.php");
+		header("Location: ../index.php");
 	}
-	*/
+	
 	
 ?>
 
@@ -29,9 +29,13 @@
 			?>
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
-			<p>Account page</p>
+			<H1>My Account page</h1>
+				<p>Do you wish to logout?</p>
 			<?php
-				echo 'Username: ' . $_SESSION['userName'];
+
+			logoutform();
+
+			echo 'Username: ' . $_SESSION['username'];
 			?>
 		</main>
 
