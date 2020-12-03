@@ -105,25 +105,33 @@ function makeNavBar ($themeType) {
 
 	//<form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/>
 
-	$themestring = '<li><button name="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '" value=';
+	// $_SERVER['PHP_SELF']
+
+
+	$themestring = '<li><form action="' . $_SERVER['PHP_SELF'] . '" method="post"><input type="hidden" name="theme" id="theme" value=';
 
 	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
 	if ($changeTheme == 'light') {
-		$themestring .= '"light">';
+		$themestring .= '"light"\><button>';
 		$themestring .= 'Light Mode';
 	} else {
-		$themestring .= '"dark">';
+		$themestring .= '"dark"\><button>';
 		$themestring .= 'Dark Mode';
 	}
-	$themestring .= '</button></li>';
+	$themestring .= '</button></form></li>';
 	echo $themestring;
 
 	//$dark;
-	/*
-	 if($_POST['darkmode']) {
-	 	$themeType = 'dark';
+
+	$themevar = $_POST['theme'];
+
+
+	 if($themevar == 'dark') {
+	 	$_SESSION['themeType'] = 'dark';
+	 	echo 'session set to dark';
 	 } else {
-	 	$themeType = 'light';
+	 	$_SESSION['themeType'] = 'light';
+	 	echo 'session set to light';
 	 }
 	 /*
 	 if ($dark = true;) {
@@ -142,14 +150,6 @@ function makeNavBar ($themeType) {
 			$mpath = './content/';
 		}
 
-		/*
-		echo '<li>';
-		echo 'mpath is';
-		echo $mpath;
-		echo '</li>';
-		*/
-
-	echo '<li>';
 	//Logic to determine whether the login form's action should include the content folder.
 	if(isset($_SESSION['username'])) {
 		echo 'Username: ' . $_SESSION['username'];
@@ -164,7 +164,7 @@ function makeNavBar ($themeType) {
 
 		//logoutform($fpath);
 	}
-	echo '</li>';
+
 
 
 	//echo '<li> fpath is ' . $fpath . '</li>';

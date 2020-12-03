@@ -32,10 +32,9 @@
 
 				$themestring = '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><input type="submit" name="theme" value="';
 
-	//echo $themestring;
+				//echo $themestring;
 
-				$tt = $_POST['theme'];
-				echo $tt;
+				
 				//echo 'Username: ' . $_SESSION['username'];
 				?>
 		</p>

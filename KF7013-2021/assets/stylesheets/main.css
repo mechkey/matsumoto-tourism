@@ -13,10 +13,11 @@
 
 #topnav {
 	z-index: 9000;
-	background-color: transparent;
 	height: 4em;
 	width: 100%;
 	position: fixed;
+	background-color: transparent;
+
 }
 
 
@@ -30,7 +31,6 @@
 
 #topnav li {
 	float: left;
-	border: #FFFFBF solid 1px;
 	border-radius: 5px;
 	margin-right: 1em;
 	text-align: middle;
@@ -40,20 +40,17 @@
  
 #topnav a {  
 	display: block;
-	color: gray;
 	text-align: center;
   	text-decoration: none;
 	font-size: 18px;
-	padding: var(--top-bar-padding);
-
+	color: gray;
 }
 
 #topnav a:hover {
-	background-color: #dedede;
-	color: black;
   	border: 0px;
   	border-radius: 5px;
-	padding: var(--top-bar-padding);
+  	background-color: #dedede;
+	color: black;
 }
 
 
@@ -75,24 +72,16 @@ main {
 }
 
 .dark #topnav li {
-	border: lightgray solid 1px;
-	padding: var(--top-bar-padding);
-
 
 }
 
 .dark a {
 	color: white;
-	padding: var(--top-bar-padding);
 
 }
 
 .dark #topnav a:hover {
-	background-color: red;
 	color: black;
-  	border: 0px;
-  	border-radius: 5px;
-	padding: var(--top-bar-padding);
 }
 
 .dark main{
