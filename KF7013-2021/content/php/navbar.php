@@ -52,12 +52,13 @@ function makeNavBar ($themeType) {
 		];
 	}
 	echo '<ul>';
-
-	$logosrc = '';
-	if ($themeType == 'dark') {
-		$logosrc = './assets/images/logogray.png';
-	} else {
-		$logosrc = './assets/images/logo.png';
+	
+	//Logic to choose logo or brighter logo for dark mode.
+	$logosrc = ''; 	
+	if ($_SESSION['themeType'] == 'dark') { 		
+		$logosrc = './assets/images/logogray.png'; 	
+	} else { 
+		$logosrc = './assets/images/logo.png'; 	
 	}
 
 	//The website logo.
@@ -101,46 +102,15 @@ function makeNavBar ($themeType) {
 	echo $ctstring . '</a></li>';
 	*/
 
-	//$tttt = '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><input type="submit" value="Dark Mode" /> </form></li>';
 
-	//<form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/>
+	//$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
 
-	// $_SERVER['PHP_SELF']
-
-
-	$themestring = '<li><form action="' . $_SERVER['PHP_SELF'] . '" method="post"><input type="hidden" name="theme" id="theme" value=';
-
-	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
-	if ($changeTheme == 'light') {
-		$themestring .= '"light"\><button>';
-		$themestring .= 'Light Mode';
-	} else {
-		$themestring .= '"dark"\><button>';
-		$themestring .= 'Dark Mode';
+	if  ($_SESSION['themeType'] =='dark') {
+		echo '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" value="light"/>Light Mode</button></form></li>';
+	} else if (($_SESSION['themeType'] == 'light') || ($themeType == '')) {
+		echo '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" value="dark"/>Dark Mode</button></form></li>';
 	}
-	$themestring .= '</button></form></li>';
-	echo $themestring;
-
-	//$dark;
-
-	$themevar = $_POST['theme'];
-
-
-	 if($themevar == 'dark') {
-	 	$_SESSION['themeType'] = 'dark';
-	 	echo 'session set to dark';
-	 } else {
-	 	$_SESSION['themeType'] = 'light';
-	 	echo 'session set to light';
-	 }
-	 /*
-	 if ($dark = true;) {
-	 	$themeType = 'dark';
-	 } else {
-	 	$themeType = 'light';
-	 }
-	 */
-
+	
 
 	$mpath = '';
 

@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	$_SESSION['username'] = $_REQUEST['username'];
 	session_regenerate_id();
+	$_SESSION['username'] = $_REQUEST['username'];
 	header('Location: ../account.php');
 	//or not header('Location: login.php');
 

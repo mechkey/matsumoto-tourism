@@ -71,6 +71,8 @@ main {
 	background-color: #0f0f0f
 }
 
+
+
 .dark #topnav li {
 
 }
@@ -80,9 +82,13 @@ main {
 
 }
 
+
+}
 .dark #topnav a:hover {
 	color: black;
 }
+
+
 
 .dark main{
 	background-color: #212121;

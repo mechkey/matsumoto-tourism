@@ -12,7 +12,7 @@
 	echo makeHead("Matsumoto Tourism - Home");
 	?>
 </head>
-<body class="<?php echo $themeType; ?>">
+<body class="<?php echo $_SESSION['themeType']; ?>">
 	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
 		<nav id="topnav">
 			<?php 
@@ -28,8 +28,13 @@
 				<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>
 
 				<?php
+				echo "<pre>"; 
+				print_r($_SESSION); 
+				echo "</pre>";
 
-
+				$themevar = $_POST['theme'];
+				echo $themevar;
+				
 				$themestring = '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><input type="submit" name="theme" value="';
 
 				//echo $themestring;

@@ -9,11 +9,10 @@
 	<?php 
 	include './php/head.php';
 	include './php/navbar.php';
-
 	echo makeHead("Matsumoto Tourism - Home");
 	?>
 </head>
-<body class="<?php echo $themeType; ?>">
+<body class="<?php echo $_SESSION['themeType']; ?>">
 	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
 		<nav id="topnav">
 			<?php 

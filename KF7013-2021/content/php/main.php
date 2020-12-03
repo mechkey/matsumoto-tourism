@@ -21,11 +21,13 @@
 	$themeType = '';
 	$changeTheme = '';
 	//If 
-	if ((isset($_POST['theme'])) && ($_POST['theme'] == 'dark')) {
-		$themeType = 'dark';
-	} else {
-		$themeType = 'light';
-	}
+	if (((isset($_POST['theme'])) && ($_POST['theme'] == 'dark'))) {
+		$_SESSION['themeType'] = 'dark';
+	} else if ((isset($_POST['theme'])) && ($_POST['theme'] == 'light')) {
+		$_SESSION['themeType'] = 'light';
+	} 
+
+
 
 function navbarloginform ($fpath) {
 	$login = '
