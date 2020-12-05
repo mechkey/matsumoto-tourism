@@ -12,11 +12,11 @@
 	echo makeHead("Matsumoto Tourism - Home");
 	?>
 </head>
-<body class="<?php echo $_SESSION['themeType']; ?>">
+<body class="<?php classID() ?>">
 	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
 		<nav id="topnav">
 			<?php 
-			makeNavBar($themeType); 
+			makeNavBar(); 
 			?>
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->

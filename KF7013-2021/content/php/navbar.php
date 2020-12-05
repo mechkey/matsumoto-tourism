@@ -1,21 +1,21 @@
 <?php
+//include 'path.php';
 
 include 'main.php';
-function makeNavBar ($themeType) {
+//Logo includes main.php
+
+//function makeNavBar ($themeType) {
+function makeNavBar () {
 
 	//Navigation bar generation
 
-	$path = $_SERVER['REQUEST_URI'];
-	$fpath = $path;
+	$path = getpath();
 
 	$path = str_replace('/index', 'index', $path);
 	//echo "path is " . $path . "<br />";
 	//$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
 	
-	$listart = '<li><a href="';
-	$limid = '">';
-	$limidcur = '" id="current">';
-	$liend = '</a></li>';
+	
 
 	/*
 	$index = "index.php";
@@ -30,14 +30,24 @@ function makeNavBar ($themeType) {
 	$dirlevel = str_replace('', '', $dirlevel);
 	*/
 
+
+	$listart = '<li><a href="';
+	$limid = '">';
+	$limidcur = '" id="current">';
+	$liend = '</a></li>';
+
 	if (preg_match('/content/', $path)) {
 		$pageArray = [
 			0 => "./activities.php",
 			1 => "./events.php",
 			2 => "./sightseeing.php",
-			3 => "./attribution.php",
+			3 => "./credits.php",
 			4 => "./account.php",
 		];
+		if (!(isset($_SESSION['username']))) {
+			$loginpage = "./login.php";
+			array_splice( $pageArray, 5, 0, $loginpage );
+		}
 	}
 
 	else {
@@ -45,30 +55,19 @@ function makeNavBar ($themeType) {
 			0 => "./content/activities.php",
 			1 => "./content/events.php",
 			2 => "./content/sightseeing.php",
-			3 => "./content/attribution.php",
+			3 => "./content/credits.php",
 			4 => "./content/account.php",
-
-
 		];
+		if (!(isset($_SESSION['username']))) {
+			$loginpage = "./content/login.php";
+			array_splice( $pageArray, 5, 0, $loginpage );
+
+		}
 	}
 	echo '<ul>';
 	
-	//Logic to choose logo or brighter logo for dark mode.
-	$logosrc = ''; 	
-	if ($_SESSION['themeType'] == 'dark') { 		
-		$logosrc = './assets/images/logogray.png'; 	
-	} else { 
-		$logosrc = './assets/images/logo.png'; 	
-	}
-
-	//The website logo.
-	//If the page is located in the content folder, append another . to the logo src to make ../
-	if (preg_match('/content/', $path) ) {
-		echo '<li><a href="../index.php"><img id="logo" src=".' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
-		}
-	else {
-		echo '<li><a href="../index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
-		}
+	//Logic to choose logo or brighter logo for dark mode - from logo.php
+	showLogo($_SERVER['REQUEST_URI']);
 
 	//Create the links from the array.
 	foreach ($pageArray as $value) {
@@ -77,7 +76,7 @@ function makeNavBar ($themeType) {
 		$name = str_replace('./', '', $name);
 		$name = str_replace('.', '', $name);
 		$name = ucfirst($name);
-		//echo " vlaue is " . $value;
+		//echo " Value is " . $value;
 		if ($value == $path) {
 			echo $listart . $value . $limidcur . $name . $liend;
 		} else {
@@ -86,11 +85,9 @@ function makeNavBar ($themeType) {
 
 	}
 
-
-
-
-	//Dark mode / light mode button
 	/*
+	//Fall back Dark mode / light form mode button
+	//$themeType = getTT();
 	echo '<li>';
 	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
 	$ctstring = '<a id="ctheme" href="?theme=' . $changeTheme;
@@ -100,47 +97,54 @@ function makeNavBar ($themeType) {
 		$ctstring .= '">Light Mode';
 	}
 	echo $ctstring . '</a></li>';
+
+	echo '<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
 	*/
-
-
-	//$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
-
-	if  ($_SESSION['themeType'] =='dark') {
-		echo '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" value="light"/>Light Mode</button></form></li>';
-	} else if (($_SESSION['themeType'] == 'light') || ($themeType == '')) {
-		echo '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" value="dark"/>Dark Mode</button></form></li>';
-	}
 	
 
-	$mpath = '';
 
-	if (preg_match('/content/', $fpath)) {
-			$mpath = './';
-		} else {
-			$mpath = './content/';
+	//Light mode/dark mode button
+	echo '<li>';
+	
+	if (isset($_SESSION['themeType'])) {
+		if  ($_SESSION['themeType'] == 'dark') {
+			//$_SESSION['themeType'] = $themeType;
+			echo '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" value="light"/>Light Mode</button></form></li>';
+		//} else if ((getTT() == 'light') || is_null($_SESSION['themeType'])) {
+		} else if ($_SESSION['themeType'] == 'light') {
+			//$_SESSION['themeType'] = $themeType;
+			echo '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" value="dark"/>Dark Mode</button></form></li>';
 		}
+	}
+	
+	echo '</li>';
 
-	//Logic to determine whether the login form's action should include the content folder.
-	if(isset($_SESSION['username'])) {
+	////Logic to determine whether the login form's action should include the content folder.
+
+
+	//Show nav bar login
+	echo '<li>';
+	//echo 'login should be here ';
+	if (isset($_SESSION['username'])) {
+		//echo 'arraykeyset';
 		echo 'Username: ' . $_SESSION['username'];
 		echo '</li><li>';
-		navbarlogoutform($mpath);
-		//echo 'session set';
-		//navbarloginform($mpath);
+		//
+		navbarlogoutform($_SERVER['REQUEST_URI']);
+		//
 	} else {
-		//echo 'session not set';
-		navbarloginform($mpath);
+			//
+			navbarloginform($_SERVER['REQUEST_URI']);
+			//
+		}
+	echo '</li>';
 
 
-		//logoutform($fpath);
-	}
 
-
-
-	//echo '<li> fpath is ' . $fpath . '</li>';
+	//echo '<li> pathcopy is ' . $pathcopy . '</li>';
 	echo "</ul>";
 	
 	//return $navContent;
-	}
 
+}
 ?>

@@ -6,17 +6,23 @@
 
 
 #container {
+	min-width: 100%;
 	min-height: 100%;
+	margin: 0;
+	padding: 0;
 	position: relative;
 	background-color: transparent;
 }
 
 #topnav {
+	margin: 0;
+	padding: 0;
 	z-index: 9000;
 	height: 4em;
 	width: 100%;
 	position: fixed;
 	background-color: transparent;
+	border-bottom: 1px solid gray;
 
 }
 
@@ -62,9 +68,21 @@
 
 main {
 	margin-top: var(--top-bar-height);
-	width: 90%;
+	width: 100%;
 	position: fixed;
 	background-color: lightgray;
+}
+
+body {
+	margin: 0;
+}
+
+content {
+	padding-left: 3em;
+}
+
+.login {
+	list-style-type: none;
 }
 
 .dark {

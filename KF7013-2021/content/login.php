@@ -16,11 +16,15 @@
 	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
 		<nav id="topnav">
 			<?php 
-			makeNavBar();  
+			makeNavBar(); 
 			?>
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
-			<p> Some main stuff </p>
+			<div class="login">
+				<?php
+				loginpageform();
+				?>
+			</div>
 		</main>
 
 		<footer id="footer"> <!-- Beginning of footer -->
