@@ -43,6 +43,24 @@
 
 }
 
+#navlogo {
+	padding-top: 0.8em;
+}
+
+.navlink {
+	padding-top: 1.2em;
+
+}
+
+
+#navlogin {
+	padding-top: 0.5em;
+}
+
+#navsub {
+	padding-top: 1em;
+}
+
  
 #topnav a {  
 	display: block;
@@ -71,6 +89,8 @@ main {
 	width: 100%;
 	position: fixed;
 	background-color: lightgray;
+		padding-left: 3em;
+
 }
 
 body {
@@ -78,7 +98,6 @@ body {
 }
 
 content {
-	padding-left: 3em;
 }
 
 .login {
