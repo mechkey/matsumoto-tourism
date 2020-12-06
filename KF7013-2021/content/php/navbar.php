@@ -30,12 +30,6 @@ function makeNavBar () {
 	$dirlevel = str_replace('', '', $dirlevel);
 	*/
 
-
-	$listart = '<li><a href="';
-	$limid = '">';
-	$limidcur = '" id="current">';
-	$liend = '</a></li>';
-
 	if (preg_match('/content/', $path)) {
 		$pageArray = [
 			0 => "./activities.php",
@@ -68,6 +62,11 @@ function makeNavBar () {
 	
 	//Logic to choose logo or brighter logo for dark mode - from logo.php
 	showLogo($_SERVER['REQUEST_URI']);
+
+	$listart = '<li id="navlink"><a href="';
+	$limid = '">';
+	$limidcur = '" id="current">';
+	$liend = '</a></li>';
 
 	//Create the links from the array.
 	foreach ($pageArray as $value) {
@@ -111,7 +110,8 @@ function makeNavBar () {
 			//$_SESSION['themeType'] = $themeType;
 			echo '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" value="light"/>Light Mode</button></form></li>';
 		//} else if ((getTT() == 'light') || is_null($_SESSION['themeType'])) {
-		} else if ($_SESSION['themeType'] == 'light') {
+		//} else if (($_SESSION['themeType'] == 'light') ) {
+		} else if (($_SESSION['themeType'] == 'light') ) {
 			//$_SESSION['themeType'] = $themeType;
 			echo '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" value="dark"/>Dark Mode</button></form></li>';
 		}

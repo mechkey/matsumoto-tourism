@@ -49,6 +49,8 @@
 	function classID() {
 		if (isset($_SESSION['themeType'])) {
 			echo $_SESSION['themeType'];
+		} else {
+			echo $_SESSION['themeType'] = 'light';
 		}
 	}
 
