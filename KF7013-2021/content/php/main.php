@@ -34,6 +34,33 @@
 		}
 	}
 
+
+	function contentAsArray($pagepath) 
+	{ 
+		$pageArray = [];
+		foreach (glob($pagepath . '*.php') as $filename)
+		{
+			if( ($filename != ($pagepath . 'login.php')) && 
+				($filename != ($pagepath . 'logout.php')) && 
+				($filename != ($pagepath . 'account.php')) &&
+				($filename != ($pagepath . 'register.php')) 
+			)  
+			{
+				array_push($pageArray, $filename);   
+			}
+		}
+		if (!(isset($_SESSION['username']))) {
+			//echo $pagepath;	
+			array_push( $pageArray, $pagepath . 'register.php' );
+			array_push( $pageArray, $pagepath . 'login.php' );
+		} else {
+			array_push( $pageArray, $pagepath . 'account.php' );
+			array_push( $pageArray, $pagepath . 'logout.php' );
+		}
+		return $pageArray;
+	} 
+
+
 	//Init dark mode vars
 
 	$themeType = '';
@@ -161,6 +188,22 @@
 
 	*/
 
+
+
+	function fallbacktheme() {//Fall back Dark mode / light form mode button
+	//$themeType = getTT();
+	echo '<li>';
+	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
+	$ctstring = '<a id="ctheme" href="?theme=' . $changeTheme;
+	if ($themeType == 'light') {
+		$ctstring .= '">Dark Mode';
+	} else {
+		$ctstring .= '">Light Mode';
+	}
+	echo $ctstring . '</a></li>';
+
+	echo '<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
+	}
 
 
 	function br() {

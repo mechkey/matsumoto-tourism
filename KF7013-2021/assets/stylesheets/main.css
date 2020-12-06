@@ -57,8 +57,8 @@
 	padding-top: 0.5em;
 }
 
-#navsub {
-	padding-top: 1em;
+#navsub, #navlogout, #navuname {
+	padding-top: 1.2em;
 }
 
  
