@@ -79,11 +79,13 @@ function makeNavBar () {
 		echo 'Username: ' . $_SESSION['username'];
 		echo '</li><li id="navlogout">';
 		//
-		navbarlogoutform($_SERVER['REQUEST_URI']);
+		//logoutform($_SERVER['REQUEST_URI']);
+		logoutform("Logout");
 		//
 	} else {
 			echo '<li id="navlogin">';
-			navbarloginform($_SERVER['REQUEST_URI']);
+			//navbarloginform($_SERVER['REQUEST_URI']);
+			navbarloginform();
 			//
 		}
 	echo '</li>';

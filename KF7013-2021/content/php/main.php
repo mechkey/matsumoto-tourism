@@ -109,7 +109,18 @@
 	}
 
 
-	function navbarlogoutform () {
+	function navbarlogoutform ($value) {
+		$logout = <<<LOGOUT
+		<form id="logout" method="post" action="/content/php/dologout.php"> 
+		<input type="submit" value="$value" /> 
+		</form>
+		LOGOUT;
+
+		echo $logout;
+	}
+	
+
+	/*	function navbarlogoutform () {
 		$logout = '
 		<form id="logout" method="post" action="/content/php/dologout.php"> 
 		<input type="submit" value="Logout" /> 
@@ -117,32 +128,8 @@
 		';
 		echo $logout;
 	}
-	
- /*
-	function navbarloginform ($fpath) {
-		$login = '
-		<li>
-		<form id="login" method="post" action="' . getroot($fpath) . 'content/php/dologin.php"> 
-		Username:    
-		<input type= "text" name="username" size="8" /><br />
-		Password:
-		<input type= "password" name="password" size="8" /> </li>
-		<input type="submit" value="Login" /> 
-		</form>
-		';
-		echo $login;
-	}
-
-	function navbarlogoutform ($fpath) {
-		$logout = '
-		<form id="logout" method="post" action="' . getroot($fpath) . 'content/php/dologout.php"> 
-		<input type="submit" value="Logout" /> 
-		</form>
-		';
-		echo $logout;
-	}
-
 	*/
+
 
 	function loginpageform() {
 		$login = '
