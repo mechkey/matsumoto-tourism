@@ -30,7 +30,11 @@
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
 			<H1>My Account page</h1>
-				<p>Do you wish to logout?</p>
+				<p>Do you wish to logout? <br />
+					your account details are:
+
+				</p>
+
 			<?php
 
 			logoutform();

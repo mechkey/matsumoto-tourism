@@ -9,7 +9,7 @@
 	<?php 
 	include './php/head.php';
 	include './php/navbar.php';
-	echo makeHead("Matsumoto Tourism - Home");
+	echo makeHead("Matsumoto Tourism - Sightseeing");
 	?>
 </head>
 <body class="<?php classID() ?>">
