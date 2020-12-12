@@ -1,12 +1,12 @@
 <?php
 	//Connect to database
-	$connection = mysqli_connect ('localhost', 'root', 'root', 'travel');
-	if ($connection) {
-		mysqli_set_charset($connection, 'utf8');
+	$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
+	if ($conn) {
+		mysqli_set_charset($conn, 'utf8');
 	}
 
-	if ($connection === false) {
-		echo "<p>Connection failed:" . mysqli_connect_error() . " </p>\n";
+	if ($conn === false) {
+		echo "<p>conn failed:" . mysqli_connect_error() . " </p>\n";
 	}
 
 	//Init path var
@@ -94,6 +94,7 @@
 		echo '<li id="navlogo"><a href="../index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
 		
 	}
+//		<form id="login" method="post" action="/content/php/dologin.php"> 
 
 	function navbarloginform () {
 		$login = '
@@ -102,7 +103,7 @@
 		<input type= "text" name="username" size="8" /><br />
 		Password:
 		<input type= "password" name="password" size="8" /> </li><li id="navsub">
-		<input type="submit" value="Login" /> 
+		<input type="submit" id="loginbutton" class="navbutton"value="Login" /> 
 		</form>
 		';
 		echo $login;
@@ -112,7 +113,7 @@
 	function navbarlogoutform ($value) {
 		$logout = <<<LOGOUT
 		<form id="logout" method="post" action="/content/php/dologout.php"> 
-		<input type="submit" value="$value" /> 
+		<input type="submit" class="navbutton" id="logoutbutton" value="$value" /> 
 		</form>
 		LOGOUT;
 
@@ -130,7 +131,7 @@
 	}
 	*/
 
-
+	//<form id="login" method="post" action="./php/dologin.php"> 
 	function loginpageform() {
 		$login = '
 		<li>
@@ -150,7 +151,7 @@
 	function logoutform() {
 		$fpath = '';
 		$logout = '
-		<form id="logout" method="post" action="php/dologout.php"> 
+		<form id="logout" method="post" action="/content/php/dologout.php"> 
 		<input type="submit" value="Logout" /> 
 		</form>
 		';

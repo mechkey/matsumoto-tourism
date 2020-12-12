@@ -37,7 +37,7 @@
 
 			<?php
 
-			logoutform();
+			navbarlogoutform("Logout");
 			if (isset($_SESSION['username'])) {
 				echo 'Username: ' . $_SESSION['username'];
 			}

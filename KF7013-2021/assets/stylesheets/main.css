@@ -67,7 +67,7 @@
 	text-align: center;
   	text-decoration: none;
 	font-size: 18px;
-	color: gray;
+	color: #333;
 }
 
 #topnav a:hover {
@@ -83,6 +83,12 @@
 
 
 }
+
+.login {
+	list-style-type: none;
+}
+
+
 
 main {
 	margin-top: var(--top-bar-height);
@@ -100,36 +106,56 @@ body {
 content {
 }
 
-.login {
-	list-style-type: none;
+input {
+ 	background-color: #f5f5dc;
 }
 
+.navbutton {
+	background-color: #666;
+	color: white;
+}
+
+
 .dark {
+	color: #a3a3a3;
 	background-color: #0f0f0f
 }
 
-
-
-.dark #topnav li {
-
+.dark main{
+	background-color: #1c1c1c;
 }
 
-.dark a {
-	color: white;
+.dark a, input, label, button {
+	color: #ddd;
+}
 
+.dark input, button {
+	background-color: #111;
 }
 
 
+.dark .navlink {
+	background-color: transparent;
 }
+
+.dark #topnav a {
+	color: #c8c8c8;
+}
+
+
+
+.dark .navbutton {
+	background-color: #333;
+	color: #fff	;
+}
+
+
+
+
 .dark #topnav a:hover {
 	color: black;
 }
 
-
-
-.dark main{
-	background-color: #212121;
-}
 
 .dark p {
 	color: lightgray;

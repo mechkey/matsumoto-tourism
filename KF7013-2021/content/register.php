@@ -23,14 +23,11 @@
 		<main id="content"> <!-- Beginning of page content -->
 			
 			<form id="register" method="post" action="/content/php/doregistration.php">
-				<label for="email">Email:</label><br />
-				<input type="email" id="email" name="email"><br />
-
 				<label for="fname">Fore Name:</label><br />
-				<input type="text" id="fname" name="fname"><br />
+				<input type="text" id="fname" name="fname" required><br />
 
 				<label for="lname">Last Name:</label><br />
-				<input type="text" id="lname" name="lname"><br />
+				<input type="text" id="lname" name="lname" required><br />
 
 				<label for="addr1">Address Line 1:</label><br />
 				<input type="text" id="addr1" name="addr1"><br />
@@ -40,16 +37,19 @@
 				<input type="text" id="addrcode" name="addrcode"><br />
 
 				<label for="dob">Date of Birth:</label><br />
-				<input type="date" id="dob" name="dob"><br />
+				<input type="date" id="dob" name="dob" required><br />
 
 
-				<label for="uname">Username:</label><br />
-				<input type="text" id="uname" name="uname"><br />
+				<label for="username">Username:</label><br />
+				<input type="text" id="usernmae" name="username" required><br />
 
 				<label for="password">Password:</label><br />
-				<input type="password" id="password" name="password"><br />
-				<input type="submit"	>
+				<input type="password" id="password" name="password" required><br />
 
+				<input type="checkbox" id="gdpr" name="gdpr" value="gdpraccept" required>
+				<label for="gdpr">I consent to my details being stored in accordance with GDPR legislation </label><br>
+
+				<input type="submit"	>
 			</form>
 
 				
@@ -59,6 +59,8 @@
 		echo 'path is ' . getpath();	
 		br();
 
+		//<label for="email">Email:</label><br />
+		//<input type="email" id="email" name="email"><br />
 		
 
 		?>

@@ -44,11 +44,12 @@
 
 				//echo $themestring;
 
-						navbarlogoutform($_SERVER['REQUEST_URI']);
+						//navbarlogoutform($_SERVER['REQUEST_URI']);
 
 				//echo 'Username: ' . $_SESSION['username'];
-				?>	
-				<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>
+					
+				//echo'<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
+				?>
 		</p>
 		</main>
 
