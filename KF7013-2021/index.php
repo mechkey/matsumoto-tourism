@@ -25,13 +25,16 @@
 
 				<?php
 
-				echo 'SERVER-REQUEST_URI is ' . $_SERVER['REQUEST_URI'];
-				br();
-				echo 'path is ' . getpath();	
-		
-				echo "<pre>"; 
-				print_r($_SESSION); 
-				echo "</pre>";
+
+				if (debug) {
+					echo 'SERVER-REQUEST_URI is ' . $_SERVER['REQUEST_URI'];
+					br();
+					echo 'path is ' . getpath();	
+			
+					echo "<pre>"; 
+					print_r($_SESSION); 
+					echo "</pre>";
+				}
 
 				
 

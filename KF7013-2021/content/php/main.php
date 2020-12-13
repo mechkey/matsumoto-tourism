@@ -1,5 +1,8 @@
 <?php
 	//Connect to database
+
+	$debug = false;
+
 	$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
 	if ($conn) {
 		mysqli_set_charset($conn, 'utf8');
@@ -197,6 +200,10 @@
 	function br() {
 		echo "<br />";
 
+	}
+
+	function listacts(){
+		
 	}
 
 ?>

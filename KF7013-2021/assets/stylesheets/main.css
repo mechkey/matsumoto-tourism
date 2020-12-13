@@ -3,7 +3,25 @@
   --top-bar-padding: 4px 8px 8px 4px;
 }
 
+html {
+	  font-family: Arial, Helvetica, sans-serif;
+}
 
+
+main {
+	margin-top: var(--top-bar-height);
+	width: 100%;
+	position: fixed;
+	background-color: white;
+	padding-left: 3em;
+}
+
+body {
+	margin: 0;
+}
+
+content {
+}
 
 #container {
 	min-width: 100%;
@@ -23,7 +41,6 @@
 	position: fixed;
 	background-color: transparent;
 	border-bottom: 1px solid gray;
-
 }
 
 
@@ -32,7 +49,6 @@
 	list-style-type: none;
 	margin: 0;
 	width: 100%;
-
 }
 
 #topnav li {
@@ -40,7 +56,6 @@
 	border-radius: 5px;
 	margin-right: 1em;
 	text-align: middle;
-
 }
 
 #navlogo {
@@ -49,7 +64,6 @@
 
 .navlink {
 	padding-top: 1.2em;
-
 }
 
 
@@ -57,8 +71,12 @@
 	padding-top: 0.5em;
 }
 
-#navsub, #navlogout, #navuname {
+#navsub, #navlogout {
 	padding-top: 1.2em;
+}
+
+#navuname {
+	padding-top: 1.25em;
 }
 
  
@@ -80,31 +98,12 @@
 
 #topnav img {
 	background-color: transparent;
-
-
 }
 
 .login {
 	list-style-type: none;
 }
 
-
-
-main {
-	margin-top: var(--top-bar-height);
-	width: 100%;
-	position: fixed;
-	background-color: lightgray;
-		padding-left: 3em;
-
-}
-
-body {
-	margin: 0;
-}
-
-content {
-}
 
 input {
  	background-color: #f5f5dc;
@@ -115,10 +114,54 @@ input {
 	color: white;
 }
 
+/* act_table table spacing */
+
+.act_table {
+  	width: 80%;
+  	border-collapse: collapse;
+}
+
+.act_table th {
+ 	padding-top: ;
+  	padding-bottom: ;
+}
+
+.act_table td, .act_table th {
+  	padding: 0.5rem;
+}
+
+/* act_table table light mode color */
+
+
+.act_table th {
+  	background-color: #634caf	;
+  	color: white;
+}
+
+.act_table td, .act_table th {
+  	border: 1px solid #ddd;
+}
+
+.act_table tr:nth-child(even) {
+	background-color: #f5f2f2;
+}
+
+.act_table tr:nth-child(odd) {
+	background-color: gold;
+}
+
+.act_table tr:hover {
+	background-color: ;
+}
+
+
+
+
+
 
 .dark {
 	color: #a3a3a3;
-	background-color: #0f0f0f
+	background-color: #0f0f0f;
 }
 
 .dark main{
@@ -142,15 +185,10 @@ input {
 	color: #c8c8c8;
 }
 
-
-
 .dark .navbutton {
 	background-color: #333;
-	color: #fff	;
+	color: #fff;
 }
-
-
-
 
 .dark #topnav a:hover {
 	color: black;
@@ -160,3 +198,22 @@ input {
 .dark p {
 	color: lightgray;
 }
+
+.dark .act_table td, .dark .act_table th {
+  	border: 1px solid #ddd;
+  	color:#eee;
+}
+
+.dark.act_table tr:hover {
+	background-color: red;
+}
+
+.act_table tr:nth-child(even) {
+	background-color: #333;
+}
+
+.act_table tr:nth-child(odd) {
+	background-color: #444;
+}
+
+

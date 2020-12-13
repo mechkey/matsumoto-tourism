@@ -3,8 +3,6 @@
 	session_start();
 	session_regenerate_id();
 
-	$debug = false;
-
 
 	$user = htmlspecialchars($_REQUEST['username']);
 	$pass =  htmlspecialchars($_REQUEST['password']);

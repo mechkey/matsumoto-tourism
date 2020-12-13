@@ -20,7 +20,26 @@
 			?>
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
-			<p> Some main stuff </p>
+			<br />
+			<table class="act_table"><tr><th class="act_name">Activity Name</th><th class="act_desc">Description</th><th class="price">Price</th><th class="loc">Location</th></tr>
+				<?php 
+				// Trying OO php . . .
+				$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+
+				$sql = "SELECT activity_name, description, price, location FROM `activities`";
+				if ($stmt = $mysqli->prepare($sql)) {
+					$stmt->execute();
+					$stmt->bind_result($act_name, $desc, $price, $loc);
+					
+
+					while ($stmt->fetch()) {
+						printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td class="shortcol"	>Submit</td></tr>', $act_name, $desc, $price, $loc);
+					}
+					$stmt->close();
+				}
+				$mysqli->close();
+				?>
+				</table>
 		</main>
 
 		<footer id="footer"> <!-- Beginning of footer -->
