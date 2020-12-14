@@ -26,7 +26,7 @@
 				<?php
 
 
-				if (debug) {
+				if ($debug) {
 					echo 'SERVER-REQUEST_URI is ' . $_SERVER['REQUEST_URI'];
 					br();
 					echo 'path is ' . getpath();	

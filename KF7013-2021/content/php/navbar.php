@@ -78,22 +78,20 @@ function makeNavBar () {
 		echo '<li id="navuname">';
 		echo 'Username: ' . $_SESSION['username'];
 		echo '</li><li id="navlogout">';
-		//
-		//logoutform($_SERVER['REQUEST_URI']);
 		navbarlogoutform("Logout");
-		//
+		
 	} else {
 			echo '<li id="navlogin">';
-			//navbarloginform($_SERVER['REQUEST_URI']);
 			navbarloginform();
-			//
-		}
-	echo '</li>';
+	}
+	echo '</li><li class="navlink">';
 
+
+	echo searchbar();
 
 
 	//echo '<li> pathcopy is ' . $pathcopy . '</li>';
-	echo "</ul>";
+	echo "</li></ul>";
 	
 	//return $navContent;
 

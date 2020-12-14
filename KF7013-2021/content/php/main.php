@@ -2,6 +2,7 @@
 	//Connect to database
 
 	$debug = false;
+	$dev = true;
 
 	$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
 	if ($conn) {
@@ -204,6 +205,30 @@
 
 	function listacts(){
 		
+	}
+
+	function searchbar() {
+		echo '<form id="search_form" method="post" action="/content/php/search.php"><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
+	}
+
+
+	function phpstyle() {
+		
+			echo '
+			<style>
+			body {
+		  		background-color: #111;
+			}
+			html {
+				color:gray;
+			}
+			</style>
+			<p>';
+		
+	}
+
+	function phpstyleend() {
+		echo '<p>';
 	}
 
 ?>
