@@ -30,6 +30,9 @@
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
 			<H1>My Account page</h1>
+				<?php 
+						showDetails();
+				?>
 				<h2>Booked Activities: </h2>
 				<table class="act_table"><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th></tr>
 				<?php 
@@ -48,12 +51,7 @@
 					$stmt->close();
 				}
 				$mysqli->close();
-				
-				echo '<p>Do you wish to logout? <br />
-						your account details are: </p>';
-				if (isset($_SESSION['username'])) {
-					echo 'Username: ' . $_SESSION['username'] . ' '; 
-				}
+
 				navbarlogoutform("Logout");
 				?>
 		</main>

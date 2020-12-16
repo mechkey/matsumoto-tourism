@@ -2,5 +2,5 @@
 	session_start();
 	session_unset();
 	session_destroy();
-	header('Location: ../../index.php');
+	header('Location: /KF7013-2021/index.php');
 ?>

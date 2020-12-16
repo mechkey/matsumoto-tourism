@@ -225,7 +225,23 @@
 		echo '<li id="navlogo"><a href="/KF7013-2021/index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
 		
 	}
-	
 
+	function showDetails () {
+		echo'<h2>Your details:</h2><table class="act_table"><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
 
+				// Trying OO php . . .
+				$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+
+				$sql = "SELECT `username`, `customer_forename`, `customer_surname` FROM `customers` WHERE `username` = ?";
+				if ($stmt = $mysqli->prepare($sql)) {
+					$stmt->bind_param('s', $_SESSION['username']);
+					$stmt->execute();
+					$stmt->bind_result($uname, $fir, $last);
+					while ($stmt->fetch()) {
+						printf ('<tr><td>%s</td><td>%s</td><td>%s</td></tr>', $uname, $fir, $last);
+					}
+					$stmt->close();
+				}
+				$mysqli->close();
+	}
 ?>

@@ -35,11 +35,12 @@
 					br();
 					echo 'path is ' . getpath();
 					br();	
+				}
 			
 					echo "<pre>"; 
 					print_r($_SESSION); 
 					echo "</pre>";
-				}
+				
 				//$themevar = $_POST['theme'];
 				//echo $themevar;
 				$themestring = '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><input type="submit" name="theme" value="';

@@ -1,7 +1,7 @@
 <?php
-	include 'main.php';
 	session_start();
 	session_regenerate_id();
+	include 'main.php';
 
 
 	$user = htmlspecialchars($_REQUEST['username']);

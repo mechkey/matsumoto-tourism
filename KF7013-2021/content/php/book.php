@@ -1,0 +1,67 @@
+<?php
+	session_start();
+	include 'main.php';
+
+	$debug = true;
+
+
+	$actID 		= htmlspecialchars($_REQUEST['book']);
+	$date  		= htmlspecialchars($_REQUEST['date']);
+	$num_tix 	= htmlspecialchars($_REQUEST['num_tix']);
+	$user = $_SESSION['username'];
+
+
+	if ($debug) {
+		echo 'Activity id is ' . $actID;
+		br();
+		echo 'Date is ' . $date;
+		br();
+		echo 'Numtix is ' . $num_tix;
+		br();
+		echo 'Usr is ' . $user;
+		br();
+	}
+
+	$b_sql = "INSERT INTO `booked_activities`( `customerID`, `activityID`, `date_of_activity`, `number_of_tickets`) VALUES ((SELECT customerID FROM customers WHERE username = ?), ?, ?, ?)";
+
+	if ($debug) { echo $sql; }
+
+	$b_stmt = mysqli_prepare($conn, $b_sql);
+
+	if (mysqli_stmt_bind_param($b_stmt, "sisi", $user, $actID, $date, $num_tix) == true) 
+	{ 
+		if ($debug) {
+			echo 'bind param complete';	
+		}
+	} else {
+		if ($debug) {
+			echo 'bind param failed';
+		}
+	}
+
+	//
+
+	if (mysqli_stmt_execute($b_stmt)) {
+
+		if ($debug) {
+			print_r("Error: %s", mysqli_stmt_error($b_stmt));
+			echo "<pre>"; 
+			print_r($_SESSION); 
+			echo "</pre>";
+		}
+		header('Location: /KF7013-2021/content/account.php');
+	}
+
+	
+	
+	/*} else {
+		echo "Username exists. Please try again.";
+		header('Location: /KF7013-2021/ content/register.php');
+	}*/
+
+/*
+	mysqli_stmt_execute($stmt) or die( mysqli_stmt_error($stmt) );
+	header('Location: /KF7013-2021/content/ account.php');
+	*/
+
+?>
