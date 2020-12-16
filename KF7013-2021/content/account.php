@@ -50,7 +50,7 @@
 				?>
 
 
-				
+
 				<p>Do you wish to logout? <br />
 					your account details are:
 				</p>
