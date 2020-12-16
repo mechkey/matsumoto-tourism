@@ -17,15 +17,15 @@
 		br();
 		echo 'Date is ' . $date;
 		br();
-		echo 'Numtix is ' . $num_tix;
+		echo 'Number of tickets is ' . $num_tix;
 		br();
-		echo 'Usr is ' . $user;
+		echo 'User is ' . $user;
 		br();
 	}
 
 	$b_sql = "INSERT INTO `booked_activities`( `customerID`, `activityID`, `date_of_activity`, `number_of_tickets`) VALUES ((SELECT customerID FROM customers WHERE username = ?), ?, ?, ?)";
 
-	if ($debug) { echo $sql; }
+	if ($debug) { echo $b_sql; }
 
 	$b_stmt = mysqli_prepare($conn, $b_sql);
 
@@ -53,16 +53,8 @@
 		header('Location: /KF7013-2021/content/account.php');
 	}
 
-	
-	
-	/*} else {
-		echo "Username exists. Please try again.";
-		header('Location: /KF7013-2021/ content/register.php');
-	}*/
-
 /*
 	mysqli_stmt_execute($stmt) or die( mysqli_stmt_error($stmt) );
-	header('Location: /KF7013-2021/content/ account.php');
 	*/
 
 ?>
