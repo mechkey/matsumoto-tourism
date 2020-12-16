@@ -11,6 +11,7 @@
 	$user = $_SESSION['username'];
 
 
+
 	if ($debug) {
 		echo 'Activity id is ' . $actID;
 		br();
