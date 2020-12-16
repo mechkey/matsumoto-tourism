@@ -211,9 +211,9 @@
 	function showLogo ($path) {
 		$logosrc = ''; 	
 		if (isset($_SESSION['themeType']) && $_SESSION['themeType'] == 'dark') { 		
-			$logosrc = '/assets/images/logogray.png'; 	
+			$logosrc = '/KF7013-2021/assets/images/logogray.png'; 	
 		} else { 
-			$logosrc = '/assets/images/logo.png';
+			$logosrc = '/KF7013-2021/assets/images/logo.png';
 		}
 		
 		echo '<li id="navlogo"><a href="../index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
