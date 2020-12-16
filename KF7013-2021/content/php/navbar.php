@@ -10,10 +10,13 @@ function makeNavBar () {
 	//Navigation bar generation
 
 	$path = getpath();
+	if ($debug) {echo $path;}
 
 	$path = str_replace('/index', 'index', $path);
-	//echo "path is " . $path . "<br />";
-	//$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
+	if ($debug) {
+		echo "path is " . $path . "<br />";
+		$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
+	}
 	
 	
 	echo '<ul>';
@@ -28,7 +31,7 @@ function makeNavBar () {
 
 	
 	//Get the contents of /content and put them in an array
-	if ($path == 'index.php') {
+	if (($path == 'index.php') || ($path == '/')) {
 		$inpvar = 'content/';
 	} else {
 		$inpvar = '';
@@ -58,9 +61,11 @@ function makeNavBar () {
 	if (isset($_SESSION['themeType'])) {
 		if  ($_SESSION['themeType'] == 'dark') {
 			//$_SESSION['themeType'] = $themeType;
+
 			echo '<form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" class="navbutton" value="light"/>Light Mode</button></form></li>';
 		//} else if ((getTT() == 'light') || is_null($_SESSION['themeType'])) {
 		//} else if (($_SESSION['themeType'] == 'light') ) {
+
 		} else if (($_SESSION['themeType'] == 'light') ) {
 			//$_SESSION['themeType'] = $themeType;
 			echo '<form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" class="navbutton" value="dark"/>Dark Mode</button></form></li>';

@@ -21,6 +21,69 @@
 	}
 	*/
 
+	//Init dark mode vars
+
+	$themeType = '';
+	//$_SESSION['themeType'] = '';
+	$changeTheme = '';
+	if (((isset($_REQUEST['theme'])) && ($_REQUEST['theme'] == 'dark'))) {
+		$_SESSION['themeType'] = 'dark';
+	} else if ((isset($_REQUEST['theme'])) && ($_REQUEST['theme'] == 'light')) {
+		$_SESSION['themeType'] = 'light';
+	} 
+
+	function br() {
+		echo "<br />";
+	}
+
+	function classID() {
+		if (isset($_SESSION['themeType'])) {
+			echo $_SESSION['themeType'];
+		} else {
+			echo $_SESSION['themeType'] = 'light';
+		}
+	}
+
+	function contentAsArray($pagepath) 
+	{ 
+		$pageArray = [];
+		foreach (glob($pagepath . '*.php') as $filename)
+		{
+			if( ($filename != ($pagepath . 'login.php')) && 
+				($filename != ($pagepath . 'logout.php')) && 
+				($filename != ($pagepath . 'account.php')) &&
+				($filename != ($pagepath . 'register.php')) 
+			)  
+			{
+				array_push($pageArray, $filename);   
+			}
+		}
+		if (!(isset($_SESSION['username']))) { // if not loggged in
+			//echo $pagepath;	
+			array_push( $pageArray, $pagepath . 'register.php' );
+			array_push( $pageArray, $pagepath . 'login.php' );
+		} else { // if logged in
+			array_push( $pageArray, $pagepath . 'account.php' );
+			array_push( $pageArray, $pagepath . 'logout.php' );
+		}
+		return $pageArray;
+	} 
+
+	function fallbacktheme() {//Fall back Dark mode / light form mode button
+		//$themeType = getTT();
+		echo '<li>';
+		$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
+		$ctstring = '<a id="ctheme" href="?theme=' . $changeTheme;
+		if ($themeType == 'light') {
+			$ctstring .= '">Dark Mode';
+		} else {
+			$ctstring .= '">Light Mode';
+		}
+		echo $ctstring . '</a></li>';
+
+		echo '<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
+	}
+
 	function getpath() {
 		$path = $_SERVER['REQUEST_URI'];
 		return $path;
@@ -38,68 +101,54 @@
 		}
 	}
 
-
-	function contentAsArray($pagepath) 
-	{ 
-		$pageArray = [];
-		foreach (glob($pagepath . '*.php') as $filename)
-		{
-			if( ($filename != ($pagepath . 'login.php')) && 
-				($filename != ($pagepath . 'logout.php')) && 
-				($filename != ($pagepath . 'account.php')) &&
-				($filename != ($pagepath . 'register.php')) 
-			)  
-			{
-				array_push($pageArray, $filename);   
-			}
-		}
-		if (!(isset($_SESSION['username']))) {
-			//echo $pagepath;	
-			array_push( $pageArray, $pagepath . 'register.php' );
-			array_push( $pageArray, $pagepath . 'login.php' );
-		} else {
-			array_push( $pageArray, $pagepath . 'account.php' );
-			array_push( $pageArray, $pagepath . 'logout.php' );
-		}
-		return $pageArray;
-	} 
-
-
-	//Init dark mode vars
-
-	$themeType = '';
-	//$_SESSION['themeType'] = '';
-	$changeTheme = '';
-	//If 
-	if (((isset($_REQUEST['theme'])) && ($_REQUEST['theme'] == 'dark'))) {
-		$_SESSION['themeType'] = 'dark';
-	} else if ((isset($_REQUEST['theme'])) && ($_REQUEST['theme'] == 'light')) {
-		$_SESSION['themeType'] = 'light';
-	} 
-
-	function classID() {
-		if (isset($_SESSION['themeType'])) {
-			echo $_SESSION['themeType'];
-		} else {
-			echo $_SESSION['themeType'] = 'light';
+	/*
+	function getroot($page) {
+		echo ;
+		if (preg_match('/content/', getpath($page))) {
+			return '../';
+		} else if (preg_match('/php/', getpath($page))) {
+			return '../../';
+		} else if (preg_match('/index/', getpath($page))) {
+			return './';
 		}
 	}
 
+	*/
 
-	//The website logo light mode and dark mode selector.
-	function showLogo ($path) {
-		$logosrc = ''; 	
-		if (isset($_SESSION['themeType']) && $_SESSION['themeType'] == 'dark') { 		
-			$logosrc = '/assets/images/logogray.png'; 	
-		} else { 
-			$logosrc = '/assets/images/logo.png';
-		}
-		
-		echo '<li id="navlogo"><a href="../index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
-		
+
+	//<form id="login" method="post" action="./php/dologin.php"> 
+	function loginpageform() {
+		$login = '
+		<li>
+		<form id="login" method="post" action="./php/dologin.php"> 
+		Username:    
+		<input type= "text" name="username" size="8" /><br />
+		Password:
+		<input type= "password" name="password" size="8" /> </li>
+		<input type="submit" value="Login" /> 
+		</form>
+		';
+	echo $login;
 	}
+
+
+	function logoutform() {
+		$fpath = '';
+		$logout = '
+		<form id="logout" method="post" action="/content/php/dologout.php"> 
+		<input type="submit" value="Logout" /> 
+		</form>
+		';
+		echo $logout;
+	}
+
+
+	function listacts(){
+		//todo	
+	}
+
+
 //		<form id="login" method="post" action="/content/php/dologin.php"> 
-
 	function navbarloginform () {
 		$login = '
 		<form id="login" method="post" action="/content/php/dologin.php"> 
@@ -135,83 +184,6 @@
 	}
 	*/
 
-	//<form id="login" method="post" action="./php/dologin.php"> 
-	function loginpageform() {
-		$login = '
-		<li>
-		<form id="login" method="post" action="./php/dologin.php"> 
-		Username:    
-		<input type= "text" name="username" size="8" /><br />
-		Password:
-		<input type= "password" name="password" size="8" /> </li>
-		<input type="submit" value="Login" /> 
-		</form>
-		';
-	echo $login;
-	}
-
-
-
-	function logoutform() {
-		$fpath = '';
-		$logout = '
-		<form id="logout" method="post" action="/content/php/dologout.php"> 
-		<input type="submit" value="Logout" /> 
-		</form>
-		';
-		echo $logout;
-	}
-
-	
-
-
-
-/*
-	function getroot($page) {
-		echo ;
-		if (preg_match('/content/', getpath($page))) {
-			return '../';
-		} else if (preg_match('/php/', getpath($page))) {
-			return '../../';
-		} else if (preg_match('/index/', getpath($page))) {
-			return './';
-		}
-	}
-
-	*/
-
-
-
-	function fallbacktheme() {//Fall back Dark mode / light form mode button
-	//$themeType = getTT();
-	echo '<li>';
-	$changeTheme = ($themeType == 'light') ? 'dark' : 'light';
-	$ctstring = '<a id="ctheme" href="?theme=' . $changeTheme;
-	if ($themeType == 'light') {
-		$ctstring .= '">Dark Mode';
-	} else {
-		$ctstring .= '">Light Mode';
-	}
-	echo $ctstring . '</a></li>';
-
-	echo '<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
-	}
-
-
-	function br() {
-		echo "<br />";
-
-	}
-
-	function listacts(){
-		
-	}
-
-	function searchbar() {
-		echo '<form id="search_form" method="post" action="/content/php/search.php"><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
-	}
-
-
 	function phpstyle() {
 		
 			echo '
@@ -230,5 +202,24 @@
 	function phpstyleend() {
 		echo '<p>';
 	}
+
+	function searchbar() {
+		echo '<form id="search_form" method="post" action="/content/php/search.php"><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
+	}
+
+	//The website logo light mode and dark mode selector.
+	function showLogo ($path) {
+		$logosrc = ''; 	
+		if (isset($_SESSION['themeType']) && $_SESSION['themeType'] == 'dark') { 		
+			$logosrc = '/assets/images/logogray.png'; 	
+		} else { 
+			$logosrc = '/assets/images/logo.png';
+		}
+		
+		echo '<li id="navlogo"><a href="../index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
+		
+	}
+	
+
 
 ?>

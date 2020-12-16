@@ -30,7 +30,7 @@
 			mysqli_stmt_bind_param($stmt, "s", $user);
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_bind_result($stmt, $DBpass);
-			// echo "Checkpass: Username $user, Password >>$pass<< >>$pass<< OK: >>$ /*cut off
+			// echo "Checkpass: Username $user, Password >>$pass<< 
 			if (mysqli_stmt_fetch($stmt)) 
 			{
 				$passok = password_verify($pass, $DBpass);
@@ -55,32 +55,33 @@
 	    {
 	        $_SESSION['username'] = $_REQUEST['username'];
 	        if ($debug) {
-	            echo "<br />Success: Username $user";
-				echo "<br />Password >>$pass<< <br />";
-				echo "OK: >>$passok<< <br />";
+	            echo '<br />Success '; 
+	            echo '<br />Username: $user';
+				echo '<br />Password: >>$pass<< <br />';
+				echo 'OK: >>$passok<< <br />';
 	        }
 	        else {
 	            header('Location: /content/account.php');
 	        }
 	    }
-	    else {
+	    else { // == if passok is false
 	        if ($debug)
 	        {
 	            echo "<p>Failed - Username $user, Password: >>$pass<< </p>";
 				echo "OK: >>$passok<< (not ok if empty) <br />";
 	        }
 	        else {
-	            header('Location: login_pass.php');
+	            header('Location: /content/login.php');
 	        }
 	    }
 	}
-	else {
+	else { // == if array key does not exist
 	    if ($debug){
-	        echo("No user! passed in \$_REQUEST,<br />");
+	        echo("Array key username does not exist,<br />");
 	    }
 	    else
 	    {
-	        header('Location: login_pass.php');
+	        header('Location: /content/login.php');
 	    }
 	}
 

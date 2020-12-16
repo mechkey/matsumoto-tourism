@@ -21,9 +21,13 @@
 		</nav>
 		
 		<main id="content"> <!-- Beginning of page content -->
-			<p> Some main stuff 
+			<p> Some main stuff - this is the index page
 
 				<?php
+
+
+
+
 
 
 				if ($debug) {
@@ -35,22 +39,12 @@
 					print_r($_SESSION); 
 					echo "</pre>";
 				}
-
-				
-
-				
-
 				//$themevar = $_POST['theme'];
 				//echo $themevar;
-
 				$themestring = '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><input type="submit" name="theme" value="';
-
 				//echo $themestring;
-
-						//navbarlogoutform($_SERVER['REQUEST_URI']);
-
+				//navbarlogoutform($_SERVER['REQUEST_URI']);
 				//echo 'Username: ' . $_SESSION['username'];
-					
 				//echo'<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
 				?>
 		</p>

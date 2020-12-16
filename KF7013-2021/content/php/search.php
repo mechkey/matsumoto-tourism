@@ -4,8 +4,9 @@
 
 	$search = htmlspecialchars($_REQUEST['search']);
 	$search = '%' . $search . '%';
-	echo 'Search string: ' . $search;
+	if ($debug) { echo 'Search string: ' . $search; }
 
+	//make the table and table header
 	echo '<table class="act_table"><tr><th class="act_name">Activity Name</th><th class="act_desc">Description</th><th class="price">Price</th><th class="loc">Location</th></tr>';
 
 
@@ -25,13 +26,8 @@
 		}
 	$mysqli->close();
 
-
+	//end the table
 	echo '</table>';
-
-
-
-	// ?%
-
 
 	phpstyleend();
 ?>
