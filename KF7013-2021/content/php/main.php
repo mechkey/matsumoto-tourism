@@ -216,7 +216,7 @@
 			$logosrc = '/KF7013-2021/assets/images/logo.png';
 		}
 		
-		echo '<li id="navlogo"><a href="../index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
+		echo '<li id="navlogo"><a href="/KF7013-2021/index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
 		
 	}
 	
