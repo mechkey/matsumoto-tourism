@@ -30,7 +30,8 @@
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
 			<H1>My Account page</h1>
-				<table class="act_table"><tr><th class="act_name">Activity Name</th><th class="act_id">Activity ID</th><th class="act_desc">Date</th><th class="price">Number of Tickets</th></tr>
+				<h2>Booked Activities: </h2>
+				<table class="act_table"><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th></tr>
 				<?php 
 				// Trying OO php . . .
 				$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
@@ -47,22 +48,14 @@
 					$stmt->close();
 				}
 				$mysqli->close();
+				
+				echo '<p>Do you wish to logout? <br />
+						your account details are: </p>';
+				if (isset($_SESSION['username'])) {
+					echo 'Username: ' . $_SESSION['username'] . ' '; 
+				}
+				navbarlogoutform("Logout");
 				?>
-
-
-
-				<p>Do you wish to logout? <br />
-					your account details are:
-				</p>
-
-			<?php
-			if (isset($_SESSION['username'])) {
-				echo 'Username: ' . $_SESSION['username']; 
-			}
-			navbarlogoutform("Logout");
-			
-			
-			?>
 		</main>
 
 		<footer id="footer"> <!-- Beginning of footer -->
