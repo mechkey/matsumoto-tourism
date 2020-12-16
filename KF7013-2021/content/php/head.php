@@ -25,7 +25,7 @@ function makeHeadToMain ($pageTitle) {
 		if (isset($_SESSION['username'])) {
 			//echo 'Session set';
 		} else {
-			header("Location: ../index.php");
+			header("Location: /KF7013-2021/index.php");
 		}	
 	?>
 	*/

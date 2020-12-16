@@ -61,7 +61,7 @@
 				echo 'OK: >>$passok<< <br />';
 	        }
 	        else {
-	            header('Location: /content/account.php');
+	            header('Location: /KF7013-2021/content/account.php');
 	        }
 	    }
 	    else { // == if passok is false
@@ -71,7 +71,7 @@
 				echo "OK: >>$passok<< (not ok if empty) <br />";
 	        }
 	        else {
-	            header('Location: /content/login.php');
+	            header('Location: /KF7013-2021/content/login.php');
 	        }
 	    }
 	}
@@ -81,7 +81,7 @@
 	    }
 	    else
 	    {
-	        header('Location: /content/login.php');
+	        header('Location: /KF7013-2021/content/login.php');
 	    }
 	}
 

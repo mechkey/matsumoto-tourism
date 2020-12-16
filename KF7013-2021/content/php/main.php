@@ -1,7 +1,7 @@
 <?php
 	//Connect to database
 
-	$debug = true;
+	$debug = false;
 	$dev = true;
 
 	$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
@@ -44,16 +44,18 @@
 		}
 	}
 
-	function contentAsArray() { 
+	function contentAsArray($rel) { 
+		global $debug;
 		$tmpPageArray = [];
-		foreach (glob('/KF7013-2021/content/*.php") as $filename))
+		foreach (glob($rel . '*.php') as $filename)
 		{
 			if ($debug) { echo $filename; }
 			//if it isn't a page to do with login/out
-			if( ($filename != ('/KF7013-2021/content/login.php')) && 
-				($filename != ('/KF7013-2021/content/logout.php')) && 
-				($filename != ('/KF7013-2021/content/account.php')) &&
-				($filename != ('/KF7013-2021/content/register.php')) 
+			if( 
+				($filename != ($rel . 'login.php')) && 
+				($filename != ($rel . 'logout.php')) && 
+				($filename != ($rel . 'account.php')) &&
+				($filename != ($rel . 'register.php')) 
 				)  
 			{
 				//then push it to the array
@@ -63,12 +65,12 @@
 		//if it is a login/registration page AND the user is not logged in, add it to the end of the array
 		if (!(isset($_SESSION['username']))) { // if not loggged in
 			//echo $curpagepath;	
-			array_push( $tmpPageArray, '/KF7013-2021/content/register.php' );
-			array_push( $tmpPageArray, '/KF7013-2021/content/login.php' );
+			array_push( $tmpPageArray, $rel . 'register.php' );
+			array_push( $tmpPageArray, $rel . 'login.php' );
 		//else if it a must be logged in page, only show it if logged in, and add it to the end of the array
 		} else { // if logged in
-			array_push( $tmpPageArray, '/KF7013-2021/content/account.php' );
-			array_push( $tmpPageArray, '/KF7013-2021/content/logout.php' );
+			array_push( $tmpPageArray, $rel . 'account.php' );
+			array_push( $tmpPageArray, $rel . 'logout.php' );
 		}
 		return $tmpPageArray;
 	} 
@@ -139,7 +141,7 @@
 	function logoutform() {
 		$fpath = '';
 		$logout = '
-		<form id="logout" method="post" action="/content/php/dologout.php"> 
+		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
 		<input type="submit" value="Logout" /> 
 		</form>
 		';
@@ -152,10 +154,10 @@
 	}
 
 
-//		<form id="login" method="post" action="/content/php/dologin.php"> 
+//		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
 	function navbarloginform () {
 		$login = '
-		<form id="login" method="post" action="/content/php/dologin.php"> 
+		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
 		Username:    
 		<input type= "text" name="username" size="8" /><br />
 		Password:
@@ -169,7 +171,7 @@
 
 	function navbarlogoutform ($value) {
 		$logout = <<<LOGOUT
-		<form id="logout" method="post" action="/content/php/dologout.php"> 
+		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
 		<input type="submit" class="navbutton" id="logoutbutton" value="$value" /> 
 		</form>
 		LOGOUT;
@@ -180,7 +182,7 @@
 
 	/*	function navbarlogoutform () {
 		$logout = '
-		<form id="logout" method="post" action="/content/php/dologout.php"> 
+		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
 		<input type="submit" value="Logout" /> 
 		</form>
 		';
@@ -208,7 +210,7 @@
 	}
 
 	function searchbar() {
-		echo '<form id="search_form" method="post" action="/content/php/search.php"><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
+		echo '<form id="search_form" method="post" action="/KF7013-2021/content/php/search.php"><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
 	}
 
 	//The website logo light mode and dark mode selector.

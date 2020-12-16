@@ -9,7 +9,7 @@ function makeNavBar () {
 
 	//Navigation bar generation
 
-	$debug = true;
+	$debug = false;
 
 	echo '<ul>';
 	
@@ -25,21 +25,19 @@ function makeNavBar () {
 		$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
 	}
 
-	/*
-	//Get the contents of /content and put them in an array
+	
+	//set curpagepath so that glob works correctly
 	if (($path == 'index.php') || ($path == '/')) {
-		$curpagepath = '/KF7013-2021/content/';
+		$curpagepath = 'content/';
 	} else {
 		$curpagepath = '';
 	}
 	if ($debug) {
-		echo $curpagepath;
+		echo 'cur page path is: ' . $curpagepath;
 	}
-	*/
-
-	$curpagepath = '/KF7013-2021/content/';
-
-	$pageArray = contentAsArray();
+	
+	$pageArray = contentAsArray($curpagepath);
+	//$pageArray = contentAsArray();
 
 	$listart = '<li class="navlink"><a href="';
 	$limid = '">';
@@ -50,7 +48,7 @@ function makeNavBar () {
 	foreach ($pageArray as $value) {
 		$name = $value;
 		$name = str_replace('.php', '', $value);
-		$name = str_replace('/KF7013-2021/content/', '', $name);
+		$name = str_replace('content/', '', $name);
 		$name = ucfirst($name);
 		//echo " Value is " . $value;
 		if ($name == $path) {

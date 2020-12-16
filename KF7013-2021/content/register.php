@@ -22,7 +22,7 @@
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
 			
-			<form id="register" method="post" action="/content/php/doregistration.php">
+			<form id="register" method="post" action="/KF7013-2021/content/php/doregistration.php">
 				<label for="fname">Fore Name:</label><br />
 				<input type="text" id="fname" name="fname" required><br />
 
