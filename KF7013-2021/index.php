@@ -30,10 +30,12 @@
 
 
 
-				if ($debug) {
+				//if ($debug) {
+				if (true) {
 					echo 'SERVER-REQUEST_URI is ' . $_SERVER['REQUEST_URI'];
 					br();
-					echo 'path is ' . getpath();	
+					echo 'path is ' . getpath();
+					br();	
 			
 					echo "<pre>"; 
 					print_r($_SESSION); 

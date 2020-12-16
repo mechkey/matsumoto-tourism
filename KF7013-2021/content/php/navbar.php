@@ -9,40 +9,48 @@ function makeNavBar () {
 
 	//Navigation bar generation
 
-	$path = getpath();
-	if ($debug) {echo $path;}
+	$debug = true;
 
-	$path = str_replace('/index', 'index', $path);
-	if ($debug) {
-		echo "path is " . $path . "<br />";
-		$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
-	}
-	
-	
 	echo '<ul>';
 	
 	//Logic to choose logo or brighter logo for dark mode - from logo.php
 	showLogo($_SERVER['REQUEST_URI']);
+
+	$path = getpath();
+	if ($debug) {echo 'path is: ' . $path . '	';}
+
+	$path = str_replace('/KF7013-2021/index', 'index', $path);
+	if ($debug) {
+		echo "path is now" . $path . "<br />";
+		$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
+	}
+
+	/*
+	//Get the contents of /content and put them in an array
+	if (($path == 'index.php') || ($path == '/')) {
+		$curpagepath = '/KF7013-2021/content/';
+	} else {
+		$curpagepath = '';
+	}
+	if ($debug) {
+		echo $curpagepath;
+	}
+	*/
+
+	$curpagepath = '/KF7013-2021/content/';
+
+	$pageArray = contentAsArray();
 
 	$listart = '<li class="navlink"><a href="';
 	$limid = '">';
 	$limidcur = '" id="current">';
 	$liend = '</a></li>';
 
-	
-	//Get the contents of /content and put them in an array
-	if (($path == 'index.php') || ($path == '/')) {
-		$inpvar = 'content/';
-	} else {
-		$inpvar = '';
-	}
-	$pageArray = contentAsArray($inpvar);
-
 	//Create the links from the array.
 	foreach ($pageArray as $value) {
 		$name = $value;
 		$name = str_replace('.php', '', $value);
-		$name = str_replace('content/', '', $name);
+		$name = str_replace('/KF7013-2021/content/', '', $name);
 		$name = ucfirst($name);
 		//echo " Value is " . $value;
 		if ($name == $path) {

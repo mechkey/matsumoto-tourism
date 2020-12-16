@@ -1,7 +1,7 @@
 <?php
 	//Connect to database
 
-	$debug = false;
+	$debug = true;
 	$dev = true;
 
 	$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
@@ -44,29 +44,33 @@
 		}
 	}
 
-	function contentAsArray($pagepath) 
-	{ 
-		$pageArray = [];
-		foreach (glob($pagepath . '*.php') as $filename)
+	function contentAsArray() { 
+		$tmpPageArray = [];
+		foreach (glob('/KF7013-2021/content/*.php") as $filename))
 		{
-			if( ($filename != ($pagepath . 'login.php')) && 
-				($filename != ($pagepath . 'logout.php')) && 
-				($filename != ($pagepath . 'account.php')) &&
-				($filename != ($pagepath . 'register.php')) 
-			)  
+			if ($debug) { echo $filename; }
+			//if it isn't a page to do with login/out
+			if( ($filename != ('/KF7013-2021/content/login.php')) && 
+				($filename != ('/KF7013-2021/content/logout.php')) && 
+				($filename != ('/KF7013-2021/content/account.php')) &&
+				($filename != ('/KF7013-2021/content/register.php')) 
+				)  
 			{
-				array_push($pageArray, $filename);   
+				//then push it to the array
+				array_push($tmpPageArray, $filename);   
 			}
 		}
+		//if it is a login/registration page AND the user is not logged in, add it to the end of the array
 		if (!(isset($_SESSION['username']))) { // if not loggged in
-			//echo $pagepath;	
-			array_push( $pageArray, $pagepath . 'register.php' );
-			array_push( $pageArray, $pagepath . 'login.php' );
+			//echo $curpagepath;	
+			array_push( $tmpPageArray, '/KF7013-2021/content/register.php' );
+			array_push( $tmpPageArray, '/KF7013-2021/content/login.php' );
+		//else if it a must be logged in page, only show it if logged in, and add it to the end of the array
 		} else { // if logged in
-			array_push( $pageArray, $pagepath . 'account.php' );
-			array_push( $pageArray, $pagepath . 'logout.php' );
+			array_push( $tmpPageArray, '/KF7013-2021/content/account.php' );
+			array_push( $tmpPageArray, '/KF7013-2021/content/logout.php' );
 		}
-		return $pageArray;
+		return $tmpPageArray;
 	} 
 
 	function fallbacktheme() {//Fall back Dark mode / light form mode button
