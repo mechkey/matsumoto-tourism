@@ -10,7 +10,7 @@ $addrcode	= htmlspecialchars($_REQUEST['addrcode']);
 $dob		= htmlspecialchars($_REQUEST['dob']);
 $username	= htmlspecialchars($_REQUEST['username']);
 $password	= htmlspecialchars($_REQUEST['password']);
-$passwordha = password_hash($password, PASSWORD_DEFAULT);
+$passwordha	= password_hash($password, PASSWORD_DEFAULT);
 
 /*
 $usrnamecheck = "SELECT 1 FROM customers WHERE username=?";
@@ -29,15 +29,17 @@ mysqli_stmt_execute($uncstmt);
 	mysqli_stmt_execute($stmt) or die( mysqli_stmt_error($stmt) );
 	header('Location: /KF7013-2021/content/ account.php');
 	*/
-	if(mysqli_stmt_execute($stmt))
-	{
+	$result = mysqli_stmt_execute($stmt);
+	if ($result) {
 
-		header('Location: /KF7013-2021/content/php/dologin.php');
+		login($username, $passwordha);
+	    $_SESSION['username'] = $username;
+		header('Location: /KF7013-2021/content/account.php');
+	} else {
+		echo 'pass not ok i gues';
 	}
-	else
-	{
-		echo 'error';
-	}
+	
+
 
 /*} else {
 	echo "Username exists. Please try again.";

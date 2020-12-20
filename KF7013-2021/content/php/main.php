@@ -36,6 +36,33 @@
 		echo "<br />";
 	}
 
+	function check_pass ($user, $pass) {
+		global $debug;
+		global $conn;
+		$sql = "SELECT `password_hash` FROM `customers` WHERE `username`=?";
+		//echo $sql;
+		if ($stmt = mysqli_prepare($conn, $sql)) {
+			mysqli_stmt_bind_param($stmt, "s", $user);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $DBpass);
+			// echo "Checkpass: Username $user, Password >>$pass<< 
+			if (mysqli_stmt_fetch($stmt)) 
+			{
+				$passok = password_verify($pass, $DBpass);
+				if ($debug) {echo 'returning passok . . .' . $passok;}
+				return $passok;
+			} 
+			else 
+			{
+				if ($debug) {echo 'mysqli_stmt_fetch($stmt) FAILED';}
+				return false; 
+			}
+		} else {
+			echo "<p>echoed Unable to prepare statement</p>";
+			return false;
+		}
+	}
+
 	function classID() {
 		if (isset($_SESSION['themeType'])) {
 			echo $_SESSION['themeType'];
@@ -120,6 +147,44 @@
 	}
 
 	*/
+
+
+	function login ($user, $pass) {
+		if (array_key_exists('username', $_REQUEST) && (array_key_exists('password', $_REQUEST)) ) {
+			$passok = check_pass($user, $pass); //check_pass function
+			if ($passok == 1) 
+		    {
+		        $_SESSION['username'] = $user;
+		        if ($debug) {
+		            echo '<br />Username is $user';
+					echo '<br />Password is >>$pass<< <br />';
+					echo 'OK: >>$passok<< <br />';
+		        }
+		        else {
+		            header('Location: /KF7013-2021/content/account.php');
+		        }
+		    }
+		    else { // == if passok is false
+		        if ($debug)
+		        {
+		            echo "<p>Failed - Username $user, Password: >>$pass<< </p>";
+					echo "OK: >>$passok<< (not ok if empty) <br />";
+		        }
+		        else {
+		            header('Location: /KF7013-2021/content/login.php');
+		        }
+		    }
+		}
+		else { // == if array key does not exist
+		    if ($debug){
+		        echo("Array key username or pass  does not exist,<br />");
+		    }
+		    else
+		    {
+		        header('Location: /KF7013-2021/content/login.php');
+		    }
+		}
+	}
 
 
 	//<form id="login" method="post" action="./php/dologin.php"> 
