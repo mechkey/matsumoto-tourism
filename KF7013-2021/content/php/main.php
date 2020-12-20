@@ -4,6 +4,8 @@
 	$debug = false;
 	$dev = true;
 
+	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 	$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
 	if ($conn) {
 		mysqli_set_charset($conn, 'utf8');
