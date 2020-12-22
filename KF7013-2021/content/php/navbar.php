@@ -21,13 +21,12 @@ function makeNavBar () {
 
 	$path = str_replace('/KF7013-2021/index', 'index', $path);
 	if ($debug) {
-		echo "path is now" . $path . "<br />";
+		echo "path is now: " . $path . "<br />";
 		$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
 	}
 
-	
 	//set curpagepath so that glob works correctly
-	if (($path == 'index.php') || ($path == '/')) {
+	if (($path == 'index.php') || ($path == '/KF7013-2021/')) {
 		$curpagepath = 'content/';
 	} else {
 		$curpagepath = '';
