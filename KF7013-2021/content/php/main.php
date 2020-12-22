@@ -277,7 +277,7 @@
 	}
 
 	function searchbar() {
-		echo '<form id="search_form" method="post" action="/KF7013-2021/content/php/search.php"><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
+		echo '<form id="search_form" method="post" action="/KF7013-2021/content/search.php"><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
 	}
 
 	//The website logo light mode and dark mode selector.
