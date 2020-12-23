@@ -204,7 +204,7 @@ input {
   	color:#eee;
 }
 
-.dark.act_table tr:hover {
+.dark .act_table tr:hover {
 	background-color: red;
 }
 
