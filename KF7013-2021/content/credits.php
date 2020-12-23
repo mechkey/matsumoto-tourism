@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	include './php/head.php';
-
 ?>
 
 <!DOCTYPE html>
