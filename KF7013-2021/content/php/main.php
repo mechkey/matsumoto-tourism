@@ -326,8 +326,13 @@
 	// This function makes a text box and submit button that searches the activity name, description and location. // /KF7013-2021/content/search.php
 	function searchbar() {
 		echo '<form id="search_form" method="post" action="">
+			<label for="search">Search (optional):</label>
 			<input id="search" name="search" type="text" placeholder="Search...">
-			<input id="exclude" name="exclude" type="text" placeholder="Exclude..."><input type="submit" class="navbutton">
+
+			<label for="exclude">Exclude (optional):</label>
+			<input id="exclude" name="exclude" type="text" placeholder="Exclude...">
+
+			<input type="submit" class="navbutton">
 			</form>';
 	}
 
