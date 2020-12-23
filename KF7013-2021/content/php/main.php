@@ -35,11 +35,15 @@
 	} 
 
 	//This function prints out the content of the activities table.
-	function act_book($searching=false) {
+	function act_book($searching=false, $excluding=false) {
+		global $debug;
 		$search = (isset($_REQUEST['search']) ? $_REQUEST['search'] : null);
 		$search = htmlspecialchars($search);
+		$exclude = (isset($_REQUEST['exclude']) ? $_REQUEST['exclude'] : null);
+		$exclude = htmlspecialchars($exclude);
 		//$floatsearch = floatval($search);
 		$search = '%' . $search . '%';	
+		$exclude = '%' . $exclude . '%';	
 		echo '<table class="act_table"><tr>
 				<th class="act_name">Activity Name</th><th class="act_desc">Description</th>
 				<th class="price">Price</th>
@@ -49,13 +53,32 @@
 				<th class="book">Book</th></tr>';
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
-		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities`";
+		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` ";
+
+		if ($searching || $excluding) {
+			$sql .= "WHERE ";
+		}
 		if ($searching) {
-			$sql .= "WHERE `activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ?";
+			$sql .= "(`activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ?) ";
+		}
+		if ($searching && $excluding) {
+			$sql .= "AND ";
+		}
+		if ($excluding) {
+			$sql .= "`activity_name` NOT LIKE ? AND `description` NOT LIKE ? AND `location` NOT LIKE ? ";
+		}
+		if ($debug) {
+			echo $sql;			
 		}
 		if ($stmt = $mysqli->prepare($sql)) {
-			if ($searching) {
+			if ($searching XOR $excluding) {
+				if (isset($_REQUEST['exclude'])) {
+					$search = $exclude;
+				}
 				$stmt->bind_param("sss", $search, $search, $search);
+			}
+			if ($searching && $excluding) {
+				$stmt->bind_param("ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
 			}
 			$stmt->execute();
 			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
@@ -302,7 +325,10 @@
 
 	// This function makes a text box and submit button that searches the activity name, description and location. // /KF7013-2021/content/search.php
 	function searchbar() {
-		echo '<form id="search_form" method="post" action=""><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
+		echo '<form id="search_form" method="post" action="">
+			<input id="search" name="search" type="text" placeholder="Search...">
+			<input id="exclude" name="exclude" type="text" placeholder="Exclude..."><input type="submit" class="navbutton">
+			</form>';
 	}
 
 	//The website logo light mode and dark mode selector.

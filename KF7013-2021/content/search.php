@@ -22,16 +22,37 @@
 		<main id="content"> <!-- Beginning of page content -->
 		<?php
 		
-
-		if (isset($_REQUEST['search'])) {
-			echo "<h1>Search results for '{$_REQUEST['search']}' : </h1>";
-		} else {
-			echo '<h1>Showing all activities. Please enter a search term: </h1>';
+		$h1string = '<h1>';
+		if (isset($_REQUEST['search']) && $_REQUEST['search'] != '' ) {
+			$h1string .= "Search results for '{$_REQUEST['search']}' ";
+			if ((isset($_REQUEST['search']) && $_REQUEST['search'] != '' ) && (isset($_REQUEST['exclude']) && $_REQUEST['exclude'] != '' )) {
+				$h1string .= "and excluding results for '{$_REQUEST['exclude']}'";
+			}
+		} else if (isset($_REQUEST['exclude']) && $_REQUEST['exclude'] != '' ) {
+			$h1string .= "Excluding results for '{$_REQUEST['exclude']}'";
 		}
 
+		if (isset($_REQUEST['search']) || isset($_REQUEST['exclude'])) {
+			$h1string .= ":</h1>";
+			echo $h1string;
+		}
+		if (!(isset($_REQUEST['search']) || isset($_REQUEST['exclude'])) ) {
+			echo '<h1>Showing all activities. Please enter a search term: </h1>';
+		}
+		
+
 		searchbar();
-			
-		act_book(true);
+
+		if (isset($_REQUEST['search']) && $_REQUEST['search'] != '' )
+			act_book(true);
+		else if (isset($_REQUEST['exclude']) && $_REQUEST['exclude'] != '' )
+			act_book(false,true);
+		else if (
+				isset($_REQUEST['search'])  && 
+				isset($_REQUEST['exclude']) &&
+				$_REQUEST['search'] != ''   &&
+				$_REQUEST['exclude'] != ''  )
+			act_book(true, true);
 		?>
 		</main>
 		}
