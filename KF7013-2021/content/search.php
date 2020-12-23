@@ -21,6 +21,7 @@
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
 <?php
+	searchbar();
 	//phpstyle();
 	//$query_age = (isset($_GET['query_age']) ? $_GET['query_age'] : null);
 	$search = (isset($_REQUEST['search']) ? $_REQUEST['search'] : null);

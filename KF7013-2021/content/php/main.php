@@ -125,7 +125,7 @@
 	}
 
 	//
-
+	/*
 	function getroot($page) {;
 		if (preg_match('/\.\/content\/php/', $page)) {
 			return '../../';
@@ -135,19 +135,6 @@
 			return './';
 		}
 	}
-
-	/*
-	function getroot($page) {
-		echo ;
-		if (preg_match('/content/', getpath($page))) {
-			return '../';
-		} else if (preg_match('/php/', getpath($page))) {
-			return '../../';
-		} else if (preg_match('/index/', getpath($page))) {
-			return './';
-		}
-	}
-
 	*/
 
 
@@ -161,28 +148,22 @@
 		            echo '<br />Username is $user';
 					echo '<br />Password is >>$pass<< <br />';
 					echo 'OK: >>$passok<< <br />';
-		        }
-		        else {
+		        } else {
 		            header('Location: /KF7013-2021/content/account.php');
 		        }
-		    }
-		    else { // == if passok is false
-		        if ($debug)
-		        {
+		    } else { // == if passok is false
+		        if ($debug) {
 		            echo "<p>Failed - Username $user, Password: >>$pass<< </p>";
 					echo "OK: >>$passok<< (not ok if empty) <br />";
-		        }
-		        else {
+		        } else {
 		            header('Location: /KF7013-2021/content/login.php');
 		        }
 		    }
 		}
-		else { // == if array key does not exist
-		    if ($debug){
+		else { // == if array keys do not exist
+		    if ($debug) {
 		        echo("Array key username or pass  does not exist,<br />");
-		    }
-		    else
-		    {
+		    } else {
 		        header('Location: /KF7013-2021/content/login.php');
 		    }
 		}
@@ -216,11 +197,6 @@
 	}
 
 
-	function listacts(){
-		//todo	
-	}
-
-
 //		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
 	function navbarloginform () {
 		$login = '
@@ -247,7 +223,8 @@
 	}
 	
 
-	/*	function navbarlogoutform () {
+	/*	
+	function navbarlogoutform () {
 		$logout = '
 		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
 		<input type="submit" value="Logout" /> 
@@ -257,6 +234,7 @@
 	}
 	*/
 
+	// this function just makes otherwise unformatted pages darker
 	function phpstyle() {
 		
 			echo '
@@ -272,10 +250,12 @@
 		
 	}
 
+	// I'd rather have a start and end function, rather thing in html5 terms
 	function phpstyleend() {
 		echo '<p>';
 	}
 
+	// This function makes a text box and submit button that searches the activity name, description and location.
 	function searchbar() {
 		echo '<form id="search_form" method="post" action="/KF7013-2021/content/search.php"><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
 	}
@@ -290,9 +270,9 @@
 		}
 		
 		echo '<li id="navlogo"><a href="/KF7013-2021/index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
-		
 	}
 
+	//Shows the account, first and last names for the logged in user.
 	function showDetails () {
 		echo'<h2>Your details:</h2><table class="act_table"><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
 
