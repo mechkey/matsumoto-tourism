@@ -34,7 +34,7 @@
 						showDetails();
 				?>
 				<h2>Booked Activities: </h2>
-				<table class="act_table"><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>More Info</th></tr>
+				<table class="act_table"><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th></tr>
 				<?php 
 				// Trying OO php . . .
 				$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
@@ -46,7 +46,7 @@
 					$stmt->execute();
 					$stmt->bind_result($act_name, $act_id, $date, $num_tix);
 					while ($stmt->fetch()) {
-						printf ('<tr><td class="act_name">%s</td><td class="act_id">%d</td><td class="act_date">%s</td><td class="price">%s</td></tr>', $act_name, $act_id, $date, $num_tix);
+						printf ('<tr><td class="act_name">%s</td><td class="act_id">%d</td><td class="act_date">%s</td><td class="price">%s</td><td><a href="activities.php">View Details</tr>', $act_name, $act_id, $date, $num_tix);
 					}
 					$stmt->close();
 				}
