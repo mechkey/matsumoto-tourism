@@ -1,8 +1,10 @@
 <?php
+	//This file containts the booking logic for inserting SQL 
 	session_start();
 	include 'main.php';
 
 	$debug = true;
+
 
 
 	$actID 		= htmlspecialchars($_REQUEST['book']);
@@ -56,5 +58,7 @@
 /*
 	mysqli_stmt_execute($stmt) or die( mysqli_stmt_error($stmt) );
 	*/
+
+
 
 ?>
