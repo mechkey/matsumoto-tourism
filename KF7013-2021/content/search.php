@@ -25,8 +25,9 @@
 		$h1string = '<h1>';
 		if (isset($_REQUEST['search']) && $_REQUEST['search'] != '' ) {
 			$h1string .= "Search results for '{$_REQUEST['search']}' ";
+			
 			if ((isset($_REQUEST['search']) && $_REQUEST['search'] != '' ) && (isset($_REQUEST['exclude']) && $_REQUEST['exclude'] != '' )) {
-				$h1string .= "and excluding results for '{$_REQUEST['exclude']}'";
+				$h1string .= ", excluding results for '{$_REQUEST['exclude']}'";
 			}
 		} else if (isset($_REQUEST['exclude']) && $_REQUEST['exclude'] != '' ) {
 			$h1string .= "Excluding results for '{$_REQUEST['exclude']}'";
