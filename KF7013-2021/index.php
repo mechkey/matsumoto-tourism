@@ -43,7 +43,7 @@
 				
 				//$themevar = $_POST['theme'];
 				//echo $themevar;
-				$themestring = '<li><form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><input type="submit" name="theme" value="';
+				$themestring = '<li><form id="theme" method="post" action=""><input type="submit" name="theme" value="';
 				//echo $themestring;
 				//navbarlogoutform($_SERVER['REQUEST_URI']);
 				//echo 'Username: ' . $_SESSION['username'];

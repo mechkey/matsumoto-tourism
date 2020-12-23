@@ -67,13 +67,13 @@ function makeNavBar () {
 		if  ($_SESSION['themeType'] == 'dark') {
 			//$_SESSION['themeType'] = $themeType;
 
-			echo '<form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" class="navbutton" value="light"/>Light Mode</button></form></li>';
+			echo '<form id="theme" method="post" action=""><button type="submit" name="theme" class="navbutton" value="light"/>Light Mode</button></form></li>';
 		//} else if ((getTT() == 'light') || is_null($_SESSION['themeType'])) {
 		//} else if (($_SESSION['themeType'] == 'light') ) {
 
 		} else if (($_SESSION['themeType'] == 'light') ) {
 			//$_SESSION['themeType'] = $themeType;
-			echo '<form id="theme" method="post" action="' . $_SERVER['PHP_SELF'] . '"><button type="submit" name="theme" class="navbutton" value="dark"/>Dark Mode</button></form></li>';
+			echo '<form id="theme" method="post" action=""><button type="submit" name="theme" class="navbutton" value="dark"/>Dark Mode</button></form></li>';
 		}
 	}
 	
