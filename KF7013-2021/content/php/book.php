@@ -3,7 +3,7 @@
 	session_start();
 	include 'main.php';
 
-	$debug = true;
+	$debug = false;
 
 
 
@@ -11,6 +11,11 @@
 	$date  		= htmlspecialchars($_REQUEST['date']);
 	$num_tix 	= htmlspecialchars($_REQUEST['num_tix']);
 	$user = $_SESSION['username'];
+
+	if (!isset($_SESSION['username'])) {
+		header('Location: /KF7013-2021/content/login.php');
+
+	}
 
 
 

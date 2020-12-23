@@ -237,6 +237,10 @@
 		}
 	}
 
+	function logincheck() {
+		if (!isset($_SESSION['username'])) 
+			header('Location: /KF7013-2021/content/login.php');
+	}
 
 	//<form id="login" method="post" action="./php/dologin.php"> 
 	function loginpageform() {
@@ -327,10 +331,10 @@
 	function searchbar() {
 		echo '<form id="search_form" method="post" action="">
 			<label for="search">Search (optional):</label>
-			<input id="search" name="search" type="text" placeholder="Search...">
+			<input id="search" name="search" type="text" placeholder="Search..." size="10">
 
 			<label for="exclude">Exclude (optional):</label>
-			<input id="exclude" name="exclude" type="text" placeholder="Exclude...">
+			<input id="exclude" name="exclude" type="text" placeholder="Exclude..." size="10">
 
 			<input type="submit" class="navbutton">
 			</form>';

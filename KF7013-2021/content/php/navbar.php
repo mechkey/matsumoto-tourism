@@ -95,14 +95,14 @@ function makeNavBar () {
 			navbarloginform();
 	}
 
-	/*
+	
 	echo '</li>';
 	echo '<li class="navlink">';
 	echo searchbar();
-	*/
+	
 
 	//echo '<li> pathcopy is ' . $pathcopy . '</li>';
-	
+
 	echo "</li></ul>";
 	
 	//return $navContent;
