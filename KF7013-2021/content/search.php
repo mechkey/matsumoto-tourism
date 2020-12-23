@@ -20,44 +20,22 @@
 			?>
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
-<?php
-	searchbar();
-	//phpstyle();
-	//$query_age = (isset($_GET['query_age']) ? $_GET['query_age'] : null);
-	$search = (isset($_REQUEST['search']) ? $_REQUEST['search'] : null);
-	$search = htmlspecialchars($search);
-	//$floatsearch = floatval($search);
-	$search = '%' . $search . '%';	
-	//if ($debug) { echo 'Search string: ' . $search; }
+		<?php
+		
 
-	//make the table and table header
-	echo '<table class="act_table"><tr><th class="act_name">Activity Name</th><th class="act_desc">Description</th><th class="price">Price</th><th class="loc">Location</th></tr>';
-
-
-	$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
-
-		$sql = "SELECT `activity_name`, `description`, `price`, `location` FROM `activities` WHERE `activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ?";
-		//$sql = "SELECT `activity_name`, `description`, `price`, `location` FROM `activities` WHERE `activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ? OR `price` LIKE ?";
-
-		//$sql = "SELECT activity_name, description, price, location FROM `activities` WHERE `activity_name` LIKE ?";
-		if ($stmt = $mysqli->prepare($sql)) {
-			//$stmt->bind_param("s", $search);
-			$stmt->bind_param("sss", $search, $search, $search);
-			$stmt->execute();
-			$stmt->bind_result($act_name, $desc, $price, $loc);
-			//echo $desc;
-
-			//echo 'search is: ' . $search . 'and floatsearch is: ' . $floatsearch;
-			
-			while ($stmt->fetch()) {
-				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td class="shortcol"	>Submit</td></tr>', $act_name, $desc, $price, $loc);
-			}
-			$stmt->close();
+		if (isset($_REQUEST['search'])) {
+			echo "<h1>Search results for '{$_REQUEST['search']}' : </h1>";
+		} else {
+			echo '<h1>Showing all activities. Please enter a search term: </h1>';
 		}
-	$mysqli->close();
 
-	//end the table
-	echo '</table>';
-
-	//phpstyleend();
-?>
+		searchbar();
+			
+		act_book(true);
+		?>
+		</main>
+		}
+		}
+	</div>
+</body>
+</html>

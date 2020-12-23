@@ -34,7 +34,7 @@
 						showDetails();
 				?>
 				<h2>Booked Activities: </h2>
-				<table class="act_table"><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th></tr>
+				<table class="act_table"><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>More Info</th></tr>
 				<?php 
 				// Trying OO php . . .
 				$mysqli = new mysqli('localhost', 'root', 'root', 'travel');

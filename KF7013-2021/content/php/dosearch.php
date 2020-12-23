@@ -36,9 +36,6 @@
 	$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
 
 		$sql = "SELECT `activity_name`, `description`, `price`, `location` FROM `activities` WHERE `activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ?";
-		//$sql = "SELECT `activity_name`, `description`, `price`, `location` FROM `activities` WHERE `activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ? OR `price` LIKE ?";
-
-		//$sql = "SELECT activity_name, description, price, location FROM `activities` WHERE `activity_name` LIKE ?";
 		if ($stmt = $mysqli->prepare($sql)) {
 			//$stmt->bind_param("s", $search);
 			$stmt->bind_param("sss", $search, $search, $search);

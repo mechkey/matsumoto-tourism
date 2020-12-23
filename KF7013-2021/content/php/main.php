@@ -35,7 +35,11 @@
 	} 
 
 	//This function prints out the content of the activities table.
-	function act_book($search=false) {
+	function act_book($searching=false) {
+		$search = (isset($_REQUEST['search']) ? $_REQUEST['search'] : null);
+		$search = htmlspecialchars($search);
+		//$floatsearch = floatval($search);
+		$search = '%' . $search . '%';	
 		echo '<table class="act_table"><tr>
 				<th class="act_name">Activity Name</th><th class="act_desc">Description</th>
 				<th class="price">Price</th>
@@ -46,11 +50,11 @@
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
 		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities`";
-		if ($search) {
+		if ($searching) {
 			$sql .= "WHERE `activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ?";
 		}
 		if ($stmt = $mysqli->prepare($sql)) {
-			if ($search) {
+			if ($searching) {
 				$stmt->bind_param("sss", $search, $search, $search);
 			}
 			$stmt->execute();
@@ -296,9 +300,9 @@
 		echo '<p>';
 	}
 
-	// This function makes a text box and submit button that searches the activity name, description and location.
+	// This function makes a text box and submit button that searches the activity name, description and location. // /KF7013-2021/content/search.php
 	function searchbar() {
-		echo '<form id="search_form" method="post" action="/KF7013-2021/content/search.php"><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
+		echo '<form id="search_form" method="post" action=""><input id="search" name="search" type="text" placeholder="Search..."><input type="submit" class="navbutton"></form>';
 	}
 
 	//The website logo light mode and dark mode selector.
