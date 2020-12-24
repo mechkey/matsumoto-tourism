@@ -7,9 +7,9 @@
 
 
 
-	$actID 		= htmlspecialchars($_REQUEST['book']);
-	$date  		= htmlspecialchars($_REQUEST['date']);
-	$num_tix 	= htmlspecialchars($_REQUEST['num_tix']);
+	$actID 		= htmlspecialchars($_POST['book']);
+	$date  		= htmlspecialchars($_POST['date']);
+	$num_tix 	= htmlspecialchars($_POST['num_tix']);
 	$user = $_SESSION['username'];
 
 	if (!isset($_SESSION['username'])) {

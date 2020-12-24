@@ -37,9 +37,9 @@
 	//This function prints out the content of the activities table.
 	function act_book($searching=false, $excluding=false) {
 		global $debug;
-		$search = (isset($_REQUEST['search']) ? $_REQUEST['search'] : null);
+		$search = (isset($_GET['search']) ? $_GET['search'] : null);
 		$search = htmlspecialchars($search);
-		$exclude = (isset($_REQUEST['exclude']) ? $_REQUEST['exclude'] : null);
+		$exclude = (isset($_GET['exclude']) ? $_GET['exclude'] : null);
 		$exclude = htmlspecialchars($exclude);
 		//$floatsearch = floatval($search);
 		$search = '%' . $search . '%';	
@@ -72,7 +72,7 @@
 		}
 		if ($stmt = $mysqli->prepare($sql)) {
 			if ($searching XOR $excluding) {
-				if (isset($_REQUEST['exclude'])) {
+				if (isset($_GET['exclude'])) {
 					$search = $exclude;
 				}
 				$stmt->bind_param("sss", $search, $search, $search);
@@ -207,7 +207,7 @@
 
 
 	function login ($user, $pass) {
-		if (array_key_exists('username', $_REQUEST) && (array_key_exists('password', $_REQUEST)) ) {
+		if (array_key_exists('username', $_POST) && (array_key_exists('password', $_POST)) ) {
 			$passok = check_pass($user, $pass); //check_pass function
 			if ($passok == 1) 
 		    {
@@ -329,7 +329,7 @@
 
 	// This function makes a text box and submit button that searches the activity name, description and location. // /KF7013-2021/content/search.php
 	function searchbar() {
-		echo '<form id="search_form" method="post" action="">
+		echo '<form id="search_form" method="get" action="">
 			<label for="search">Search (optional):</label>
 			<input id="search" name="search" type="text" placeholder="Search..." size="10">
 

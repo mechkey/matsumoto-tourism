@@ -24,36 +24,36 @@
 		<?php
 		
 		$h1string = '<h1>';
-		if (isset($_REQUEST['search']) && $_REQUEST['search'] != '' ) {
-			$h1string .= "Search results for '{$_REQUEST['search']}' ";
+		if (isset($_GET['search']) && $_GET['search'] != '' ) {
+			$h1string .= "Search results for '{$_GET['search']}' ";
 			
-			if ((isset($_REQUEST['search']) && $_REQUEST['search'] != '' ) && (isset($_REQUEST['exclude']) && $_REQUEST['exclude'] != '' )) {
-				$h1string .= ", excluding results for '{$_REQUEST['exclude']}'";
+			if ((isset($_GET['search']) && $_GET['search'] != '' ) && (isset($_GET['exclude']) && $_GET['exclude'] != '' )) {
+				$h1string .= ", excluding results for '{$_GET['exclude']}'";
 			}
-		} else if (isset($_REQUEST['exclude']) && $_REQUEST['exclude'] != '' ) {
-			$h1string .= "Excluding results for '{$_REQUEST['exclude']}'";
+		} else if (isset($_GET['exclude']) && $_GET['exclude'] != '' ) {
+			$h1string .= "Excluding results for '{$_GET['exclude']}'";
 		}
 
-		if (isset($_REQUEST['search']) || isset($_REQUEST['exclude'])) {
+		if (isset($_GET['search']) || isset($_GET['exclude'])) {
 			$h1string .= ":</h1>";
 			echo $h1string;
 		}
-		if (!(isset($_REQUEST['search']) || isset($_REQUEST['exclude'])) ) {
+		if (!(isset($_GET['search']) || isset($_GET['exclude'])) ) {
 			echo '<h1>Showing all activities. Please enter a search term: </h1>';
 		}
 		
 
 		searchbar();
 
-		if (isset($_REQUEST['search']) && $_REQUEST['search'] != '' )
+		if (isset($_GET['search']) && $_GET['search'] != '' )
 			act_book(true);
-		else if (isset($_REQUEST['exclude']) && $_REQUEST['exclude'] != '' )
+		else if (isset($_GET['exclude']) && $_GET['exclude'] != '' )
 			act_book(false,true);
 		else if (
-				isset($_REQUEST['search'])  && 
-				isset($_REQUEST['exclude']) &&
-				$_REQUEST['search'] != ''   &&
-				$_REQUEST['exclude'] != ''  )
+				isset($_GET['search'])  && 
+				isset($_GET['exclude']) &&
+				$_GET['search'] != ''   &&
+				$_GET['exclude'] != ''  )
 			act_book(true, true);
 		?>
 		</main>

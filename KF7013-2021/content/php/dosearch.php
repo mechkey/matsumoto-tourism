@@ -23,7 +23,7 @@
 <?php
 	//phpstyle();
 	//$query_age = (isset($_GET['query_age']) ? $_GET['query_age'] : null);
-	$search = (isset($_REQUEST['search']) ? $_REQUEST['search'] : null);
+	$search = (isset($_GET['search']) ? $_GET['search'] : null);
 	$search = htmlspecialchars($search);
 	//$floatsearch = floatval($search);
 	$search = '%' . $search . '%';	
