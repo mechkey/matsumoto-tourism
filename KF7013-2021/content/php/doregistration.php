@@ -2,14 +2,14 @@
 session_start();
 include 'main.php';
 
-$fname 		= htmlspecialchars(trim($_REQUEST['fname']));
-$lname 		= htmlspecialchars(trim($_REQUEST['lname']));
-$addr1		= htmlspecialchars(trim($_REQUEST['addr1']));
-$addr2		= htmlspecialchars(trim($_REQUEST['addr2']));
-$addrcode	= htmlspecialchars(trim($_REQUEST['addrcode']));
-$dob		= htmlspecialchars(trim($_REQUEST['dob']));
-$username	= htmlspecialchars(trim($_REQUEST['username']));
-$password	= htmlspecialchars(trim($_REQUEST['password']));
+$fname 		= htmlspecialchars(trim($_POST['fname']));
+$lname 		= htmlspecialchars(trim($_POST['lname']));
+$addr1		= htmlspecialchars(trim($_POST['addr1']));
+$addr2		= htmlspecialchars(trim($_POST['addr2']));
+$addrcode	= htmlspecialchars(trim($_POST['addrcode']));
+$dob		= htmlspecialchars(trim($_POST['dob']));
+$username	= htmlspecialchars(trim($_POST['username']));
+$password	= htmlspecialchars(trim($_POST['password']));
 $passwordha	= password_hash($password, PASSWORD_DEFAULT);
 
 /*
