@@ -25,7 +25,7 @@
 
 				<p>Are you sure you wish to logout?</p>
 				<?php
-				logoutform();
+				logoutform('confirm');
 				?>
 			</div>
 		</main>
