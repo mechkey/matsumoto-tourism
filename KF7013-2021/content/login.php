@@ -22,9 +22,7 @@
 		<main id="content"> <!-- Beginning of page content -->
 			<div class="login">
 				<?php
-				loginpageform();
-
-				print_r(glob('/KF7013-2021/content/*.php'))
+				loginform();
 				?>
 			</div>
 		</main>

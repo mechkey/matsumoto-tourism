@@ -43,7 +43,7 @@
 				<input type="text" id="usernmae" name="username" required><br />
 
 				<label for="password">Password:</label><br />
-				<input type="password" id="password" name="password" required><br />
+				<input type="password" id="password" name="password" pattern=".{8,}" required><br />
 
 				<input type="checkbox" id="gdpr" name="gdpr" value="gdpraccept" required>
 				<label for="gdpr">I consent to my details being stored in accordance with GDPR legislation </label><br>

@@ -21,7 +21,6 @@
 		</nav>
 		<main id="content"> <!-- Beginning of page content -->
 <?php
-	//phpstyle();
 	//$query_age = (isset($_GET['query_age']) ? $_GET['query_age'] : null);
 	$search = (isset($_GET['search']) ? $_GET['search'] : null);
 	$search = htmlspecialchars($search);
@@ -54,6 +53,4 @@
 
 	//end the table
 	echo '</table>';
-
-	//phpstyleend();
 ?>

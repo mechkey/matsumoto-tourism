@@ -66,10 +66,7 @@ function makeNavBar () {
 	if (isset($_SESSION['themeType'])) {
 		if  ($_SESSION['themeType'] == 'dark') {
 			//$_SESSION['themeType'] = $themeType;
-
 			echo '<form id="theme" method="post" action=""><button type="submit" name="theme" class="navbutton" value="light"/>Light Mode</button></form></li>';
-		//} else if ((getTT() == 'light') || is_null($_SESSION['themeType'])) {
-		//} else if (($_SESSION['themeType'] == 'light') ) {
 
 		} else if (($_SESSION['themeType'] == 'light') ) {
 			//$_SESSION['themeType'] = $themeType;
@@ -79,31 +76,26 @@ function makeNavBar () {
 	
 	echo '</li>';
 
-	////Logic to determine whether the login form's action should include the content folder.
-
-
 	//Show nav bar login
 	//echo 'login should be here ';
 	if (isset($_SESSION['username'])) {
 		echo '<li id="navuname">';
 		echo 'Username: ' . $_SESSION['username'];
 		echo '</li><li id="navlogout">';
-		navbarlogoutform("Logout");
-		
-	} else {
+		logoutform("logout");
+	} /* else {
 			echo '<li id="navlogin">';
-			navbarloginform();
-	}
+			loginform(true);
+	}*/
+	echo "</li>";
 
-	
-	echo '</li>';
+	/*
 	echo '<li class="navlink">';
 	echo searchbar();
-	
+	echo "</li>";
+	*/
 
-	//echo '<li> pathcopy is ' . $pathcopy . '</li>';
-
-	echo "</li></ul>";
+	echo"</ul>";
 	
 	//return $navContent;
 

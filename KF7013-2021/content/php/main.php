@@ -43,14 +43,20 @@
 		$exclude = htmlspecialchars($exclude);
 		//$floatsearch = floatval($search);
 		$search = '%' . $search . '%';	
-		$exclude = '%' . $exclude . '%';	
-		echo '<table class="act_table"><tr>
+		$exclude = '%' . $exclude . '%';
+
+		$table = <<< TABLE
+		 	<table class="act_table"><tr>
 				<th class="act_name">Activity Name</th><th class="act_desc">Description</th>
 				<th class="price">Price</th>
 				<th class="loc">Location</th>
 				<th class="num_tix"><label for="num_tix">Tickets required:</label></th>
 				<th class="th_date"><label for="date">Date:</label></th>
-				<th class="book">Book</th></tr>';
+				<th class="book">Book</th></tr>
+		TABLE;
+
+		echo $table;
+
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
 		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` ";
@@ -242,48 +248,38 @@
 			header('Location: /KF7013-2021/content/login.php');
 	}
 
-	//<form id="login" method="post" action="./php/dologin.php"> 
-	function loginpageform() {
-		$login = '
-		<li>
-		<form id="login" method="post" action="./php/dologin.php"> 
-		Username:    
-		<input type= "text" name="username" size="8" /><br />
-		Password:
-		<input type= "password" name="password" size="8" /> </li>
-		<input type="submit" value="Login" /> 
-		</form>
-		';
-	echo $login;
-	}
-
-
-	function logoutform() {
-		$fpath = '';
-		$logout = '
-		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
-		<input type="submit" value="Logout" /> 
-		</form>
-		';
-		echo $logout;
-	}
-
-
+	//  <form id="login" method="post" action="./php/dologin.php"> 
 //		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
-	function navbarloginform () {
+	function loginform ($navsub=false) {
 		$login = '
 		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
-		Username:    
-		<input type= "text" name="username" size="8" /><br />
-		Password:
-		<input type= "password" name="password" size="8" /> </li><li id="navsub">
-		<input type="submit" id="loginbutton" class="navbutton"value="Login" /> 
+		Username:<input type= "text" name="username" size="8" required/><br />
+		Password:<input type= "password" name="password" size="8" pattern=".{8,}" required/> </li><li '; 
+
+		if ($navsub=true) {
+			$login .= 'id="navsub"';
+		} 
+
+		$login .= '><input type="submit" id="loginbutton" class="navbutton"value="Login" /> 
 		</form>
 		';
 		echo $login;
 	}
-
-
+	//Function to make the logout form. Takes text for a parameter that is displayed on the button and also is used for logic to see where the button is placed
+	function logoutform($text) {
+		if ($text == 'logout') {
+			$class = 'class="navbutton"';
+		}
+		$text = ucfirst($text);
+		//echo $text;
+		$logout = <<<LOGOUT
+		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
+		<button type="submit" ${class} id="logoutbutton"> ${text} </button>
+		</form>
+		LOGOUT;
+		echo $logout;
+	}
+	/* deprecated
 	function navbarlogoutform ($value) {
 		$logout = <<<LOGOUT
 		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
@@ -292,10 +288,10 @@
 		LOGOUT;
 
 		echo $logout;
-	}
+	} */
 	
 
-	/*	
+	/* deprecated	
 	function navbarlogoutform () {
 		$logout = '
 		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
@@ -306,26 +302,6 @@
 	}
 	*/
 
-	// this function just makes otherwise unformatted pages darker
-	function phpstyle() {
-		
-			echo '
-			<style>
-			body {
-		  		background-color: #111;
-			}
-			html {
-				color:gray;
-			}
-			</style>
-			<p>';
-		
-	}
-
-	// I'd rather have a start and end function, rather thing in html5 terms
-	function phpstyleend() {
-		echo '<p>';
-	}
 
 	// This function makes a text box and submit button that searches the activity name, description and location. // /KF7013-2021/content/search.php
 	function searchbar() {
