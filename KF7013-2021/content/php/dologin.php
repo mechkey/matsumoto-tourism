@@ -4,8 +4,8 @@
 	include 'main.php';
 
 
-	$user = htmlspecialchars($_REQUEST['username']);
-	$pass =  htmlspecialchars($_REQUEST['password']);
+	$user = htmlspecialchars(trim($_REQUEST['username']));
+	$pass =  htmlspecialchars(trim($_REQUEST['password']));
 
 	/*
 	$pass = 'password';

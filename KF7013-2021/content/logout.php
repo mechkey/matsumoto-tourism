@@ -1,6 +1,8 @@
 <?php
 	session_start();
 	include './php/head.php';
+	include './php/navbar.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +10,6 @@
 <head>
 	<link rel="stylesheet" href="../assets/stylesheets/main.css">
 	<?php 
-	include './php/navbar.php';
 	echo makeHead("Matsumoto Tourism - Logout");
 	?>
 </head>
