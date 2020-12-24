@@ -54,6 +54,6 @@ function makeHeadToMain ($pageTitle) {
 
 			echo $fullmake;
 			*/
-}
+//}
 
 ?>

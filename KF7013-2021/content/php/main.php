@@ -1,7 +1,7 @@
 <?php
 	//Connect to database
 
-	$debug = false;
+	$debug = true;
 	$dev = true;
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -35,6 +35,9 @@
 		//$floatsearch = floatval($search);
 		$search = '%' . $search . '%';	
 		$exclude = '%' . $exclude . '%';
+		echo $search;
+		br();
+		echo $exclude;
 
 		$table = <<< TABLE
 		 	<table class="act_table"><tr>
@@ -68,14 +71,14 @@
 			echo $sql;			
 		}
 		if ($stmt = $mysqli->prepare($sql)) {
+			if ($searching && $excluding) {
+				$stmt->bind_param("ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
+			}
 			if ($searching XOR $excluding) {
 				if (isset($_GET['exclude'])) {
 					$search = $exclude;
 				}
 				$stmt->bind_param("sss", $search, $search, $search);
-			}
-			if ($searching && $excluding) {
-				$stmt->bind_param("ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
 			}
 			$stmt->execute();
 			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
