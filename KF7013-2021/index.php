@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="./assets/stylesheets/main.css">
+	<link rel="stylesheet" href="./assets/stylesheets/main.css"/>
 	<?php 
 	include './content/php/head.php';
 	include './content/php/navbar.php';

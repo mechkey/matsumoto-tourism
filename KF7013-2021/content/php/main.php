@@ -15,16 +15,7 @@
 		echo "<p>conn failed:" . mysqli_connect_error() . " </p>\n";
 	}
 
-	//Init path var
-	/*
-	function getmpath() {
-		$mpath = $_SERVER['REQUEST_URI'];
-		return $mpath		
-	}
-	*/
-
 	//Init dark mode vars
-
 	$themeType = '';
 	//$_SESSION['themeType'] = '';
 	$changeTheme = '';
@@ -211,7 +202,6 @@
 	}
 	*/
 
-
 	function login ($user, $pass) {
 		if (array_key_exists('username', $_POST) && (array_key_exists('password', $_POST)) ) {
 			$passok = check_pass($user, $pass); //check_pass function
@@ -253,8 +243,8 @@
 	function loginform ($navsub=false) {
 		$login = '
 		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
-		Username:<input type= "text" name="username" size="8" required/><br />
-		Password:<input type= "password" name="password" size="8" pattern=".{8,}" required/> </li><li '; 
+		<label for="username">Username:</label><input type= "text" id="username"name="username" size="8" required/><br />
+		<label for="password">Password:</label><input type= "password" id="password" name="password" size="8" pattern=".{8,}" required/> </li><li '; 
 
 		if ($navsub=true) {
 			$login .= 'id="navsub"';
@@ -279,6 +269,7 @@
 		LOGOUT;
 		echo $logout;
 	}
+
 	/* deprecated
 	function navbarlogoutform ($value) {
 		$logout = <<<LOGOUT
@@ -289,10 +280,10 @@
 
 		echo $logout;
 	} */
-	
 
 	/* deprecated	
-	function navbarlogoutform () {
+	function navbarlogoutform2
+	 () {
 		$logout = '
 		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
 		<input type="submit" value="Logout" /> 
