@@ -12,7 +12,6 @@
 
 	if (!isset($_SESSION['username'])) {
 		header('Location: /KF7013-2021/content/login.php');
-
 	}
 
 	if ($debug) {
