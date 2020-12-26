@@ -78,7 +78,7 @@
 			$sql .= " `activity_name` NOT LIKE ? AND `description` NOT LIKE ? AND `location` NOT LIKE ? ";
 		}
 		//
-		if ($debug || true) {
+		if ($debug) {
 			echo $sql;	
 			echo '-xclude is : '. $exclude . ' ';		
 		}
@@ -205,6 +205,10 @@
 		echo $ctstring . '</a></li>';
 
 		echo '<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
+	}
+
+	function makeFooter() {
+		echo '<p>Copyright 2020</p>';
 	}
 
 	function getpath() {

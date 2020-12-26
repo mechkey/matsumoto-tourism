@@ -3,35 +3,35 @@
   --top-bar-padding: 4px 8px 8px 4px;
 }
 
-html {
-	  font-family: Arial, Helvetica, sans-serif;
-}
-
-
-main {
-	margin-top: var(--top-bar-height);
-	width: 100%;
-	position: relative;
-	background-color: white;
-	padding-left: 3em;
-}
-
-body {
+html, body {
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
 }
 
-content {
+body {
+	min-height: 100%;
 }
 
-#footer, #hate-footers {
-	height:5rem: 
+#content {
+	padding: 1rem 3em;
+	margin-top: 0;
+}
+
+main {
+	background-color: white;
+}
+
+
+#footer {
+	bottom: 0;
 }
 
 #container {
 	min-width: 100%;
 	min-height: 100%;
 	margin: 0;
-	margin-bottom: -5rem;
+	margin-bottom: -50px;
 	position: relative;
 	background-color: transparent;
 }
@@ -40,10 +40,10 @@ content {
 	margin: 0;
 	padding: 0;
 	z-index: 9000;
-	height: 4em;
+	height: var(--top-bar-height);
 	width: 100%;
-	position: fixed;
-	background-color: transparent;
+	position: relative;
+	background-color: #333;
 	border-bottom: 1px solid gray;
 }
 
@@ -52,7 +52,7 @@ content {
 #topnav ul {
 	list-style-type: none;
 	margin: 0;
-	width: 100%;
+	width: 80%;
 }
 
 #topnav li {
@@ -168,7 +168,7 @@ input {
 	background-color: #0f0f0f;
 }
 
-.dark main{
+.dark #content{
 	background-color: #1c1c1c;
 }
 

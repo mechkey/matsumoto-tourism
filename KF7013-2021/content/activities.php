@@ -14,7 +14,6 @@
 	?>
 </head>
 <body class="<?php classID() ?>">
-	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
 		<nav id="topnav">
 			<?php 
 				makeNavBar();  
@@ -25,10 +24,8 @@
 				act_book();
 			?>
 		</main>
-
-		<footer id="footer"> <!-- Beginning of footer -->
-
-		</footer>
-	</div>
+	<footer id="footer"> <!-- Beginning of footer -->
+		<p> This is my footer. </p>
+	</footer>
 </body>
 </html>

@@ -13,23 +13,21 @@
 	?>
 </head>
 <body class="<?php classID() ?>">
-	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
-		<nav id="topnav">
-			<?php 
-			makeNavBar(); 
-			?>
-		</nav>
-		<main id="content"> <!-- Beginning of page content -->
-			<p> Some main stuff </p>
-			<?php
+	<nav id="topnav">
+		<?php 
+		makeNavBar(); 
+		?>
+	</nav>
+	<main id="content"> <!-- Beginning of page content -->
+		<p> Some main stuff </p>
+		<?php
 
 
-			?>
-		</main>
+		?>
+	</main>
 
-		<footer id="footer"> <!-- Beginning of footer -->
+	<footer id="footer"> <!-- Beginning of footer -->
 
-		</footer>
-	</div>
+	</footer>
 </body>
 </html>

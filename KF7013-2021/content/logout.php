@@ -14,25 +14,23 @@
 	?>
 </head>
 <body class="<?php classID() ?>">
-	<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
-		<nav id="topnav">
-			<?php 
-			makeNavBar(); 
+	<nav id="topnav">
+		<?php 
+		makeNavBar(); 
+		?>
+	</nav>
+	<main id="content"> <!-- Beginning of page content -->
+		<div class="logout">
+
+			<p>Are you sure you wish to logout?</p>
+			<?php
+			logoutform('confirm');
 			?>
-		</nav>
-		<main id="content"> <!-- Beginning of page content -->
-			<div class="logout">
+		</div>
+	</main>
 
-				<p>Are you sure you wish to logout?</p>
-				<?php
-				logoutform('confirm');
-				?>
-			</div>
-		</main>
+	<footer id="footer"> <!-- Beginning of footer -->
 
-		<footer id="footer"> <!-- Beginning of footer -->
-
-		</footer>
-	</div>
+	</footer>
 </body>
 </html>
