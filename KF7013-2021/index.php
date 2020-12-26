@@ -46,7 +46,9 @@
 	</p>
 	</main>
 	<footer id="footer"> <!-- Beginning of footer -->
-		makeFooter();
+		<?php
+			makeFooter();
+		?>
 	</footer>
 </body>
 </html>
