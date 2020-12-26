@@ -28,9 +28,9 @@
 	//This function prints out the content of the activities table.
 	function act_book($searching=false, $excluding=false) {
 		global $debug;
-		$search = (isset($_GET['search']) ? $_GET['search'] : null);
+		$search = $_GET['search']  ?? null;
 		$search = htmlspecialchars($search);
-		$exclude = (isset($_GET['exclude']) ? $_GET['exclude'] : null);
+		$exclude = $_GET['exclude'] ?? null;
 		$exclude = htmlspecialchars($exclude);
 		//$floatsearch = floatval($search);
 
