@@ -262,7 +262,7 @@
 	}
 
 	//  <form id="login" method="post" action="./php/dologin.php"> 
-//		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
+	//	<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
 	function loginform ($navsub=false) {
 		$login = '
 		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 

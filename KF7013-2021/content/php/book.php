@@ -5,8 +5,6 @@
 
 	$debug = false;
 
-
-
 	$actID 		= htmlspecialchars($_POST['book']);
 	$date  		= htmlspecialchars($_POST['date']);
 	$num_tix 	= htmlspecialchars($_POST['num_tix']);
@@ -16,8 +14,6 @@
 		header('Location: /KF7013-2021/content/login.php');
 
 	}
-
-
 
 	if ($debug) {
 		echo 'Activity id is ' . $actID;
@@ -46,9 +42,7 @@
 			echo 'bind param failed';
 		}
 	}
-
 	//
-
 	if (mysqli_stmt_execute($b_stmt)) {
 
 		if ($debug) {
@@ -59,11 +53,7 @@
 		}
 		header('Location: /KF7013-2021/content/account.php');
 	}
-
-/*
+	/*
 	mysqli_stmt_execute($stmt) or die( mysqli_stmt_error($stmt) );
 	*/
-
-
-
 ?>

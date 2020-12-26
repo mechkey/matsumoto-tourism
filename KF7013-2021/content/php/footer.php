@@ -1,7 +1,7 @@
 <?php
 	
 	function makeFooter() {
-		echo '<p>Some garbage</p>';
+		echo '<h1>Some garbage</h1>';
 	}
 
 ?>
