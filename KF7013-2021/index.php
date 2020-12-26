@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	include './content/php/navbar.php';
-	include './content/php/head.php';
+	include './content/php/layout.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include './php/head.php';
+	include './php/layout.php';
 	include './php/navbar.php';
 	logincheck();
 ?>

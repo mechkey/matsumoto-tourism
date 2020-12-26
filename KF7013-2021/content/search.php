@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	include './php/navbar.php';
-	include './php/head.php';
+	include './php/layout.php';
 	logincheck();
 ?>
 
