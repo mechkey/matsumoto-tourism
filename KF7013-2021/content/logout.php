@@ -28,9 +28,8 @@
 			?>
 		</div>
 	</main>
-
 	<footer id="footer"> <!-- Beginning of footer -->
-
+		makeFooter();
 	</footer>
 </body>
 </html>

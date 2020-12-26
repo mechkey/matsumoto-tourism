@@ -207,10 +207,6 @@
 		echo '<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
 	}
 
-	function makeFooter() {
-		echo '<p>Copyright 2020</p>';
-	}
-
 	function getpath() {
 		$path = $_SERVER['REQUEST_URI'];
 		return $path;

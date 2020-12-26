@@ -25,7 +25,7 @@
 			?>
 		</main>
 	<footer id="footer"> <!-- Beginning of footer -->
-		<p> This is my footer. </p>
+		makeFooter();
 	</footer>
 </body>
 </html>
