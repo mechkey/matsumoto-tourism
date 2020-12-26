@@ -25,7 +25,7 @@
 		
 		$h1string = '<h1>';
 		if (isset($_GET['search']) && $_GET['search'] != '' ) {
-			$h1string .= "Search results for {$_GET['search']}' ";
+			$h1string .= "Search results for '{$_GET['search']}' ";
 			
 			if ((isset($_GET['search']) && $_GET['search'] != '' ) && (isset($_GET['exclude']) && $_GET['exclude'] != '' )) {
 				$h1string .= ", excluding results for '{$_GET['exclude']}'";

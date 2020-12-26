@@ -1,7 +1,7 @@
 <?php
 	//Connect to database
 
-	$debug = true;
+	$debug = false;
 	$dev = true;
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -33,11 +33,20 @@
 		$exclude = (isset($_GET['exclude']) ? $_GET['exclude'] : null);
 		$exclude = htmlspecialchars($exclude);
 		//$floatsearch = floatval($search);
-		$search = '%' . $search . '%';	
-		$exclude = '%' . $exclude . '%';
+
+		if ($search != null) {
+			$search = '%' . $search . '%';
+			echo 'search not null%%';	
+		}
+		if ($exclude != null) {
+			$exclude = '%' . $exclude . '%';
+			echo 'Exclude not null%%';	
+
+		}
 		echo $search;
 		br();
 		echo $exclude;
+		br();
 
 		$table = <<< TABLE
 		 	<table class="act_table"><tr>
@@ -61,25 +70,38 @@
 		if ($searching) {
 			$sql .= "(`activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ?) ";
 		}
-		if ($searching && $excluding) {
-			$sql .= "AND ";
+		if ($search != null && $exclude != null) {
+			$sql .= " AND ";
 		}
-		if ($excluding) {
-			$sql .= "`activity_name` NOT LIKE ? AND `description` NOT LIKE ? AND `location` NOT LIKE ? ";
+		//if ($excluding) {
+		if ($exclude != null) {
+			$sql .= " `activity_name` NOT LIKE ? AND `description` NOT LIKE ? AND `location` NOT LIKE ? ";
 		}
-		if ($debug) {
-			echo $sql;			
+		//
+		if ($debug || true) {
+			echo $sql;	
+			echo '-xclude is : '. $exclude . ' ';		
 		}
 		if ($stmt = $mysqli->prepare($sql)) {
-			if ($searching && $excluding) {
+			//if ($exclude == null) {
+
+			if ((isset($_GET['search']) && $_GET['search'] != '' ) && (isset($_GET['exclude']) && $_GET['exclude'] != '' )) {
 				$stmt->bind_param("ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
+				echo 'search not null exclude not null';
 			}
-			if ($searching XOR $excluding) {
-				if (isset($_GET['exclude'])) {
-					$search = $exclude;
-				}
+
+			else if ((isset($_GET['search']) && $_GET['search'] != '' ) && $_GET['exclude'] == '' ) {
+				echo 'if 1 search not null: ' . $search;
 				$stmt->bind_param("sss", $search, $search, $search);
 			}
+			else if ((isset($_GET['exclude']) && $_GET['exclude'] != '' ) && $_GET['search'] == '' ) {
+				echo 'if 2 exclude not null: ' . $exclude;
+					$stmt->bind_param("sss", $exclude, $exclude, $exclude);
+
+			} else {
+				echo 'else statement - exclude = null';
+			}
+
 			$stmt->execute();
 			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
 			//echo $act_id;
