@@ -7,7 +7,7 @@
 <head>
 	<link rel="stylesheet" href="../../assets/stylesheets/main.css"/>
 	<?php
-	include './head.php';
+	include './layout.php';
 	include './navbar.php';
 	echo makeHead("Matsumoto Tourism - Search");
 	?>

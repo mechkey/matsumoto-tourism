@@ -43,7 +43,7 @@
 		<head>
 			<link rel="stylesheet" href="../assets/stylesheets/main.css">
 			<?php 
-			include './php/head.php';
+			include './php/layout.php';
 			include './php/navbar.php';
 			echo makeHead($pageTitle);
 			?>

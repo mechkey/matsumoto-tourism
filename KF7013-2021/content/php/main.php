@@ -136,6 +136,7 @@
 			while ($stmt->fetch()) {
 				printf ('<tr><td class="act_name">%s</td><td class="act_id">%d</td><td class="act_date">%s</td><td class="price">%s</td><td><a href="activities.php">View Details</tr>', $act_name, $act_id, $date, $num_tix);
 			}
+			echo '</table>';
 			$stmt->close();
 		}
 		$mysqli->close();
@@ -313,9 +314,6 @@
 		echo $logout;
 	}
 
-	function makeFooter() {
-		echo '<br /><p>Some garbage</p>';
-	}
 
 	/* deprecated
 	function navbarlogoutform ($value) {
@@ -383,6 +381,7 @@
 					}
 					$stmt->close();
 				}
+				echo '</table>';
 				$mysqli->close();
 	}
 ?>
