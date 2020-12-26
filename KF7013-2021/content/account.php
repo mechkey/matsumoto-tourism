@@ -43,7 +43,7 @@
 			}
 			$mysqli->close();
 
-			navbarlogoutform("Logout");
+			logoutform("Logout");
 			?>
 	</main>
 	<footer id="footer"> <!-- Beginning of footer -->
