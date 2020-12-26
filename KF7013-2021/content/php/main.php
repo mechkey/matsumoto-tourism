@@ -87,19 +87,17 @@
 
 			if ((isset($_GET['search']) && $_GET['search'] != '' ) && (isset($_GET['exclude']) && $_GET['exclude'] != '' )) {
 				$stmt->bind_param("ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
-				echo 'search not null exclude not null';
+				//echo 'search not null exclude not null';
 			}
-
-			else if ((isset($_GET['search']) && $_GET['search'] != '' ) && $_GET['exclude'] == '' ) {
-				echo 'if 1 search not null: ' . $search;
+			else if (($_GET['search'] != '' ) && $_GET['exclude'] == '' ) {
 				$stmt->bind_param("sss", $search, $search, $search);
+				//echo 'if 1 search not null: ' . $search;
 			}
 			else if ((isset($_GET['exclude']) && $_GET['exclude'] != '' ) && $_GET['search'] == '' ) {
-				echo 'if 2 exclude not null: ' . $exclude;
-					$stmt->bind_param("sss", $exclude, $exclude, $exclude);
-
+				$stmt->bind_param("sss", $exclude, $exclude, $exclude);
+				//echo 'if 2 exclude not null: ' . $exclude;
 			} else {
-				echo 'else statement - exclude = null';
+				//echo 'else statement - exclude = null';
 			}
 
 			$stmt->execute();

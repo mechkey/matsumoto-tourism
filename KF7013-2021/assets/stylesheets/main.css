@@ -11,7 +11,7 @@ html {
 main {
 	margin-top: var(--top-bar-height);
 	width: 100%;
-	position: fixed;
+	position: relative;
 	background-color: white;
 	padding-left: 3em;
 }
@@ -23,11 +23,15 @@ body {
 content {
 }
 
+#footer, #hate-footers {
+	height:5rem: 
+}
+
 #container {
 	min-width: 100%;
 	min-height: 100%;
 	margin: 0;
-	padding: 0;
+	margin-bottom: -5rem;
 	position: relative;
 	background-color: transparent;
 }
