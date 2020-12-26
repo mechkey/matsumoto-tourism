@@ -2,7 +2,6 @@
 	session_start();
 	include './php/head.php';
 	include './php/navbar.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +9,8 @@
 <head>
 	<link rel="stylesheet" href="../assets/stylesheets/main.css"/>
 	<?php 
-	echo makeHead("Matsumoto Tourism - Logout");
+		$filename = ucfirst(basename(__FILE__, ".php")) . " - Matsumoto Tourism";
+		makeHead($filename);
 	?>
 </head>
 <body class="<?php classID() ?>">

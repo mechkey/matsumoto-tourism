@@ -9,7 +9,8 @@
 <head>
 	<link rel="stylesheet" href="../assets/stylesheets/main.css"/>
 	<?php 
-	echo makeHead("Matsumoto Tourism - Report");
+		$filename = ucfirst(basename(__FILE__, ".php")) . " - Matsumoto Tourism";
+		makeHead($filename);
 	?>
 </head>
 <body class="<?php classID() ?>">

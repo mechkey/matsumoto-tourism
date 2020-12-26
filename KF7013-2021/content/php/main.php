@@ -121,6 +121,25 @@
 		$mysqli->close();
 		echo '</table>';
 	}
+
+	function booked_act () {
+		echo '<table class="act_table"><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th></tr>';
+		// Trying OO php . . .
+		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+
+		//$sql = "SELECT a.activity_name, b.activityID, b.date_of_activity, b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID";
+		$sql = "SELECT a.activity_name, b.activityID, b.date_of_activity, b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID LEFT OUTER JOIN customers c ON b.customerID = c.customerID WHERE c.username=?";
+		if ($stmt = $mysqli->prepare($sql)) {
+			$stmt->bind_param('s', $_SESSION['username']);
+			$stmt->execute();
+			$stmt->bind_result($act_name, $act_id, $date, $num_tix);
+			while ($stmt->fetch()) {
+				printf ('<tr><td class="act_name">%s</td><td class="act_id">%d</td><td class="act_date">%s</td><td class="price">%s</td><td><a href="activities.php">View Details</tr>', $act_name, $act_id, $date, $num_tix);
+			}
+			$stmt->close();
+		}
+		$mysqli->close();
+	}
 	
 	function br() {
 		echo "<br />";
@@ -280,6 +299,7 @@
 	}
 	//Function to make the logout form. Takes text for a parameter that is displayed on the button and also is used for logic to see where the button is placed
 	function logoutform($text) {
+		$class = null;
 		if ($text == 'logout') {
 			$class = 'class="navbutton"';
 		}
@@ -291,6 +311,10 @@
 		</form>
 		LOGOUT;
 		echo $logout;
+	}
+
+	function makeFooter() {
+		echo '<br /><p>Some garbage</p>';
 	}
 
 	/* deprecated
@@ -344,7 +368,7 @@
 
 	//Shows the account, first and last names for the logged in user.
 	function showDetails () {
-		echo'<h2>Your details:</h2><table class="act_table"><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
+		echo'<p>Your details:</p><table class="act_table"><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
 
 				// Trying OO php . . .
 				$mysqli = new mysqli('localhost', 'root', 'root', 'travel');

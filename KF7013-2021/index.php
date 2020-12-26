@@ -1,15 +1,15 @@
 <?php
 	session_start();
+	include './content/php/navbar.php';
+	include './content/php/head.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="./assets/stylesheets/main.css"/>
 	<?php 
-	include './content/php/head.php';
-	include './content/php/navbar.php';
-	echo makeHead("Matsumoto Tourism - Home");
+		$filename = ucfirst(basename(__FILE__, ".php")) . " - Matsumoto Tourism";
+		makeHead($filename);
 	?>
 </head>
 <body class="<?php classID() ?>">
