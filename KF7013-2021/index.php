@@ -24,16 +24,8 @@
 
 			<?php
 
-			if ($debug) {
-				echo 'SERVER-REQUEST_URI is ' . $_SERVER['REQUEST_URI'];
-				br();
-				echo 'path is ' . getpath();
-				br();	
-			}
-		
-				echo "<pre>"; 
-				print_r($_SESSION); 
-				echo "</pre>";
+			
+			
 			
 			//$themevar = $_POST['theme'];
 			//echo $themevar;

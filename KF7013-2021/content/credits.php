@@ -20,6 +20,7 @@
 		?>
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
+		<h1> References: </h1>
 		<p>castle1.jpg https://www.japan-guide.com/e/e6050.html</p>
 		<?php 
 		

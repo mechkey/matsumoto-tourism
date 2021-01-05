@@ -44,9 +44,10 @@ main {
 	height: var(--top-bar-height);
 	width: 100%;
 	position: relative;
-	background-color: #333;
-	border-bottom: 1px solid gray;
 }
+
+
+
 
 
 
@@ -85,24 +86,33 @@ main {
 	padding-top: 1.25em;
 }
 
- 
+
 #topnav a {  
 	display: block;
 	text-align: center;
   	text-decoration: none;
 	font-size: 18px;
-	color: #ddd;
 }
 
-#navuname {
-	color: #ddd;
+#topnav {
+	background-color: #ddd;
+}
+
+#topnav {
+	border-bottom: 1px solid gray;
+}
+
+#topnav a {  
+	color: #111;
 }
 
 #topnav a:hover {
-  	border: 0px;
-  	border-radius: 5px;
   	background-color: #dedede;
 	color: black;
+}
+
+#navuname {
+	color: #111;
 }
 
 
@@ -110,20 +120,34 @@ main {
 	background-color: transparent;
 }
 
-
-.login {
-	list-style-type: none;
-}
-
-
 input {
  	background-color: #f5f5dc;
 }
 
 .navbutton {
-	background-color: #666;
+	background-color: #333;
 	color: white;
 }
+
+#topnav a:hover {
+  	border: 0px;
+  	border-radius: 5px;
+}
+
+
+.login {
+	list-style-type: none;
+}
+
+input {
+	color: black;
+}
+
+button {
+	color: white;
+	background-color: #333;
+}
+
 
 /* act_table table spacing */
 
@@ -154,11 +178,11 @@ input {
 }
 
 .act_table tr:nth-child(even) {
-	background-color: #f5f2f2;
+	background-color: #efefef;
 }
 
 .act_table tr:nth-child(odd) {
-	background-color: gold;
+	background-color: #dadada;
 }
 
 .act_table tr:hover {
@@ -175,27 +199,25 @@ input {
 	background-color: #1c1c1c;
 }
 
-.dark a, input, label, button {
+.dark a, .dark input, .dark label, .dark button {
 	color: #ddd;
 }
 
-.dark input, button {
+.dark input, .dark button {
 	background-color: #111;
 }
 
-
-.dark .navlink {
-	background-color: transparent;
+.dark #topnav {
+	background-color: #333;
 }
+
+
 
 .dark #topnav a {
 	color: #c8c8c8;
 }
 
-.dark .navbutton {
-	background-color: #333;
-	color: #fff;
-}
+
 
 .dark #topnav a:hover {
 	color: black;
@@ -205,6 +227,14 @@ input {
 	color: #c8c8c8;
 }
 
+.dark .navbutton {
+	background-color: #333;
+	color: #fff;
+}
+
+.dark .navlink {
+	background-color: transparent;
+}
 
 .dark p {
 	color: lightgray;
@@ -219,15 +249,17 @@ input {
 	background-color: red;
 }
 
-.act_table tr:nth-child(even) {
+.dark .act_table tr:nth-child(even) {
 	background-color: #333;
 }
 
-.act_table tr:nth-child(odd) {
+.dark .act_table tr:nth-child(odd) {
 	background-color: #444;
 }
 
-
+#search_form{
+	padding: 30rem;
+}
 
 
 

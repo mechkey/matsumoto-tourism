@@ -26,17 +26,23 @@
 
 		if ($search != null) {
 			$search = '%' . $search . '%';
-			echo 'search not null%%';	
+			if ($debug) {
+				echo 'search not null%%';
+			}
 		}
 		if ($exclude != null) {
 			$exclude = '%' . $exclude . '%';
-			echo 'Exclude not null%%';	
+			if ($debug) {
+				echo 'Exclude not null%%';
+			}
 
 		}
-		echo $search;
-		br();
-		echo $exclude;
-		br();
+		if ($debug) {
+			echo $search;
+			br();
+			echo $exclude;
+			br();
+		}
 
 		$table = <<< TABLE
 		 	<table class="act_table"><tr>

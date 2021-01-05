@@ -22,7 +22,7 @@
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
 		<?php
-			echo '<h1> This is a heading. </h1>';
+			echo '<h1> Activies available for booking: </h1>';
 			act_book();
 		?>
 	</main>
