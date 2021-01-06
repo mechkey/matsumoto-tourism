@@ -28,7 +28,7 @@
 
 			$check_res = mysqli_stmt_get_result($cstmt);
 			if (mysqli_num_rows($check_res) > 0) {
-				echo 'Username already exists';
+				echo 'Username already exists, please go back and try again.';
 			} else {
 				$sql = "INSERT INTO `customers` (`username`, `password_hash`, `customer_forename`, `customer_surname`, `customer_postcode`, `customer_address1`, `customer_address2`, `date_of_birth`) VALUES (?,?,?,?,?,?,?,?)";
 
