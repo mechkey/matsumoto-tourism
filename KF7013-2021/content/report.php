@@ -3,16 +3,16 @@
 	include './php/navbar.php';
 	include './php/layout.php';
 	logincheck();
+	doctype_etc();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
 	<link rel="stylesheet" href="../assets/stylesheets/main.css"/>
 	<?php 
 		$filename = ucfirst(basename(__FILE__, ".php")) . " - Matsumoto Tourism";
 		makeHead($filename);
 	?>
+	
 </head>
 <body class="<?php classID() ?>">
 	<nav id="topnav">
