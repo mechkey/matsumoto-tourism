@@ -1,0 +1,36 @@
+1. Provide one login page...
+	Implementation page:
+	-> /KF7013-2021/content/login.php
+
+2. ...insert a new customer’s details into the customers table using an HTML5 form to gather the customer data and PHP to connect to the MySQL database and insert the values...
+	Implementation page:
+	-> /KF7013-2021/content/registration.php
+
+3. One page of your website should link to the activities table in your MySQL database using PHP ...
+	Implementation page:
+	-> /KF7013-2021/content/activities.php
+	
+
+4. All customers should be able to see their booked_activities table. From the booked activities table customers should be able to navigate to activities to see activity details...
+	Implementation page:
+	-> /KF7013-2021/content/account.php
+
+
+5. ...search for an activity and display the results that match the search criteria...advanced searching such as combining two search fields together using AND/OR logic.
+	I have implemented a two-field search using AND logic.
+	Implementation page:
+	-> /KF7013-2021/content/search.php
+	Relevant php functions (located in /KF7013-2021/content/php/main.php):
+	-> searchbar()
+	-> act_book()
+
+6. An academic security report web page 
+	Implementation page:
+	-> /KF7013-2021/content/report.php
+
+7. An appropriately designed homepage/index page.
+	Implementation page:
+	-> /KF7013-2021/index.php
+
+(8) Credits page
+	-> /KF7013-2021/content/credits.php
