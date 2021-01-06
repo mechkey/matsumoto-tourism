@@ -2,6 +2,7 @@
 	session_start();
 	include './php/navbar.php';
 	include './php/layout.php';
+	logincheck();
 ?>
 
 <!DOCTYPE html>
