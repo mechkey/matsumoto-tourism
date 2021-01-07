@@ -1,6 +1,5 @@
 <?php
 	include 'main.php';
-
 	//Init dark mode vars
 	$themeType = '';
 	//$_SESSION['themeType'] = '';
@@ -119,6 +118,7 @@
 			if ($debug) { echo $filename; }
 			//if it isn't a page to do with login/out
 			if( 
+				($filename != ($rel . 'lost.php')) && 
 				($filename != ($rel . 'login.php')) && 
 				($filename != ($rel . 'logout.php')) && 
 				($filename != ($rel . 'account.php')) &&

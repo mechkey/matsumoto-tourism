@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include './php/dologin.php';
 	include './php/navbar.php';
 	include './php/layout.php';
 	logincheck();
@@ -50,7 +51,10 @@
 		https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/#:~:text=Just%20give%20the%20list%20centered,width%3A%20fit%2Dcontent%3B%20.
 		--
 
-
+		--
+		--
+		check_pass function - slides
+		
 		</p>
 		<?php 
 		?>
