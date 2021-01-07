@@ -24,7 +24,7 @@
 
 			<?php
 
-			
+			index_act();
 			
 			
 			//$themevar = $_POST['theme'];

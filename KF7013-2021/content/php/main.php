@@ -184,6 +184,48 @@
 	}
 	*/
 
+		function index_act($searching=false, $excluding=false) {
+		global $debug;
+		$search = $_GET['search']  ?? null;
+		$search = htmlspecialchars($search);
+		$exclude = $_GET['exclude'] ?? null;
+		$exclude = htmlspecialchars($exclude);
+		//$floatsearch = floatval($search);
+
+		if ($search != null) {
+			$search = '%' . $search . '%';
+			if ($debug) {
+				echo 'search not null%%';
+			}
+		}
+		
+		if ($debug) {
+			echo $search;
+			br();
+			echo $exclude;
+			br();
+		}
+
+		// Trying OO php . . .
+		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` ";
+
+		if ($res = $mysqli->query($sql)) {
+
+			while ($row = $result->fetch_assoc()) {
+				printf ("%s %s %d %s %s\n", $row["activity_name"], $row["description"], $row["price"], $row["location"], $row["activityID"]);
+			}
+			$stmt->execute();
+			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
+			//echo $act_id;
+			while ($stmt->fetch()) {
+
+			}
+			$stmt->close();
+		}
+		$mysqli->close();
+	}
+
 	function login ($user, $pass) {
 		if (array_key_exists('username', $_POST) && (array_key_exists('password', $_POST)) ) {
 			$passok = check_pass($user, $pass); //check_pass function
