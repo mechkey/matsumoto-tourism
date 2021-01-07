@@ -100,7 +100,7 @@
 			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
 			//echo $act_id;
 			while ($stmt->fetch()) {
-				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/book.php" method="post">
+				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/dobook.php" method="post">
 						<select name="num_tix" required>
 							<option value="1">1</option><option value="2">2</option>
 							<option value="3">3</option><option value="4">4</option>

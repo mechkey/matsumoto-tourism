@@ -20,7 +20,7 @@
 	</nav>
 	
 	<main id="content"> <!-- Beginning of page content -->
-		<p> Some main stuff - this is the index page
+		<h1>Welcome to Matsumoto's Tourism Website!</h1>	
 
 			<?php
 
