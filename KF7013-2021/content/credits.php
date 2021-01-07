@@ -35,6 +35,22 @@
 		7.jpg https://visitmatsumoto.com/en/spot/taiko-drum-workshop/]
 		8.jpg https://www.visitscotland.com/info/tours/the-viking-coast-and-alnwick-castle-a47c9e94
 		https://d1xw84ija6gjgy.cloudfront.net/production/c96c08f8bb7960e11a1239352a479053/conversions/SD.jpg
+
+		<h1>Code</h1>
+		
+		CSS display Property
+
+		https://www.w3schools.com/cssref/pr_class_display.asp
+		--
+
+		Based on: 
+
+		Centering List Items Horizontally (Slightly Trickier Than You Might Think)
+
+		https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/#:~:text=Just%20give%20the%20list%20centered,width%3A%20fit%2Dcontent%3B%20.
+		--
+
+
 		</p>
 		<?php 
 		?>

@@ -4,108 +4,34 @@
 }
 
 
-
 html, body {
 	height: 100%;
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0;
 }
 
-body {
-	min-height: 100%;
+#container {
+	background-color: transparent;
 }
 
-#content {
-	padding: 1rem 3em;
-	margin-top: 0;
+body {
+	min-height: 100%;
 }
 
 #content{
 	background-color: azure;
 }
 
-
-#footer {
-	bottom: 0;
-	margin-left: 3rem;
+#displaytable {
+	display: table;
 }
-
-#container {
-	min-width: 100%;
-	min-height: 100%;
-	margin: 0;
-	margin-bottom: -50px;
-	position: relative;
-	background-color: transparent;
-}
-
-aside {
-	width: 40%;
-	float: right;
-	padding: 10px;
-}
-#topnav {
-	margin: 0;
-	padding: 0;
-	z-index: 9000;
-	height: var(--top-bar-height);
-	width: 100%;
-	position: relative;
-}
-
-
-
-
-
 
 #topnav ul {
-	list-style-type: none;
-	margin: 0;
-	width: 80%;
-}
-
-#topnav li {
-	float: left;
-	border-radius: 5px;
-	margin-right: 1em;
-	text-align: middle;
-}
-
-
-#navlogo {
-	padding-top: 0.8em;
-}
-
-.navlink {
-	padding-top: 1.2em;
-}
-
-
-#navlogin {
-	padding-top: 0.5em;
-}
-
-#navsub, #navlogout {
-	padding-top: 1.2em;
-}
-
-#navuname {
-	padding-top: 1.25em;
-}
-
-
-#topnav a {  
-	display: block;
-	text-align: center;
-  	text-decoration: none;
-	font-size: 18px;
-}
-
-#topnav {
 	background-color: #ddd;
 }
 
 #topnav {
+	align-self: center;
 	border-bottom: 1px solid gray;
 }
 
@@ -114,7 +40,7 @@ aside {
 }
 
 #topnav a:hover {
-  	background-color: #dedede;
+  	background-color: gray;
 	color: black;
 }
 
@@ -155,55 +81,15 @@ button {
 	background-color: #333;
 }
 
-.flex-box {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-
-}
-
 .flex-box > div {
-	width: 30%;
-	margin: 1rem; 
+	background-color: #f5f5e9;
 	border: 1px solid gray;
-	background-color: beige;
 }
 
-
-
-.img-div {
-	width: 512px;
-	height: 320px;
+.dark .flex-box > div {
+	background-color: #282828;
+	border: 1px solid gray;
 }
-
-.card-img {
-	max-width: 512px;
-	max-height: 320px;
-	object-fit: cover;
-}
-
-.copy {
-	padding: 1rem;
-}
-
-/* act_table table spacing */
-
-.act_table {
-  	width: 80%;
-  	border-collapse: collapse;
-}
-
-.act_table th {
- 	padding-top: ;
-  	padding-bottom: ;
-}
-
-.act_table td, .act_table th {
-  	padding: 0.5rem;
-}
-
-/* act_table table light mode color */
-
 
 .act_table th {
   	background-color: #634caf	;
@@ -226,9 +112,13 @@ button {
 	background-color: ;
 }
 
+.dark #topnav ul {
+	background-color: #222;
+}
+
 
 .dark {
-	color: #a3a3a3;
+	color: #b6b6b6;
 	background-color: #0f0f0f;
 }
 
@@ -248,12 +138,9 @@ button {
 	background-color: #333;
 }
 
-
-
 .dark #topnav a {
 	color: #c8c8c8;
 }
-
 
 
 .dark #topnav a:hover {
@@ -262,6 +149,10 @@ button {
 
 .dark #navuname {
 	color: #c8c8c8;
+}
+
+.dark #logo:hover > img {
+	filter: invert(1);
 }
 
 .dark .navbutton {
@@ -294,6 +185,212 @@ button {
 	background-color: #444;
 }
 
+
+/*------------------------------------------------------*/
+/*---------------------small screen---------------------*/
+/*------------------------------------------------------*/
+
+@media only screen and (max-width: 699px) {
+
+
+#topnav {
+	display: flex;
+  	flex-direction: column;
+	z-index: 9000;
+	height: 200px;
+	width: 100%;
+	position: relative;
+}
+
+
+#topnav ul {
+	margin: 0;
+	display: block;
+	float: none;
+	width: 100%;
+	padding: 0em;	
+	}
+
+#topnav li { 
+	width: 100%;
+	list-style-type: none;
+	}
+
+#topnav a {
+	
+	display: block;
+	text-align: center;
+  	text-decoration: none;
+	font-size: 18px;
+	padding: 8px 16px 8px;
+	margin-top: 1px;	
+
+}
+
+
+.flex-box {
+	width: 100%;
+	padding: 5%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+
+}
+
+.flex-box > div {
+	width: 90%;
+	margin-bottom: 5%; 
+}
+
+#theme-form, .navbutton {
+	align-content: center;
+}
+
+img.card-img {
+	width: 100%;
+	height: 320px;
+	object-fit: cover;
+}
+
+.copy {
+	height: 100%;
+	padding: 5%;
+}
+
+} /*end of media*/
+
+/*------------------------------------------------------*/
+/*---------------------large screen---------------------*/
+/*------------------------------------------------------*/
+@media only screen and (min-width: 700px) {
+
+
+
+
+#content {
+	padding: 1rem 2em;
+	margin-top: 0;
+}
+
+
+#footer {
+	bottom: 0;
+	padding: 0.5rem 2rem;
+}
+
+#container {
+	min-width: 100%;
+	min-height: 100%;
+	margin: 0;
+	margin-bottom: -50px;
+	position: relative;
+}
+
+aside {
+	width: 40%;
+	float: right;
+	padding: 10px;
+}
+#topnav {
+	margin: 0;
+	padding: 0;
+	z-index: 9000;
+	height: var(--top-bar-height);
+	width: 100%;
+	position: relative;
+}
+
+
+#topnav ul {
+	list-style-type: none;
+	margin: 0;
+	width: 100%;
+}
+
+#topnav li {
+	float: left;
+	border-radius: 5px;
+	margin-right: 1em;
+	text-align: middle;
+}
+
+
+#navlogo {
+	padding-top: 0.8em;
+}
+
+.navlink {
+	padding-top: 1.2em;
+}
+
+#navlogin {
+	padding-top: 0.5em;
+}
+
+#navsub, #navlogout {
+	padding-top: 1.2em;
+}
+
+#navuname {
+	padding-top: 1.25em;
+}
+
+
+#topnav a {  
+	display: block;
+	text-align: center;
+  	text-decoration: none;
+	font-size: 18px;
+}
+
+
+.card {
+	overflow: hidden;	
+}
+
+
+img.card-img {
+	width: 100%;
+	height: 320px;
+	object-fit: cover;
+}
+
+.copy {
+	padding: 5%;
+}
+
+/* act_table table spacing */
+
+.act_table {
+  	width: 80%;
+  	border-collapse: collapse;
+}
+
+.act_table th {
+ 	padding-top: ;
+  	padding-bottom: ;
+}
+
+.act_table td, .act_table th {
+  	padding: 0.5rem;
+}
+
+/* act_table table light mode colour */
+
+.flex-box {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+}
+
+.flex-box > div {
+	max-width: 512px;
+	width: 40%;
+	margin: 1rem; 
+}
+
+} /* <-- end of media*/
 
 
 
