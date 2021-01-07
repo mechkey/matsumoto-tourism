@@ -16,7 +16,7 @@
 		//Navigation bar generation
 		$debug = false;
 
-		echo '<ul>';
+		echo '<div id="displaytable"><ul>';
 		
 		//Logic to choose logo or brighter logo for dark mode - from logo.php
 		showLogo($_SERVER['REQUEST_URI']);
@@ -39,17 +39,17 @@
 		if ($debug) {
 			echo 'cur page path is: ' . $curpagepath;
 		}
-		
+
+
+		$key = 2;
 		$pageArray = contentAsArray($curpagepath);
-		//$pageArray = contentAsArray();
-
-		$listart = '<li class="navlink"><a href="';
-		$limid = '">';
-		$limidcur = '" id="current">';
-		$liend = '</a></li>';
-
 		//Create the links from the array.
 		foreach ($pageArray as $value) {
+			$listart = '<li class="navlink"><a href="';
+			$limid = '"accesskey="'. $key . '">';
+			$limidcur = '"accesskey="'. $key . '" id="current">';
+			$liend = '</a></li>';
+
 			$name = $value;
 			$name = str_replace('.php', '', $value);
 			$name = str_replace('content/', '', $name);
@@ -60,7 +60,7 @@
 			} else {
 				echo $listart . $value . $limid . $name . $liend;
 			}
-
+			++$key;
 		}
 
 		//fallbacktheme();
@@ -70,7 +70,7 @@
 		if (isset($_SESSION['themeType'])) {
 			if  ($_SESSION['themeType'] == 'dark') {
 				//$_SESSION['themeType'] = $themeType;
-				echo '<form id="theme" method="post" action=""><button type="submit" name="theme" class="navbutton" value="light"/>Light Mode</button></form></li>';
+				echo '<form id="theme-form" method="post" action=""><button type="submit" name="theme" class="navbutton" value="light"/>Light Mode</button></form></li>';
 
 			} else if (($_SESSION['themeType'] == 'light') ) {
 				//$_SESSION['themeType'] = $themeType;
@@ -95,13 +95,13 @@
 		echo searchbar();
 		echo "</li>";
 		*/
-		echo"</ul>";
+		echo"</ul></div>";
 		//return $navContent;
 	}
 
-	// ***
+	// *** *** *** *** *** *** *** *** *** *** 
 	//Supporting functions in alphabetical order
-	// ***
+	// *** *** *** *** *** *** *** *** *** *** 
 
 	function classID() {
 		if (isset($_SESSION['themeType'])) {
@@ -171,6 +171,6 @@
 			$logosrc = '/KF7013-2021/assets/images/logo.png';
 		}
 		
-		echo '<li id="navlogo"><a href="/KF7013-2021/index.php"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
+		echo '<li id="navlogo"><a href="/KF7013-2021/index.php" accesskey="1"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
 	}
 ?>
