@@ -14,6 +14,39 @@
 	if ($conn === false) {
 		echo "<p>conn failed:" . mysqli_connect_error() . " </p>\n";
 	} 
+	//this takes the activities from the activities table and puts them in the $acts array
+		function act_info_array($searching=false) {
+		global $debug;
+		$search = $_GET['search']  ?? null;
+		$search = htmlspecialchars($search);
+		//$floatsearch = floatval($search);
+
+		if ($search != null) {
+			$search = '%' . $search . '%';
+			if ($debug) {
+				echo 'search not null%%';
+			}
+		}
+		
+		if ($debug) {
+			echo $search;
+			br();
+		}
+		$acts = [];
+		// Trying OO php . . .
+		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+		$sql = "SELECT `activity_name`, `description`, `price`, `location`, a.activityID, i.alt FROM `activities` a JOIN `images` i ON a.activityID = i.activityID";
+
+		if ($res = $mysqli->query($sql)) {
+
+			while ($row = $res->fetch_assoc()) {
+				$acts[] = $row;
+			}
+			$res->free();
+		}
+		$mysqli->close();
+		return $acts;
+	}
 
 	//This function prints out the content of the activities table.
 	function act_book($searching=false, $excluding=false) {
@@ -184,47 +217,7 @@
 	}
 	*/
 
-		function index_act($searching=false, $excluding=false) {
-		global $debug;
-		$search = $_GET['search']  ?? null;
-		$search = htmlspecialchars($search);
-		$exclude = $_GET['exclude'] ?? null;
-		$exclude = htmlspecialchars($exclude);
-		//$floatsearch = floatval($search);
 
-		if ($search != null) {
-			$search = '%' . $search . '%';
-			if ($debug) {
-				echo 'search not null%%';
-			}
-		}
-		
-		if ($debug) {
-			echo $search;
-			br();
-			echo $exclude;
-			br();
-		}
-
-		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
-		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` ";
-
-		if ($res = $mysqli->query($sql)) {
-
-			while ($row = $result->fetch_assoc()) {
-				printf ("%s %s %d %s %s\n", $row["activity_name"], $row["description"], $row["price"], $row["location"], $row["activityID"]);
-			}
-			$stmt->execute();
-			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
-			//echo $act_id;
-			while ($stmt->fetch()) {
-
-			}
-			$stmt->close();
-		}
-		$mysqli->close();
-	}
 
 	function login ($user, $pass) {
 		if (array_key_exists('username', $_POST) && (array_key_exists('password', $_POST)) ) {

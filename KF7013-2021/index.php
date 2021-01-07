@@ -21,21 +21,30 @@
 	
 	<main id="content"> <!-- Beginning of page content -->
 		<h1>Welcome to Matsumoto's Tourism Website!</h1>	
-
-			<?php
-
-			index_act();
-			
-			
-			//$themevar = $_POST['theme'];
-			//echo $themevar;
-			$themestring = '<li><form id="theme" method="post" action=""><input type="submit" name="theme" value="';
-			//echo $themestring;
-			//navbarlogoutform($_SERVER['REQUEST_URI']);
-			//echo 'Username: ' . $_SESSION['username'];
-			//echo'<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
-			?>
-	</p>
+			<div class="flex-box">
+				<?php
+				
+				// This was an attempt to get the values of activities as an array for dynamically creating 'cards' to advertise the activities available.
+				$act_array = act_info_array();
+				foreach ($act_array as $value) {
+					extract($value);
+					echo '<div class="card"><div class="img-div"><img class="card-img" src="./assets/images/'.$activityID.'.jpg" alt="'.$alt.'"></img></div>';
+					echo '<div class="copy"><h1>'.$activity_name.'</h1>'.$description.'</div></div>';
+				}
+				
+				
+				//$themevar = $_POST['theme'];
+				//echo $themevar;
+				$themestring = '<li><form id="theme" method="post" action=""><input type="submit" name="theme" value="';
+				//echo $themestring;
+				//navbarlogoutform($_SERVER['REQUEST_URI']);
+				//echo 'Username: ' . $_SESSION['username'];
+				//echo'<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
+				?>
+				<aside>
+					<p>Please <a href="/KF7013-2021/content/register.php">register</a> to book these activities!</p>
+				</aside>
+			</div>
 	</main>
 	<footer id="footer"> <!-- Beginning of footer -->
 		<?php
