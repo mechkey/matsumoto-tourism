@@ -2,13 +2,17 @@
 	session_start();
 	session_regenerate_id();
 
-	$debug = false;
-
-	$user = isset($_POST['username']) ?? '';
-	$pass = isset($_POST['password']) ?? '';
-	
-	$user = htmlspecialchars(trim($user));
-	$pass = htmlspecialchars(trim($pass));
+	//$user = isset($_POST['username']) ?? '';
+	//$pass = isset($_POST['password']) ?? '';
+	$user = htmlspecialchars(trim($_POST['username']));
+	$pass = htmlspecialchars(trim($_POST['password']));
+	/*
+	if ($user != '') {
+		$user = htmlspecialchars(trim($user));
+	}
+	if ($user != '') {
+		$pass = htmlspecialchars(trim($pass));
+	}*/
 
 	$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
 	if ($conn) {
