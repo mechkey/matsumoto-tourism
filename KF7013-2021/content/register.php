@@ -3,7 +3,6 @@
 	include './php/dologin.php';
 	include './php/navbar.php';
 	include './php/layout.php';
-	logincheck();
 	doctype_etc();
 ?>
 
