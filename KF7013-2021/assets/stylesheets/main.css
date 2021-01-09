@@ -1,3 +1,4 @@
+/* css that applies to both desktop and mobile */
 html, body {
 	height: 100%;
 	font-family: Arial, Helvetica, sans-serif;
@@ -64,7 +65,7 @@ body {
 	color: white;
 }
 
-#navuname {
+#nav_uname {
 	color: #111;
 }
 
@@ -162,7 +163,7 @@ button {
 
 
 
-.dark #navuname {
+.dark #nav_uname {
 	color: #c8c8c8;
 }
 
@@ -216,7 +217,7 @@ button {
 @media only screen and (max-width: 699px) {
 
 :root {
-  --top-bar-height: 10em;
+  --top-bar-height: 14rem;
   --top-bar-padding: 4px 8px 8px 4px;
 }
 
@@ -224,9 +225,13 @@ button {
 	display: flex;
   	flex-direction: column;
 	z-index: 9000;
-	height: 14rem;
+	height: var(--top-bar-height);
 	width: 100%;
 	position: relative;
+}
+
+#content {
+	margin-top: 115px;
 }
 
 
@@ -359,17 +364,16 @@ aside {
 }
 
 
-/* */
 
-#navlogin {
+#nav_login {
 	padding-top: 0.5em;
 }
 
-#navsub, #navlogout {
+#nav_sub, #nav_logout, #li_nav_theme {
 	padding-top: 1.2em;
 }
 
-#navuname {
+#nav_uname {
 	padding-top: 1.25em;
 }
 

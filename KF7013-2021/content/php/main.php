@@ -284,14 +284,14 @@
 
 	//  <form id="login" method="post" action="./php/dologin.php"> 
 	//	<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
-	function login_form ($navsub=false) {
+	function login_form ($nav_sub=false) {
 		$login = '
 		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
 		<label for="username">Username:</label><input type= "text" id="username"name="username" size="8" required/><br />
 		<label for="password">Password:</label><input type= "password" id="password" name="password" size="8" pattern=".{8,}" required/> </li><li '; 
 
-		if ($navsub=true) {
-			$login .= 'id="navsub"';
+		if ($nav_sub=true) {
+			$login .= 'id="nav_sub"';
 		} 
 
 		$login .= '><input type="submit" id="loginbutton" class="nav_button"value="Login" /> 
@@ -308,7 +308,7 @@
 		$text = ucfirst($text);
 		//echo $text;
 		$logout = <<<LOGOUT
-		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
+		<form id="logout" method="post" action="/KF7013-2021/content/logout.php"> 
 		<button type="submit" ${class} id="logoutbutton"> ${text} </button>
 		</form>
 		LOGOUT;

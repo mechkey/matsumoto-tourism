@@ -65,7 +65,7 @@ function makenav_bar () {
 
 	//fallbacktheme();
 	//Light mode/dark mode button
-	echo '<li class="nav_link">';
+	echo '<li class="nav_link" id="li_nav_theme">';
 	
 	if (isset($_SESSION['themeType'])) {
 		if  ($_SESSION['themeType'] == 'dark') {
@@ -81,12 +81,12 @@ function makenav_bar () {
 	//Show nav bar login
 	//echo 'login should be here ';
 	if (isset($_SESSION['username'])) {
-		echo '<li id="navuname">';
-		echo 'Username: ' . $_SESSION['username'];
-		echo '</li><li id="navlogout">';
+		echo '<li id="nav_uname">';
+		echo 'Account: ' . $_SESSION['username'];
+		echo '</li><li id="nav_logout">';
 		logout_form("logout");
 	} /* else {
-			echo '<li id="navlogin">';
+			echo '<li id="nav_login">';
 			login_form(true);
 	}*/
 	echo "</li>";
@@ -101,7 +101,7 @@ function makenav_bar () {
 
 // *** *** *** *** *** *** *** *** *** *** 
 //Supporting functions in alphabetical order
-// *** *** *** *** *** *** *** *** *** *** 
+// *** *** *** *** *** *** *** *** *** ***  ***  ***  ***  ***  
 
 
 function contentAsArray($rel) { 
@@ -131,7 +131,6 @@ function contentAsArray($rel) {
 	//else if it a must be logged in page, only show it if logged in, and add it to the end of the array
 	} else { // if logged in
 		array_push( $tmpPageArray, $rel . 'account.php' );
-		array_push( $tmpPageArray, $rel . 'logout.php' );
 	}
 	return $tmpPageArray;
 } 
