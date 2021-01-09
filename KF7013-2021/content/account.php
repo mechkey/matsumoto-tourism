@@ -24,8 +24,12 @@
 		<?php 
 			echo '<H1>My Account page</h1>';
 			showDetails();
+			if (isset($_GET['select_id'])) {
+				act_book(false, false, true);
+			}
 			booked_act();
 			logout_form("Logout");
+			
 		?>
 	</main>
 	<footer id="footer"> <!-- Beginning of footer -->

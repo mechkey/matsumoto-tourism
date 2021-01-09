@@ -21,6 +21,10 @@
 	
 	<main id="content"> <!-- Beginning of page content -->
 		<h1>Welcome to Matsumoto's Tourism Website!</h1>	
+		<?php
+		
+				
+		echo '</select><input type="submit" value="Submit" class="nav_button">'; ?>
 			<div class="flex_box">
 				<?php
 				

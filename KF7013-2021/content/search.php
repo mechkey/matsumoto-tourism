@@ -55,6 +55,9 @@
 			$_GET['search'] != ''   &&
 			$_GET['exclude'] != ''  )
 		act_book(true, true);
+	else {
+		act_book(false, false, true);
+	}
 	?>
 	</main>
 	<footer id="footer"> <!-- Beginning of footer -->

@@ -50,12 +50,17 @@
 	}
 
 	//This function prints out the content of the activities table.
-	function act_book($searching=false, $excluding=false) {
+	function act_book($searching=false, $excluding=false, $searchID=false) {
 		global $debug;
+		$search = "";
+		$exclude = "";
 		$search = $_GET['search']  ?? null;
 		$search = htmlspecialchars($search);
 		$exclude = $_GET['exclude'] ?? null;
 		$exclude = htmlspecialchars($exclude);
+		$select_id = $_GET['select_id'] ?? null;
+		$select_id = htmlspecialchars($select_id);
+
 		//$floatsearch = floatval($search);
 
 		if ($search != null) {
@@ -69,7 +74,11 @@
 			if ($debug) {
 				echo 'Exclude not null%%';
 			}
-
+		}		
+		if ($select_id == null) {
+			if ($debug) {
+				echo 'select  null%%';
+			}
 		}
 		if ($debug) {
 			echo $search;
@@ -79,7 +88,7 @@
 		}
 
 		$table = <<< TABLE
-		 	<table class="act_table"><tr>
+		 	<table class="act_table"><caption>Activity Details:</caption><tr>
 				<th class="act_name">Activity Name</th><th class="act_desc">Description</th>
 				<th class="price">Price</th>
 				<th class="loc">Location</th>
@@ -92,7 +101,7 @@
 
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
-		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` ";
+		$sql = "SELECT * FROM `activities` ";
 
 		if ($searching || $excluding) {
 			$sql .= "WHERE ";
@@ -106,6 +115,10 @@
 		//if ($excluding) {
 		if ($exclude != null) {
 			$sql .= " `activity_name` NOT LIKE ? AND `description` NOT LIKE ? AND `location` NOT LIKE ? ";
+		}
+
+		if ($searchID == true) {
+			$sql = "SELECT * FROM `activities` WHERE `activityID` = ?";
 		}
 		//
 		if ($debug) {
@@ -127,11 +140,11 @@
 				$stmt->bind_param("sss", $exclude, $exclude, $exclude);
 				//echo 'if 2 exclude not null: ' . $exclude;
 			} else {
-				//echo 'else statement - exclude = null';
+				$stmt->bind_param("s", $select_id);
 			}
 
 			$stmt->execute();
-			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
+			$stmt->bind_result($act_id, $act_name, $desc, $price, $loc);
 			//echo $act_id;
 			while ($stmt->fetch()) {
 				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/dobook.php" method="post">
@@ -190,7 +203,7 @@
 			$stmt->execute();
 			$stmt->bind_result($act_name, $act_id, $date, $num_tix);
 			while ($stmt->fetch()) {
-				printf ('<tr><td class="act_name">%s</td><td class="act_id">%d</td><td class="act_date">%s</td><td class="price">%s</td><td><a href="activities.php">View Details</tr>', $act_name, $act_id, $date, $num_tix);
+				printf ('<tr><td class="act_name">%s</td><td class="act_id">%d</td><td class="act_date">%s</td><td class="price">%s</td><td><a href="account.php?select_id=%d">View Details</tr>', $act_name, $act_id, $date, $num_tix, $act_id);
 			}
 			echo '</table>';
 			$stmt->close();
@@ -340,9 +353,9 @@
 	*/
 
 
-	// This function makes a text box and submit button that searches the activity name, description and location. // /KF7013-2021/content/search.php
+	// This function makes a text box and submit button that searches the activity name, description and location. // It was originally also on the nav bar, hence a function for reuseability. /KF7013-2021/content/search.php
 	function searchbar() {
-		echo '<form id="search_form" method="get" action="">
+		echo '<form id="search_form" method="get">
 			<label for="search">Search (optional):</label>
 			<input id="search" name="search" type="text" placeholder="Search..." size="10">
 
@@ -351,6 +364,19 @@
 
 			<input type="submit" value="Submit" class="nav_button">
 			</form>';
+		/*$actID_array = act_info_array();	
+		echo'
+			<p>OR:</p><form id="select_id_form" method="get"><label for="select_id">Select the ID of the activity you want information on:<select name="select_id" id="select_id">';
+		foreach ($actID_array as $array => $array2) {
+			foreach ($array2 as $key => $value) {
+				if ($key == 'activityID') {
+					echo '<option value="'.$value.'">'.$value.'</option>';
+				
+				}
+			}
+		}
+				
+		echo '</select><input type="submit" value="Submit" class="nav_button"></form>';*/
 	}
 
 	//The website logo light mode and dark mode selector.
