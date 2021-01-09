@@ -142,7 +142,7 @@
 							<option value="7">7</option><option value="8">8</option>
 							<option value="9">9</option><option value="10">10</option>
 						</select></td>
-						<td><input type="date" id="date" name="date" required></td>
+						<td><input type="date" id="date" name="date" required><label for="date">Date:</label></td>
 						<td><button type="submit" name="book" value="%s">Book</button>
 						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id);
 			}
