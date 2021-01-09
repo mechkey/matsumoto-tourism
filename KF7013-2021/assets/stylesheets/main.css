@@ -30,19 +30,24 @@ body {
 }
 
 #topnav a {  
-	color: #fff;
+	color: #333;
 }
 
-#topnav a:hover p {
-	color: white;
+#topnav lia:hover {
+	color: grey;
 }
 
 #topnav li:hover a {
-	filter:brightness(140%);
+	text-decoration: underline;
+	background-color: #F0EAD6;
+}
+
+#navlogo:hover {
+	background-color: #F0EAD6;
 }
 
 #topnav li:hover img {
-	filter:brightness(160%);
+	filter:brightness(6000%);
 }
 
 .nav_a {
@@ -57,11 +62,6 @@ body {
 .navbutton {
 	background-color: #333;
 	color: white;
-}
-
-#topnav a:hover {
-  	border: 0px;
-  	border-radius: 5px;
 }
 
 #navuname {
@@ -146,17 +146,32 @@ button {
 	color: #c8c8c8;
 }
 
-/*
-.dark #topnav a:hover {
-	color: black;
+.dark #topnav a:hover p {
+	color: white;
 }
-*/
+
+.dark #topnav li:hover a {
+	background-color: #111;
+	text-decoration: underline;
+
+}
+
+.dark #topnav li:hover img {
+	filter:brightness(160%);
+}
+
+
+
 .dark #navuname {
 	color: #c8c8c8;
 }
 
-.dark #logo:hover > img {
+.dark #navlogo:hover > img {
 	filter: invert(1);
+}
+
+.dark #navlogo:hover {
+	background-color: black;
 }
 
 .dark .navbutton {
@@ -324,21 +339,23 @@ aside {
 
 #topnav li {
 	float: left;
-	border-radius: 5px;
 	margin-right: 1em;
 	text-align: middle;
 }
 
+#li_theme_form {
+	padding-top: 1.1rem;
+}
 
 #navlogo {
-	padding: 0.8em 0.5em 1em;
+	padding: 0.8em 0.5em 0.9em;
 }
 
 
 
 .nav_a {
 	display: block;
-	padding: 1em 0.5em 1.4em;
+	padding: 1em 0.5em 1.3em;
 }
 
 
