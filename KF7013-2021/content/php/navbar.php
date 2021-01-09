@@ -55,6 +55,9 @@ function makenav_bar () {
 		$name = str_replace('content/', '', $name);
 		$name = ucfirst($name);
 		//echo " Value is " . $value;
+		if ($name == "Account") {
+			$name .= ": ".$_SESSION['username'];
+		}
 		if ($name == $path) {
 			echo $listart . $value . $limidcur . $name . $liend;
 		} else {
@@ -82,7 +85,7 @@ function makenav_bar () {
 	//echo 'login should be here ';
 	if (isset($_SESSION['username'])) {
 		echo '<li id="nav_uname">';
-		echo 'Account: ' . $_SESSION['username'];
+		/*echo 'Account: ' . $_SESSION['username'];*/
 		echo '</li><li id="nav_logout">';
 		logout_form("logout");
 	} /* else {
