@@ -83,8 +83,8 @@
 				<th class="act_name">Activity Name</th><th class="act_desc">Description</th>
 				<th class="price">Price</th>
 				<th class="loc">Location</th>
-				<th class="num_tix"><label for="num_tix">Tickets required:</label></th>
-				<th class="th_date"><label for="date">Date:</label></th>
+				<th class="num_tix">Tickets required:</th>
+				<th class="th_date">Date:</th>
 				<th class="book">Book</th></tr>
 		TABLE;
 
@@ -135,7 +135,7 @@
 			//echo $act_id;
 			while ($stmt->fetch()) {
 				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/dobook.php" method="post">
-						<select name="num_tix" required>
+						<select name="num_tix" required><label for="num_tix">Number of Tickets</label>
 							<option value="1">1</option><option value="2">2</option>
 							<option value="3">3</option><option value="4">4</option>
 							<option value="5">5</option><option value="6">6</option>
