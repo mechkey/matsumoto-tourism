@@ -73,20 +73,20 @@ function makenav_bar () {
 	if (isset($_SESSION['themeType'])) {
 		if  ($_SESSION['themeType'] == 'dark') {
 			//$_SESSION['themeType'] = $themeType;
-			echo '<form id="theme_form" method="post" action=""><button type="submit" name="theme" class="nav_button" value="light"/>Light Mode</button></form></li>';
+			echo '<form id="theme_form" method="post"><button type="submit" name="theme" class="nav_button" value="light"/>Light Mode</button></form></li>';
 
 		} else if (($_SESSION['themeType'] == 'light') ) {
 			//$_SESSION['themeType'] = $themeType;
-			echo '<form id="theme_form" method="post" action=""><button type="submit" name="theme" class="nav_button" value="dark"/>Dark Mode</button></form></li>';
+			echo '<form id="theme_form" method="post"><button type="submit" name="theme" class="nav_button" value="dark"/>Dark Mode</button></form></li>';
 		}
 	}
 	echo '</li>';
 	//Show nav bar login
 	//echo 'login should be here ';
 	if (isset($_SESSION['username'])) {
-		echo '<li id="nav_uname">';
-		/*echo 'Account: ' . $_SESSION['username'];*/
-		echo '</li><li id="nav_logout">';
+		/*echo '<li id="nav_uname">';
+		echo 'Account: ' . $_SESSION['username'] . </li>;*/
+		echo '<li id="nav_logout">';
 		logout_form("logout");
 	} /* else {
 			echo '<li id="nav_login">';

@@ -43,6 +43,16 @@ body {
 	background-color: #F0EAD6;
 }
 
+#topnav li:hover form {
+	text-decoration: underline;
+	background-color: #F0EAD6;
+}
+
+#nav_button {
+	display: block;
+	/*padding-left: 40%;*/
+}
+
 #navlogo:hover {
 	background-color: #F0EAD6;
 }

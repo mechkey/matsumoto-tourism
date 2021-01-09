@@ -308,7 +308,7 @@
 		$text = ucfirst($text);
 		//echo $text;
 		$logout = <<<LOGOUT
-		<form id="logout" action="/KF7013-2021/content/logout.php"> 
+		<form id="logout" method="post" action="/KF7013-2021/content/logout.php"> 
 		<button type="submit" ${class} id="logoutbutton"> ${text} </button>
 		</form>
 		LOGOUT;

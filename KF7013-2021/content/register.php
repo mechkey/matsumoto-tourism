@@ -2,7 +2,6 @@
 	session_start();
 	include './php/navbar.php';
 	include './php/layout.php';
-	logincheck();
 	doctype_etc();
 ?>
 
@@ -54,11 +53,12 @@
 
 			
 	<?php
+	/*
 	echo 'SERVER-REQUEST_URI is ' . $_SERVER['REQUEST_URI'];
 	br();
 	echo 'path is ' . getpath();	
 	br();
-
+	*/
 	//<label for="email">Email:</label><br />
 	//<input type="email" id="email" name="email"><br />
 	
