@@ -1,5 +1,13 @@
 <?php
 
+function classID() {
+		if (isset($_SESSION['themeType'])) {
+			echo $_SESSION['themeType'];
+		} else {
+			echo $_SESSION['themeType'] = 'light';
+		}
+	}
+
 function doctype_etc() {
 	echo '<!DOCTYPE html>
 	<html lang="en">';
@@ -49,7 +57,7 @@ function makeHeadToMain ($pageTitle) {
 		<link rel="stylesheet" href="../assets/stylesheets/main.css">
 		<?php 
 		include './php/layout.php';
-		include './php/nav_bar.php';
+		include './php/navbar.php';
 		echo makeHead($pageTitle);
 		?>
 	</head>

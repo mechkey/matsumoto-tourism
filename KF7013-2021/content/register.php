@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include './php/nav_bar.php';
+	include './php/navbar.php';
 	include './php/layout.php';
 	logincheck();
 	doctype_etc();
