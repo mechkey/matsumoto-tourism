@@ -23,18 +23,20 @@
 	<main id="content"> <!-- Beginning of page content -->
 		<h1> References: </h1>
 		<ul>
-			<li><p>[No date]. 1.jpg, logo.png, logogray.png https://www.japan-guide.com/</p></li>
-			<li><p>[No date].  [Online]. [Accessed 07 January 2021]. Available at: https://www.kamikochi.org/</p></li>
-			<li><p>2018. 3.jpg . [Online]. [Accessed 07 January 2021]. Available at:  https://visitmatsumoto.com/en/spot/biwa-no-yu/</p></li>
-			<li><p>2020. 4.jpg . [Online]. [Accessed 07 January 2021]. Available at: https://visitmatsumoto.com/en/spot/matsumoto-museum-of-art/</p></li>
-			<li><p>2018. 5.jpg . [Online]. [Accessed 07 January 2021]. Available at: https://visitmatsumoto.com/en/spot/ikegami-hyakuchikutei/</p></li>
-			<li><p>2019. 6.jpg . [Online]. [Accessed 07 January 2021]. Available at: https://visitmatsumoto.com/en/spot/ukiyoemuseum/</p></li>
-			<li><p>2018. 7.jpg . [Online]. [Accessed 07 January 2021]. Available at:  https://visitmatsumoto.com/en/spot/taiko-drum-workshop/]</p></li>
-			<li><p>2020. 8.jpg [Online]. [Accessed 07 January 2021]. Available at: https://en.wikipedia.org/wiki/Kitsuki_Castle#/media/File:Kitsuki_castle.jpg</p></li>
+			<li><p>Japan Guide, [No date]. <span class="p_ita">Photograph showing Matsumoto Castle and moat.</span> [Online]. [Accessed 07 January 2021]. Available at: https://www.japan-guide.com/</p></li>
+			<li><p>Japan Guide, [No date]. <span class="p_ita">Artistic reinterpretation of photograph showing Matsumoto Castle and moat.</span> [Online]. [Accessed 07 January 2021]. Available at: https://www.japan-guide.com/</p></li>
+			<li><p>Kamikochi, [No date]. <span class="p_ita">A bridge across the Kamikochi Valley river, with snow-covered mountains in the background.</span> [Online]. [Accessed 07 January 2021]. Available at: https://www.kamikochi.org/</p></li>
+			<li><p>2018. 3.jpg <span class="p_ita">Steam rising from a hot spring with a traditional Japanese wooden building in the background.</span> [Online]. [Accessed 07 January 2021]. Available at:  https://visitmatsumoto.com/en/spot/biwa-no-yu/</p></li>
+			<li><p>2020. 4.jpg .<span class="p_ita">The front door of the Matsumoto Museum of Art with trees nearby.</span> [Online]. [Accessed 07 January 2021]. Available at: https://visitmatsumoto.com/en/spot/matsumoto-museum-of-art/</p></li>
+			<li><p>2018. 5.jpg . <span class="p_ita">The lush garden of Ikegami Hyakuchikutei.</span> [Online]. [Accessed 07 January 2021]. Available at: https://visitmatsumoto.com/en/spot/ikegami-hyakuchikutei/</p></li>
+			<li><p>2019. 6.jpg .<span class="p_ita">The exterior of the Ukiyo-e Museum.</span> [Online]. [Accessed 07 January 2021]. Available at: https://visitmatsumoto.com/en/spot/ukiyoemuseum/</p></li>
+			<li><p>2018. 7.jpg .<span class="p_ita">Four students being instructed on how to play Taiko drums.</span> [Online]. [Accessed 07 January 2021]. Available at:  https://visitmatsumoto.com/en/spot/taiko-drum-workshop/]</p></li>
+			<li><p>2020. 8.jpg <span class="p_ita">Exterior showing the three stories of Another Castle.</span> [Online]. [Accessed 07 January 2021]. Available at: https://en.wikipedia.org/wiki/Kitsuki_Castle#/media/File:Kitsuki_castle.jpg</p></li>
+			<li><p> 9.jpg
 		</ul>
 		<h2>Code</h2>
 		<ul>
-			<li>w3schools. [No date].<span class="p_ita">CSS display Property</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3schools.com/cssref/pr_class_display.asp</p></li>
+			<li>w3schools. [No date].<span class="p_ita">CSS display Property</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3schools.com/cssref/pr_class_display.asp</li>
 
 			<li>navbar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018.<span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</li>
 
