@@ -22,9 +22,8 @@
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
 		<?php 
-			echo '<p>My Account page</p>';
+			echo '<H1>My Account page</h1>';
 			showDetails();
-			echo '<p>Booked Activities: </p>';
 			booked_act();
 			logout_form("Logout");
 		?>

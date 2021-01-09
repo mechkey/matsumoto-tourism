@@ -135,16 +135,16 @@
 			//echo $act_id;
 			while ($stmt->fetch()) {
 				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/dobook.php" method="post">
-						<select name="num_tix" required><label for="num_tix">Ticket quantity:</label>
-							<option value="1">1</option><option value="2">2</option>
-							<option value="3">3</option><option value="4">4</option>
-							<option value="5">5</option><option value="6">6</option>
-							<option value="7">7</option><option value="8">8</option>
-							<option value="9">9</option><option value="10">10</option>
+						<select name="num_tix%d" required><label for="num_tix%d" hidden>Number of tickets for %s:</label>
+							<option label="1 ticket"value="1">1</option><option label="2 ticket" value="2">2</option>
+							<option label="3 ticket"value="3">3</option><option label="4 ticket" value="4">4</option>
+							<option label="5 ticket"value="5">5</option><option label="6 ticket" value="6">6</option>
+							<option label="7 ticket"value="7">7</option><option label="8 ticket" value="8">8</option>
+							<option label="9 ticket"value="9">9</option><option label="10 ticket" value="10">10</option>
 						</select></td>
-						<td><input type="date" id="date" name="date" required><label for="date">Date:</label></td>
+						<td><label for="date%s" hidden>Date to book:</label><input type="date" id="date%s" name="date" placeholder="dd/mm/yyyy" required></td>
 						<td><button type="submit" name="book" value="%s">Book</button>
-						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id);
+						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id, $act_name, $act_id, $act_id, $act_id, $act_id);
 			}
 			$stmt->close();
 		}
@@ -179,7 +179,7 @@
 
 
 	function booked_act () {
-		echo '<table class="act_table"><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th></tr>';
+		echo '<table class="booked_act_table"><p><caption>Booked Activities:</caption></p><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th></tr>';
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
 
@@ -349,7 +349,7 @@
 			<label for="exclude">Exclude (optional):</label>
 			<input id="exclude" name="exclude" type="text" placeholder="Exclude..." size="10">
 
-			<input type="submit" class="nav_button">
+			<input type="submit" value="Submit" class="nav_button">
 			</form>';
 	}
 
@@ -358,7 +358,7 @@
 
 	//Shows the account, first and last names for the logged in user.
 	function showDetails () {
-		echo'<p>Your details:</p><table class="act_table"><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
+		echo '<table id="details_table"><p><caption>Your details:</caption></p><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
 
 				// Trying OO php . . .
 				$mysqli = new mysqli('localhost', 'root', 'root', 'travel');

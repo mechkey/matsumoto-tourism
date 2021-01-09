@@ -106,24 +106,24 @@ button {
 	border: 1px solid gray;
 }
 
-.act_table th {
+table th {
   	background-color: #634caf	;
   	color: white;
 }
 
-.act_table td, .act_table th {
+table td, table th {
   	border: 1px solid #ddd;
 }
 
-.act_table tr:nth-child(even) {
+table tr:nth-child(even) {
 	background-color: #efefef;
 }
 
-.act_table tr:nth-child(odd) {
+table tr:nth-child(odd) {
 	background-color: #dadada;
 }
 
-.act_table tr:hover {
+table tr:hover {
 	background-color: ;
 }
 
@@ -198,20 +198,20 @@ button {
 	color: lightgray;
 }
 
-.dark .act_table td, .dark .act_table th {
+.dark table td, .dark table th {
   	border: 1px solid #ddd;
   	color:#eee;
 }
 
-.dark .act_table tr:hover {
+.dark table tr:hover {
 	background-color: red;
 }
 
-.dark .act_table tr:nth-child(even) {
+.dark table tr:nth-child(even) {
 	background-color: #333;
 }
 
-.dark .act_table tr:nth-child(odd) {
+.dark table tr:nth-child(odd) {
 	background-color: #444;
 }
 
@@ -416,17 +416,17 @@ img.card_img {
 
 /* act_table table spacing */
 
-.act_table {
+table {
   	width: 80%;
   	border-collapse: collapse;
 }
 
-.act_table th {
+table th {
  	padding-top: ;
   	padding-bottom: ;
 }
 
-.act_table td, .act_table th {
+table td, table th {
   	padding: 0.5rem;
 }
 
