@@ -30,26 +30,29 @@ body {
 }
 
 #topnav a {  
-	color: #111;
+	color: #fff;
 }
 
-#topnav a:hover {
-  	background-color: gray;
-	color: black;
+#topnav a:hover p {
+	color: white;
 }
 
-#navuname {
-	color: #111;
+#topnav li:hover a {
+	filter:brightness(140%);
 }
 
+#topnav li:hover img {
+	filter:brightness(160%);
+}
+
+.nav_a {
+	display: block;
+}
 
 #topnav img {
 	background-color: transparent;
 }
 
-input {
- 	background-color: #f5f5dc;
-}
 
 .navbutton {
 	background-color: #333;
@@ -61,19 +64,26 @@ input {
   	border-radius: 5px;
 }
 
+#navuname {
+	color: #111;
+}
+
+input {
+ 	background-color: #f5f5dc;	
+ 	color: black;
+
+}
 
 .login {
 	list-style-type: none;
 }
 
-input {
-	color: black;
-}
 
 button {
 	color: white;
 	background-color: #333;
 }
+
 
 .flex_box > div {
 	background-color: #f5f5e9;
@@ -136,11 +146,11 @@ button {
 	color: #c8c8c8;
 }
 
-
+/*
 .dark #topnav a:hover {
 	color: black;
 }
-
+*/
 .dark #navuname {
 	color: #c8c8c8;
 }
@@ -267,7 +277,7 @@ img.card-img {
 @media only screen and (min-width: 700px) {
 
 :root {
-  --top-bar-height: 4em;
+  --top-bar-height: 3.8em;
   --top-bar-padding: 4px 8px 8px 4px;
 }
 
@@ -321,12 +331,18 @@ aside {
 
 
 #navlogo {
-	padding-top: 0.8em;
+	padding: 0.8em 0.5em 1em;
 }
 
-.navlink {
-	padding-top: 1.2em;
+
+
+.nav_a {
+	display: block;
+	padding: 1em 0.5em 1.4em;
 }
+
+
+/* */
 
 #navlogin {
 	padding-top: 0.5em;

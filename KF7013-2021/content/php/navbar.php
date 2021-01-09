@@ -46,7 +46,7 @@
 		//Create the links from the array.
 		foreach ($pageArray as $value) {
 			$listart = '<li class="navlink"><a href="';
-			$limid = '"accesskey="'. $key . '">';
+			$limid = '"accesskey="'. $key . '" class="nav_a">';
 			$limidcur = '"accesskey="'. $key . '" id="current">';
 			$liend = '</a></li>';
 
