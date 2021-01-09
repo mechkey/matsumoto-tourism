@@ -294,7 +294,7 @@
 			$login .= 'id="navsub"';
 		} 
 
-		$login .= '><input type="submit" id="loginbutton" class="navbutton"value="Login" /> 
+		$login .= '><input type="submit" id="loginbutton" class="nav_button"value="Login" /> 
 		</form>
 		';
 		echo $login;
@@ -303,7 +303,7 @@
 	function logout_form($text) {
 		$class = null;
 		if ($text == 'logout') {
-			$class = 'class="navbutton"';
+			$class = 'class="nav_button"';
 		}
 		$text = ucfirst($text);
 		//echo $text;
@@ -320,7 +320,7 @@
 	function nav_barlogout_form ($value) {
 		$logout = <<<LOGOUT
 		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
-		<input type="submit" class="navbutton" id="logoutbutton" value="$value" /> 
+		<input type="submit" class="nav_button" id="logoutbutton" value="$value" /> 
 		</form>
 		LOGOUT;
 
@@ -349,7 +349,7 @@
 			<label for="exclude">Exclude (optional):</label>
 			<input id="exclude" name="exclude" type="text" placeholder="Exclude..." size="10">
 
-			<input type="submit" class="navbutton">
+			<input type="submit" class="nav_button">
 			</form>';
 	}
 

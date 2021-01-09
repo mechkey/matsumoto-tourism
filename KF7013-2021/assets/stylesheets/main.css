@@ -59,7 +59,7 @@ body {
 }
 
 
-.navbutton {
+.nav_button {
 	background-color: #333;
 	color: white;
 }
@@ -174,12 +174,12 @@ button {
 	background-color: black;
 }
 
-.dark .navbutton {
+.dark .nav_button {
 	background-color: #333;
 	color: #fff;
 }
 
-.dark .navlink {
+.dark .nav_link {
 	background-color: transparent;
 }
 
@@ -269,7 +269,7 @@ button {
 	margin-bottom: 5%; 
 }
 
-#theme_form, .navbutton {
+#theme_form, .nav_button {
 	align-content: center;
 }
 
@@ -373,7 +373,7 @@ aside {
 	padding-top: 1.25em;
 }
 
-.navbutton {
+.nav_button {
 	align-self: center;
 }
 

@@ -45,7 +45,7 @@ function makenav_bar () {
 	$pageArray = contentAsArray($curpagepath);
 	//Create the links from the array.
 	foreach ($pageArray as $value) {
-		$listart = '<li class="navlink"><a href="';
+		$listart = '<li class="nav_link"><a href="';
 		$limid = '"accesskey="'. $key . '" class="nav_a">';
 		$limidcur = '"accesskey="'. $key . '" id="current">';
 		$liend = '</a></li>';
@@ -65,16 +65,16 @@ function makenav_bar () {
 
 	//fallbacktheme();
 	//Light mode/dark mode button
-	echo '<li class="navlink">';
+	echo '<li class="nav_link">';
 	
 	if (isset($_SESSION['themeType'])) {
 		if  ($_SESSION['themeType'] == 'dark') {
 			//$_SESSION['themeType'] = $themeType;
-			echo '<form id="theme_form" method="post" action=""><button type="submit" name="theme" class="navbutton" value="light"/>Light Mode</button></form></li>';
+			echo '<form id="theme_form" method="post" action=""><button type="submit" name="theme" class="nav_button" value="light"/>Light Mode</button></form></li>';
 
 		} else if (($_SESSION['themeType'] == 'light') ) {
 			//$_SESSION['themeType'] = $themeType;
-			echo '<form id="theme_form" method="post" action=""><button type="submit" name="theme" class="navbutton" value="dark"/>Dark Mode</button></form></li>';
+			echo '<form id="theme_form" method="post" action=""><button type="submit" name="theme" class="nav_button" value="dark"/>Dark Mode</button></form></li>';
 		}
 	}
 	echo '</li>';
@@ -91,7 +91,7 @@ function makenav_bar () {
 	}*/
 	echo "</li>";
 	/*
-	echo '<li class="navlink">';
+	echo '<li class="nav_link">';
 	echo searchbar();
 	echo "</li>";
 	*/
