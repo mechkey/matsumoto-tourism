@@ -135,7 +135,7 @@
 			//echo $act_id;
 			while ($stmt->fetch()) {
 				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/dobook.php" method="post">
-						<select name="num_tix" required><label for="num_tix">Number of Tickets</label>
+						<select name="num_tix" required><label for="num_tix">Ticket quantity:</label>
 							<option value="1">1</option><option value="2">2</option>
 							<option value="3">3</option><option value="4">4</option>
 							<option value="5">5</option><option value="6">6</option>
