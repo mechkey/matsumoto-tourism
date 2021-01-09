@@ -35,8 +35,9 @@
 		$acts = [];
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
-		$sql = "SELECT `activity_name`, `description`, `price`, `location`, a.activityID, i.alt FROM `activities` a JOIN `images` i ON a.activityID = i.activityID";
-
+		/* database of alt images - v1
+		$sql = "SELECT `activity_name`, `description`, `price`, `location`, a.activityID, i.alt FROM `activities` a JOIN `images` i ON a.activityID = i.activityID";*/
+		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities`";
 		if ($res = $mysqli->query($sql)) {
 
 			while ($row = $res->fetch_assoc()) {
@@ -150,6 +151,32 @@
 		$mysqli->close();
 		echo '</table>';
 	}
+
+	function alt($activityID) {
+		$alt = "";
+		if ($activityID == 1) {
+			$alt = "Matsumoto Castle surrounded by a moat with a red bridge";
+		} else if ($activityID == 2) {
+			$alt = "A bridge across the Kamikochi Valley river, with snow-covered mountains in the background";
+		} else if ($activityID == 3) {
+			$alt = "Steam rising from a hot spring with a traditional Japanese wooden building in the background";
+		} else if ($activityID == 4) {
+			$alt = "The front door of the Matsumoto Museum of Art with trees nearby";
+		} else if ($activityID == 5) {
+			$alt = "The lush garden of Ikegami Hyakuchikutei";
+		} else if ($activityID == 6) {
+			$alt = "The exterior of the Ukiyo-e Museum";
+		} else if ($activityID == 7) {
+			$alt = "Four students being instructed on how to play Taiko drums";
+		} else if ($activityID == 8) {
+			$alt = "Exterior showing the three stories of Another Castle";
+		} else if ($activityID == 9) {
+			$alt = "Bamboo pipes bring the hot spring water into the hot springs at Shirahone Hot Springs";
+		}
+		return $alt;
+	}
+		
+
 
 	function booked_act () {
 		echo '<table class="act_table"><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th></tr>';

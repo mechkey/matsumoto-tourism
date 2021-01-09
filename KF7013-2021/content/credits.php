@@ -22,36 +22,24 @@
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
 		<h1> References: </h1>
-		<p>1.jpg, logo.png, logogray.png https://www.japan-guide.com/e/e6050.html
-		
-		2.jpg https://www.kamikochi.org/images/top_ss4.jpg
-		3.jpg https://i1.wp.com/visitmatsumoto.com/wp-content/uploads/2018/03/asama749-1.jpg https://visitmatsumoto.com/en/spot/biwa-no-yu/
-		4.jpg https://visitmatsumoto.com/en/spot/matsumoto-museum-of-art/
-		https://i2.wp.com/visitmatsumoto.com/wp-content/uploads/2018/01/MCM_mainVisiual.jpg
-		5.jpg https://visitmatsumoto.com/en/spot/ikegami-hyakuchikutei/
-		https://i1.wp.com/visitmatsumoto.com/wp-content/uploads/2018/03/IMG_9654.jpg
-		6.jpg https://visitmatsumoto.com/en/spot/ukiyoemuseum/
-		https://i1.wp.com/visitmatsumoto.com/wp-content/uploads/2018/01/8102879a1708d8a8de1f2a9b31a51c34.jpg
-		7.jpg https://visitmatsumoto.com/en/spot/taiko-drum-workshop/]
-		8.jpg https://www.visitscotland.com/info/tours/the-viking-coast-and-alnwick-castle-a47c9e94
-		https://d1xw84ija6gjgy.cloudfront.net/production/c96c08f8bb7960e11a1239352a479053/conversions/SD.jpg
+		<ul>
+			<li><p>[No date]. 1.jpg, logo.png, logogray.png https://www.japan-guide.com/</p></li>
+			<li><p>[No date].  [Online]. [Accessed 07 January 2021]. Available at: https://www.kamikochi.org/</p></li>
+			<li><p>2018. 3.jpg . [Online]. [Accessed 07 January 2021]. Available at:  https://visitmatsumoto.com/en/spot/biwa-no-yu/</p></li>
+			<li><p>2020. 4.jpg . [Online]. [Accessed 07 January 2021]. Available at: https://visitmatsumoto.com/en/spot/matsumoto-museum-of-art/</p></li>
+			<li><p>2018. 5.jpg . [Online]. [Accessed 07 January 2021]. Available at: https://visitmatsumoto.com/en/spot/ikegami-hyakuchikutei/</p></li>
+			<li><p>2019. 6.jpg . [Online]. [Accessed 07 January 2021]. Available at: https://visitmatsumoto.com/en/spot/ukiyoemuseum/</p></li>
+			<li><p>2018. 7.jpg . [Online]. [Accessed 07 January 2021]. Available at:  https://visitmatsumoto.com/en/spot/taiko-drum-workshop/]</p></li>
+			<li><p>2020. 8.jpg [Online]. [Accessed 07 January 2021]. Available at: https://en.wikipedia.org/wiki/Kitsuki_Castle#/media/File:Kitsuki_castle.jpg</p></li>
+		</ul>
+		<h2>Code</h2>
+		<ul>
+			<li>w3schools. [No date].<span class="p_ita">CSS display Property</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3schools.com/cssref/pr_class_display.asp</p></li>
 
-		<h1>Code</h1>
-		
-		CSS display Property
+			<li>navbar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018.<span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</li>
 
-		https://www.w3schools.com/cssref/pr_class_display.asp
-		--
-
-		Based on: 
-
-		Centering List Items Horizontally (Slightly Trickier Than You Might Think)
-
-		https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/#:~:text=Just%20give%20the%20list%20centered,width%3A%20fit%2Dcontent%3B%20.
-		--
-
-
-		</p>
+			<li>main.css:line 254, 360. Based on: Alligator.io, 2020.<span class="p_ita">Cropping Images in CSS With object-fit</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit</li>
+		</ul>
 		<?php 
 		?>
 	</main>
