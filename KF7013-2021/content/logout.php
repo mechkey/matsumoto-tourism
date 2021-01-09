@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include './php/navbar.php';
+	include './php/nav_bar.php';
 	include './php/layout.php';
 	logincheck();
 	doctype_etc();
@@ -17,7 +17,7 @@
 <body class="<?php classID() ?>">
 	<nav id="topnav">
 		<?php 
-		makeNavBar(); 
+		makenav_bar(); 
 		?>
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
@@ -25,7 +25,7 @@
 
 			<p>Are you sure you wish to logout?</p>
 			<?php
-			logoutform('confirm');
+			logout_form('confirm');
 			?>
 		</div>
 	</main>

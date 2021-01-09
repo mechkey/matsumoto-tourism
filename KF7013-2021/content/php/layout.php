@@ -49,7 +49,7 @@ function makeHeadToMain ($pageTitle) {
 		<link rel="stylesheet" href="../assets/stylesheets/main.css">
 		<?php 
 		include './php/layout.php';
-		include './php/navbar.php';
+		include './php/nav_bar.php';
 		echo makeHead($pageTitle);
 		?>
 	</head>
@@ -57,7 +57,7 @@ function makeHeadToMain ($pageTitle) {
 		<div id="container"> <!-- This container is necessary to make sure the footer stays where it belongs -->
 			<nav id="topnav">
 				<?php 
-				makeNavBar(); 
+				makenav_bar(); 
 				?>
 			</nav>
 			MAKE;

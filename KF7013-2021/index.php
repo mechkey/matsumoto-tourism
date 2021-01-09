@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include './content/php/navbar.php';
+	include './content/php/nav_bar.php';
 	include './content/php/layout.php';
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 <body class="<?php classID() ?>">
 	<nav id="topnav">
 		<?php 
-		makeNavBar(); 
+		makenav_bar(); 
 		?>
 	</nav>
 	
@@ -29,7 +29,7 @@
 				foreach ($act_array as $value) {
 					extract($value);
 					$img_alt = alt($activityID);
-					echo '<div class="card"><img class="card-img" src="./assets/images/'.$activityID.'.jpg" alt="'.$img_alt.'"></img>';
+					echo '<div class="card"><img class="card_img" src="./assets/images/'.$activityID.'.jpg" alt="'.$img_alt.'"></img>';
 					echo '<div class="copy"><h1>'.$activity_name.'</h1><p>'.$description.'</p></div></div>';
 				}
 				
@@ -38,7 +38,7 @@
 				//echo $themevar;
 				$themestring = '<li><form id="theme" method="post" action=""><input type="submit" name="theme" value="';
 				//echo $themestring;
-				//navbarlogoutform($_SERVER['REQUEST_URI']);
+				//nav_barlogout_form($_SERVER['REQUEST_URI']);
 				//echo 'Username: ' . $_SESSION['username'];
 				//echo'<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
 				?>

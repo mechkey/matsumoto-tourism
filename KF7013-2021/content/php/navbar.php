@@ -11,7 +11,7 @@
 		$_SESSION['themeType'] = 'light';
 	}
 
-	function makeNavBar () {
+	function makenav_bar () {
 
 		//Navigation bar generation
 		$debug = false;
@@ -70,11 +70,11 @@
 		if (isset($_SESSION['themeType'])) {
 			if  ($_SESSION['themeType'] == 'dark') {
 				//$_SESSION['themeType'] = $themeType;
-				echo '<form id="theme-form" method="post" action=""><button type="submit" name="theme" class="navbutton" value="light"/>Light Mode</button></form></li>';
+				echo '<form id="theme_form" method="post" action=""><button type="submit" name="theme" class="navbutton" value="light"/>Light Mode</button></form></li>';
 
 			} else if (($_SESSION['themeType'] == 'light') ) {
 				//$_SESSION['themeType'] = $themeType;
-				echo '<form id="theme" method="post" action=""><button type="submit" name="theme" class="navbutton" value="dark"/>Dark Mode</button></form></li>';
+				echo '<form id="theme_form" method="post" action=""><button type="submit" name="theme" class="navbutton" value="dark"/>Dark Mode</button></form></li>';
 			}
 		}
 		echo '</li>';
@@ -84,10 +84,10 @@
 			echo '<li id="navuname">';
 			echo 'Username: ' . $_SESSION['username'];
 			echo '</li><li id="navlogout">';
-			logoutform("logout");
+			logout_form("logout");
 		} /* else {
 				echo '<li id="navlogin">';
-				loginform(true);
+				login_form(true);
 		}*/
 		echo "</li>";
 		/*
