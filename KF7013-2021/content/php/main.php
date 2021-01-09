@@ -284,7 +284,7 @@
 
 	//  <form id="login" method="post" action="./php/dologin.php"> 
 	//	<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
-	function loginform ($navsub=false) {
+	function login_form ($navsub=false) {
 		$login = '
 		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
 		<label for="username">Username:</label><input type= "text" id="username"name="username" size="8" required/><br />
@@ -300,7 +300,7 @@
 		echo $login;
 	}
 	//Function to make the logout form. Takes text for a parameter that is displayed on the button and also is used for logic to see where the button is placed
-	function logoutform($text) {
+	function logout_form($text) {
 		$class = null;
 		if ($text == 'logout') {
 			$class = 'class="navbutton"';
@@ -317,7 +317,7 @@
 
 
 	/* deprecated
-	function navbarlogoutform ($value) {
+	function nav_barlogout_form ($value) {
 		$logout = <<<LOGOUT
 		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
 		<input type="submit" class="navbutton" id="logoutbutton" value="$value" /> 
@@ -328,7 +328,7 @@
 	} */
 
 	/* deprecated	
-	function navbarlogoutform2
+	function nav_barlogout_form2
 	 () {
 		$logout = '
 		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include './php/navbar.php';
+	include './php/nav_bar.php';
 	include './php/layout.php';
 	logincheck();
 	doctype_etc();
@@ -17,7 +17,7 @@
 <body class="<?php classID() ?>">
 	<nav id="topnav">
 		<?php 
-		makeNavBar(); 
+		makenav_bar(); 
 		?>
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
@@ -36,7 +36,7 @@
 		<ul>
 			<li>w3schools. [No date].<span class="p_ita">CSS display Property</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3schools.com/cssref/pr_class_display.asp</p></li>
 
-			<li>navbar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018.<span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</li>
+			<li>nav_bar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018.<span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</li>
 
 			<li>main.css:line 254, 360. Based on: Alligator.io, 2020.<span class="p_ita">Cropping Images in CSS With object-fit</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit</li>
 		</ul>

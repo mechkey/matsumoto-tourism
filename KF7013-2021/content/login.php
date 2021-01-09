@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include './php/navbar.php';
+	include './php/nav_bar.php';
 	include './php/layout.php';
 	doctype_etc();
 ?>
@@ -16,13 +16,13 @@
 <body class="<?php classID() ?>">
 	<nav id="topnav">
 		<?php 
-		makeNavBar(); 
+		makenav_bar(); 
 		?>
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
 		<div class="login">
 			<?php
-			loginform();
+			login_form();
 			?>
 		</div>
 		<p>Not got an account?</p> <form method="get" action="/KF7013-2021/content/register.php"><button>Register here</button></form>
