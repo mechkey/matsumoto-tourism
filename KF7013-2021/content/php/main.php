@@ -104,9 +104,7 @@
 				<th class="act_desc">Description</th>
 				<th class="price">Price</th>
 				<th class="loc">Location</th>
-				<th class="num_tix">Tickets required:</th>
-				<th class="th_date">Date:</th>
-				<th class="book">Book</th></tr>
+				<th class="bigcol">Booking</th>
 		TABLE;
 
 		echo $table;
@@ -180,9 +178,7 @@
 						<option label="5 tickets" value="5">5</option><option label="6 tickets" value="6">6</option>
 						<option label="7 tickets" value="7">7</option><option label="8 tickets" value="8">8</option>
 						<option label="9 tickets" value="9">9</option><option label="10 tickets" value="10">10</option>
-					</select></td>
-					<td><label for="date%s" hidden>Date to book:</label><input type="date" id="date%s" name="date" placeholder="dd/mm/yyyy" required></td>
-					<td><button type="submit" name="book" value="%s">%s</button>
+					</select><label for="date%s" hidden>Date to book:</label><input type="date" id="date%s" name="date" required><button type="submit" name="book" value="%s">%s</button>
 					</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $act_name, $num, $num, $act_id, $btn_text);
 			}
 			$stmt->close();
