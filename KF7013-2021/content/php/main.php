@@ -215,7 +215,7 @@
 
 
 	function booked_act () {
-		echo '<table class="booked_act_table"><p><caption>Booked Activities:</caption></p><tr><th class="longcol">Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th><th>Modify</th><th>Cancel</th></tr>';
+		echo '<table class="booked_act_table"><caption>Booked Activities:</caption><tr><th class="longcol">Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th><th>Modify</th><th>Cancel</th></tr>';
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
 
@@ -289,14 +289,14 @@
 	function login_form ($nav_sub=false) {
 		$login = '
 		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
-		<label for="username">Username:</label><input type= "text" id="username"name="username" size="8" required/><br />
-		<label for="password">Password:</label><input type= "password" id="password" name="password" size="8" pattern=".{8,}" required/> </li><li '; 
+		<label for="username">Username:</label><input type= "text" id="username" name="username" size="8" required/><br />
+		<label for="password">Password:</label><input type= "password" id="password" name="password" size="8" pattern=".{8,}" required/><li '; 
 
 		if ($nav_sub=true) {
 			$login .= 'id="nav_sub"';
 		} 
 
-		$login .= '><input type="submit" id="loginbutton" class="nav_button"value="Login" /> 
+		$login .= '><input type="submit" id="loginbutton" class="nav_button" value="Login" /> 
 		</form>
 		';
 		echo $login;
@@ -373,7 +373,7 @@
 
 	//Shows the account, first and last names for the logged in user.
 	function showDetails () {
-		echo '<table id="details_table"><p><caption>Your details:</caption></p><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
+		echo '<table id="details_table"><caption>Your details:</caption><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
 
 				// Trying OO php . . .
 				$mysqli = new mysqli('localhost', 'root', 'root', 'travel');

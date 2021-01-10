@@ -54,7 +54,7 @@ function makenav_bar () {
 		$name = str_replace('.php', '', $value);
 		$name = str_replace('content/', '', $name);
 		$name = ucfirst($name);
-		//echo " Value is " . $value;
+		//echo " value is " . $value;
 		if ($name == "Account") {
 			$name .= ": ".$_SESSION['username'];
 		}
@@ -92,7 +92,7 @@ function makenav_bar () {
 			echo '<li id="nav_login">';
 			login_form(true);
 	}*/
-	echo "</li>";
+
 	/*
 	echo '<li class="nav_link">';
 	echo searchbar();
@@ -151,7 +151,7 @@ function contentAsArray($rel) {
 	}
 	echo $ctstring . '</a></li>';
 
-	echo '<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
+	echo '<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/></form></li>';
 }
 
 function getpath() {
@@ -167,6 +167,6 @@ function showLogo ($path) {
 		$logosrc = '/KF7013-2021/assets/images/logo.png';
 	}
 	
-	echo '<li id="navlogo"><a href="/KF7013-2021/index.php" accesskey="1"><img id="logo" src="' . $logosrc . '" alt="Visit Matsumoto Logo" height="30"/></a></li>';
+	echo '<li id="navlogo"><a href="/KF7013-2021/index.php" accesskey="1"><img id="logo" src="' . $logosrc . '" alt="visit Matsumoto Logo" height="30"/></a></li>';
 }
 ?>

@@ -37,13 +37,13 @@
 			<li><p>Japan Guide, [No date]. <span class="p_ita">Bamboo pipes bring the hot spring water into the hot springs at Shirahone Hot Springs.</span> [Online]. [Accessed 07 January 2021]. Available at: https://www.japan-guide.com/
 		</ul>
 		<h2>Code:</h2>
-		<ul><p>
-			<li>w3schools. [No date].<span class="p_ita">CSS display Property</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3schools.com/cssref/pr_class_display.asp</li>
+		<ul>
+			<li><p>w3schools. [No date].<span class="p_ita">CSS display Property</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3schools.com/cssref/pr_class_display.asp</p></li>
 
-			<li>navbar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018.<span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</li>
+			<li><p>navbar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018.<span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</p></li>
 
-			<li>main.css:line 254, 360. Based on: Alligator.io, 2020.<span class="p_ita">Cropping Images in CSS With object-fit</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit</li>
-		</ul></p>
+			<li><p>main.css:line 254, 360. Based on: Alligator.io, 2020.<span class="p_ita">Cropping Images in CSS With object-fit</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit</p></li>
+		</ul>
 		<?php 
 		?>
 	</main>

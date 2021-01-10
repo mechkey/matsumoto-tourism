@@ -32,7 +32,6 @@
 				act_book(false, false, true);
 			} 
 			booked_act();
-			logout_form("Logout");
 			if (isset($_GET['delete_id'])) {
 				echo 'Are you sure you wish to delete the following booking?';
 				booked_act_details(true);
