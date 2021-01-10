@@ -5,6 +5,9 @@
 2. ...insert a new customer’s details into the customers table using an HTML5 form to gather the customer data and PHP to connect to the MySQL database and insert the values...
 	Implementation page:
 	-> /KF7013-2021/content/registration.php
+	Relevant php located in /KF7013-2021/content/php/doregistration.php
+	Check database for inputted username before registering user.
+
 
 3. One page of your website should link to the activities table in your MySQL database using PHP ...
 	Implementation page:
@@ -14,8 +17,6 @@
 4. All customers should be able to see their booked_activities table. From the booked activities table customers should be able to navigate to activities to see activity details...
 	Implementation page:
 	-> /KF7013-2021/content/account.php
-	Relevant php located in /KF7013-2021/content/php/doregistration.php
-	Check database for inputted username before registering user.
 
 
 5. ...search for an activity and display the results that match the search criteria...advanced searching such as combining two search fields together using AND/OR logic.
