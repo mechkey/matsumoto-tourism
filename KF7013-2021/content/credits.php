@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include './php/dologin.php';
 	include './php/navbar.php';
 	include './php/layout.php';
 	logincheck();
@@ -22,6 +23,7 @@
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
 		<h1> References: </h1>
+<<<<<<< HEAD
 		<h2> Images: </h2>
 		<ul>
 			<li><p>Japan Guide, [No date]. <span class="p_ita">Photograph showing Matsumoto Castle and moat.</span> [Online]. [Accessed 07 January 2021]. Available at: https://www.japan-guide.com/</p></li>
