@@ -29,7 +29,7 @@
 				foreach ($act_array as $value) {
 					extract($value);
 					$img_alt = alt($activityID);
-					echo '<div class="card"><img class="card_img" src="./assets/images/'.$activityID.'.jpg" alt="'.$img_alt.'"></img>';
+					echo '<div class="card"><img class="card_img" src="./assets/images/'.$activityID.'.jpg" alt="'.$img_alt.'">';
 					echo '<div class="copy"><h1>'.$activity_name.'</h1><p>'.$description.'</p></div></div>';
 				}
 				
@@ -54,4 +54,3 @@
 	</footer>
 </body>
 </html>
-

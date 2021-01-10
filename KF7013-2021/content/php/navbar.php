@@ -46,7 +46,7 @@ function makenav_bar () {
 	//Create the links from the array.
 	foreach ($pageArray as $value) {
 		$listart = '<li class="nav_link"><a href="';
-		$limid = '"accesskey="'. $key . '" class="nav_a">';
+		$limid = '" accesskey="'. $key . '" class="nav_a">';
 		$limidcur = '"accesskey="'. $key . '" id="current">';
 		$liend = '</a></li>';
 
@@ -73,11 +73,11 @@ function makenav_bar () {
 	if (isset($_SESSION['themeType'])) {
 		if  ($_SESSION['themeType'] == 'dark') {
 			//$_SESSION['themeType'] = $themeType;
-			echo '<form id="theme_form" method="post"><button type="submit" name="theme" class="nav_button" value="light"/>Light Mode</button></form></li>';
+			echo '<form id="theme_form" method="post"><button type="submit" name="theme" class="nav_button" value="light"/>Light Mode</button></form>';
 
 		} else if (($_SESSION['themeType'] == 'light') ) {
 			//$_SESSION['themeType'] = $themeType;
-			echo '<form id="theme_form" method="post"><button type="submit" name="theme" class="nav_button" value="dark"/>Dark Mode</button></form></li>';
+			echo '<form id="theme_form" method="post"><button type="submit" name="theme" class="nav_button" value="dark">Dark Mode</button></form>';
 		}
 	}
 	echo '</li>';
