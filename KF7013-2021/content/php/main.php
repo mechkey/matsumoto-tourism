@@ -176,10 +176,10 @@
 					printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td><form action="%s" method="post">
 					<select name="num_tix%s" required><label for="num_tix%s" hidden>Number of tickets for %s:</label>
 						<option label="1 ticket"value="1">1</option><option label="2 tickets" value="2">2</option>
-						<option label="3 tickets"value="3">3</option><option label="4 tickets" value="4">4</option>
-						<option label="5 tickets"value="5">5</option><option label="6 tickets" value="6">6</option>
-						<option label="7 tickets"value="7">7</option><option label="8 tickets" value="8">8</option>
-						<option label="9 tickets"value="9">9</option><option label="10 tickets" value="10">10</option>
+						<option label="3 tickets" value="3">3</option><option label="4 tickets" value="4">4</option>
+						<option label="5 tickets" value="5">5</option><option label="6 tickets" value="6">6</option>
+						<option label="7 tickets" value="7">7</option><option label="8 tickets" value="8">8</option>
+						<option label="9 tickets" value="9">9</option><option label="10 tickets" value="10">10</option>
 					</select></td>
 					<td><label for="date%s" hidden>Date to book:</label><input type="date" id="date%s" name="date" placeholder="dd/mm/yyyy" required></td>
 					<td><button type="submit" name="book" value="%s">%s</button>
