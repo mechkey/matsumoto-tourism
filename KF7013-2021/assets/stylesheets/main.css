@@ -112,7 +112,7 @@ table th {
 }
 
 table td, table th {
-  	border: 1px solid #ddd;
+  	border: 1px solid purple;
 }
 
 table tr:nth-child(even) {
@@ -220,7 +220,15 @@ table tr:hover {
 }
 
 .shortcol {
-	min-width: 5rem;
+	width: 4rem;
+}
+
+.longcol {
+	width: 10rem;
+}
+
+.tinycol {
+	width: 0.5rem;
 }
 
 a:visited {
@@ -424,7 +432,7 @@ img.card_img {
 /* act_table table spacing */
 
 table {
-  	width: 80%;
+  	width: 95%;
   	border-collapse: collapse;
 }
 

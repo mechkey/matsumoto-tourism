@@ -100,11 +100,11 @@
 
 		$table = <<< TABLE
 		 	<table class="act_table"><caption>${caption}</caption><tr>
-				<th class="act_name">Activity Name</th>
-				<th class="act_desc">Description</th>
-				<th class="price">Price</th>
-				<th class="loc">Location</th>
-				<th class="bigcol">Booking</th>
+				<th class="shortcol">Activity Name</th>
+				<th class="longcol">Description</th>
+				<th class="tonycol">Price</th>
+				<th class="shortcol">Location</th>
+				<th class="longcol">Booking</th>
 		TABLE;
 
 		echo $table;
@@ -161,25 +161,26 @@
 				$stmt->bind_result($act_id, $act_name, $desc, $price, $loc);
 			}
 			//echo $act_id;
-			if ($editID == true) {
+			while ($stmt->fetch()) {
+				if ($editID == true) {
 					$action = "/KF7013-2021/content/php/doedit.php";
 					$num = '';
 					//echo $act_name. $desc. $price.$loc. $num_tix. $date. $custID. $act_id;
 					//echo 'edit true';
-			} else {
-				$action = "/KF7013-2021/content/php/dobook.php";
-				$num = $act_id;
-			}
-			while ($stmt->fetch()) {
-					printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td><form action="%s" method="post"><label for="num_tix%s" hidden>Number of tickets for %s:</label>
-					<select name="num_tix%s" required>
-						<option label="1 ticket"value="1">1</option><option label="2 tickets" value="2">2</option>
-						<option label="3 tickets" value="3">3</option><option label="4 tickets" value="4">4</option>
-						<option label="5 tickets" value="5">5</option><option label="6 tickets" value="6">6</option>
-						<option label="7 tickets" value="7">7</option><option label="8 tickets" value="8">8</option>
-						<option label="9 tickets" value="9">9</option><option label="10 tickets" value="10">10</option>
-					</select><label for="date%s" hidden>Date to book:</label><input type="date" id="date%s" name="date" required><button type="submit" name="book" value="%s">%s</button>
-					</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $act_name, $num, $num, $act_id, $btn_text);
+				} else {
+					$action = "/KF7013-2021/content/php/dobook.php";
+					$num = $act_id;
+				}
+				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="%s" method="post"><label for="num_tix%s">Number of tickets:</label>
+				<select name="num_tix%s" id="num_tix%s" required>
+					<option label=" " value=""></option>
+					<option label="1 ticket" value="1">1</option><option label="2 tickets" value="2">2</option>
+					<option label="3 tickets" value="3">3</option><option label="4 tickets" value="4">4</option>
+					<option label="5 tickets" value="5">5</option><option label="6 tickets" value="6">6</option>
+					<option label="7 tickets" value="7">7</option><option label="8 tickets" value="8">8</option>
+					<option label="9 tickets" value="9">9</option><option label="10 tickets" value="10">10</option>
+				</select><label for="date%s" >Date:</label><input type="date" id="date%s" name="date%s" required><button type="submit" name="book" value="%s">%s</button>
+				</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $num, $num, $num, $num, $act_id, $btn_text);
 			}
 			$stmt->close();
 		}
