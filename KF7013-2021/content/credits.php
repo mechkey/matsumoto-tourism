@@ -43,6 +43,8 @@
 			<li><p>navbar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018.<span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</p></li>
 
 			<li><p>main.css:line 254, 360. Based on: Alligator.io, 2020.<span class="p_ita">Cropping Images in CSS With object-fit</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit</p></li>
+
+			<li><p>main.css:line 229. Based on: W3Docs, [No date].<span class="p_ita">Convert YYYY-MM-DD to DD-MM-YYYY</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3docs.com/snippets/php/how-to-convert-a-date-format-in-php.html</p></li>
 		</ul>
 		<?php 
 		?>

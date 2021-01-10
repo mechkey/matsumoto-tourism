@@ -123,9 +123,7 @@ table tr:nth-child(odd) {
 	background-color: #dadada;
 }
 
-table tr:hover {
-	background-color: ;
-}
+
 
 .dark #topnav ul {
 	background-color: #222;
@@ -233,6 +231,20 @@ table tr:hover {
 
 a:visited {
 	color: blue;
+}
+
+.tworem {
+	margin-top: 2rem;
+}
+
+.act_table tr:hover, 
+.booked_act_table tr:hover {
+	background-color: #ff5c6c;
+}
+
+.dark .act_table tr:hover, 
+.dark .booked_act_table tr:hover {
+	background-color: #91000e;
 }
 
 /*------------------------------------------------------*/
@@ -370,7 +382,7 @@ aside {
 #topnav li {
 	float: left;
 	margin-right: 1em;
-	text-align: middle;
+	text-align: center;
 }
 
 #li_theme_form {
@@ -432,13 +444,14 @@ img.card_img {
 /* act_table table spacing */
 
 table {
+	padding-top: 2rem;
   	width: 95%;
   	border-collapse: collapse;
 }
 
-table th {
- 	padding-top: ;
-  	padding-bottom: ;
+th {
+ 	padding-top: 5px;
+  	padding-bottom: 5px;
 }
 
 table td, table th {

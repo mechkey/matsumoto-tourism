@@ -226,6 +226,7 @@
 			$stmt->execute();
 			$stmt->bind_result($act_name, $act_id, $date, $num_tix);
 			while ($stmt->fetch()) {
+				$date = date('d-m-Y', strtotime($date));
 				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="price">%s</td><td><a href="account.php?select_id=%d">View Details</a></td><td><a href="account.php?edit_id=%d">Modify booking</a></td><td><a href="/KF7013-2021/content/account.php?delete_id=%d">Delete booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id, $act_id);
 			}
 			echo '</table>';
@@ -246,14 +247,14 @@
 		}
 		$table = <<< TABLE
 		 	<table class="act_table"><caption>Activity Details:</caption><tr>
-				<th class="act_name">Activity Name</th>
-				<th class="act_desc">Description</th>
+				<th class="shortcol">Activity Name</th>
+				<th class="longcol">Description</th>
 				<th class="shortcol">Activity date</th>
-				<th class="loc">Location</th>
-				<th class="th_date">Price per ticket</th>
-				<th class="num_tix">Tickets ordered</th>
-				<th class="price">Total</th>
-				<th class="price">Hide</th>
+				<th class="shortcol">Location</th>
+				<th class="tinycol">Price per ticket</th>
+				<th class="tinycol">Tickets ordered</th>
+				<th class="tinycol">Total</th>
+				<th class="tinycol">Hide</th>
 				
 		TABLE;
 
@@ -290,13 +291,8 @@
 		$login = '
 		<form id="login" method="post" action="/KF7013-2021/content/php/dologin.php"> 
 		<label for="username">Username:</label><input type= "text" id="username" name="username" size="8" required/><br />
-		<label for="password">Password:</label><input type= "password" id="password" name="password" size="8" pattern=".{8,}" required/><li '; 
-
-		if ($nav_sub=true) {
-			$login .= 'id="nav_sub"';
-		} 
-
-		$login .= '><input type="submit" id="loginbutton" class="nav_button" value="Login" /> 
+		<label for="password">Password:</label><input type= "password" id="password" name="password" size="8" pattern=".{8,}" required/>'; 
+		$login .= '<input type="submit" id="loginbutton" class="nav_button" value="Login" /> 
 		</form>
 		';
 		echo $login;
@@ -372,7 +368,7 @@
 
 
 	//Shows the account, first and last names for the logged in user.
-	function showDetails () {
+	function viewDetails () {
 		echo '<table id="details_table"><caption>Your details:</caption><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
 
 				// Trying OO php . . .

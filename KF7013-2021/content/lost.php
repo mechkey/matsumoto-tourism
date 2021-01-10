@@ -17,7 +17,7 @@
 <body class="<?php classID() ?>">
 	<nav id="topnav">
 		<?php 
-		makeNavBar(); 
+		makenav_bar(); 
 		?>
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
@@ -26,7 +26,7 @@
 		<h3>Login</h3>
 		<div class="login">
 			<?php
-			loginform();
+			login_form();
 			?>
 		</div>
 		<!-- Tried to use JavaScript here, couldn't get it to work -->

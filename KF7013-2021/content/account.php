@@ -24,7 +24,7 @@
 	<main id="content"> <!-- Beginning of page content -->
 		<?php 
 			echo '<H1>My Account page</h1>';
-			showDetails();
+			viewDetails();
 			if (isset($_GET['select_id'])) {
 				booked_act_details(true);
 			}
@@ -33,9 +33,9 @@
 			} 
 			booked_act();
 			if (isset($_GET['delete_id'])) {
-				echo 'Are you sure you wish to delete the following booking?';
+				echo '<h2 class="tworem">Are you sure you wish to delete the following booking?</h2>';
 				booked_act_details(true);
-				echo '<form id="confirmed" method="post" action="/KF7013-2021/content/php/dodelete.php?delete_id='.$_GET['delete_id'].'"><button type="submit"> Confirm</button></form>';
+				echo '<form id="confirmed" method="post" action="/KF7013-2021/content/php/dodelete.php?delete_id='.$_GET['delete_id'].'"><button type="submit" class="tworem">Confirm</button></form>';
 			}
 		?>
 	</main>
