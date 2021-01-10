@@ -218,7 +218,7 @@
 
 
 	function booked_act () {
-		echo '<table class="booked_act_table"><p><caption>Booked Activities:</caption></p><tr><th class="longcol">Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th><th>Edit</th></tr>';
+		echo '<table class="booked_act_table"><p><caption>Booked Activities:</caption></p><tr><th class="longcol">Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th><th>Modify</th><th>Cancel</th></tr>';
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
 
@@ -229,7 +229,7 @@
 			$stmt->execute();
 			$stmt->bind_result($act_name, $act_id, $date, $num_tix);
 			while ($stmt->fetch()) {
-				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="price">%s</td><td><a href="account.php?select_id=%d">View Details</a></td><td><a href="account.php?edit_id=%d">Edit booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id);
+				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="price">%s</td><td><a href="account.php?select_id=%d">View Details</a></td><td><a href="account.php?edit_id=%d">Modify booking</a></td><td><a href="/KF7013-2021/content/account.php?delete_id=%d">Delete booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id, $act_id);
 			}
 			echo '</table>';
 			$stmt->close();
@@ -245,6 +245,7 @@
 			if ($debug) {
 				echo 'select  null%%';
 			}
+			$select_id = $_GET['delete_id'] ?? null;
 		}
 		$table = <<< TABLE
 		 	<table class="act_table"><caption>Activity Details:</caption><tr>
@@ -255,6 +256,7 @@
 				<th class="th_date">Price per ticket</th>
 				<th class="num_tix">Tickets ordered</th>
 				<th class="price">Total</th>
+				<th class="price">Hide</th>
 				
 		TABLE;
 
@@ -270,7 +272,7 @@
 			$stmt->execute();
 			$stmt->bind_result($act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
 			while ($stmt->fetch()) {
-				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="shortcol">%s</td><td class="shortcol">%s</td><td>£%d</td><td>%d</td><td>£%d</td>
+				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="shortcol">%s</td><td class="shortcol">%s</td><td>£%d</td><td>%d</td><td>£%d</td><td><a href="/KF7013-2021/content/account.php" class"no_purple">Hide</a></td>
 						</tr>', $act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
 			}
 			$stmt->close();

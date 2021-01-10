@@ -32,7 +32,11 @@
 			} 
 			booked_act();
 			logout_form("Logout");
-			
+			if (isset($_GET['delete_id'])) {
+				echo 'Are you sure you wish to delete the following booking?';
+				booked_act_details(true);
+				echo '<form id="confirmed" method="post" action="/KF7013-2021/content/php/dodelete.php?delete_id='.$_GET['delete_id'].'"><button type="submit"> Confirm</button></form>';
+			}
 		?>
 	</main>
 	<footer id="footer"> <!-- Beginning of footer -->
