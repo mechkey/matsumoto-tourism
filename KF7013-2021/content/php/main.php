@@ -171,8 +171,8 @@
 				$num = $act_id;
 			}
 			while ($stmt->fetch()) {
-					printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td><form action="%s" method="post">
-					<select name="num_tix%s" required><label for="num_tix%s" hidden>Number of tickets for %s:</label>
+					printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td><form action="%s" method="post"><label for="num_tix%s" hidden>Number of tickets for %s:</label>
+					<select name="num_tix%s" required>
 						<option label="1 ticket"value="1">1</option><option label="2 tickets" value="2">2</option>
 						<option label="3 tickets" value="3">3</option><option label="4 tickets" value="4">4</option>
 						<option label="5 tickets" value="5">5</option><option label="6 tickets" value="6">6</option>
