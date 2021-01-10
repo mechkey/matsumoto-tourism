@@ -25,8 +25,11 @@
 			echo '<H1>My Account page</h1>';
 			showDetails();
 			if (isset($_GET['select_id'])) {
-				act_book(false, false, true);
+				booked_act_details(true);
 			}
+			if (isset($_GET['edit_id'])) {
+				act_book(false, false, true);
+			} 
 			booked_act();
 			logout_form("Logout");
 			

@@ -15,7 +15,7 @@
 		echo "<p>conn failed:" . mysqli_connect_error() . " </p>\n";
 	} 
 	//this takes the activities from the activities table and puts them in the $acts array
-		function act_info_array($searching=false) {
+	function act_info_array($searching=false) {
 		global $debug;
 		$search = $_GET['search']  ?? null;
 		$search = htmlspecialchars($search);
@@ -50,7 +50,7 @@
 	}
 
 	//This function prints out the content of the activities table.
-	function act_book($searching=false, $excluding=false, $searchID=false) {
+	function act_book($searching=false, $excluding=false, $editID=false) {
 		global $debug;
 		$search = "";
 		$exclude = "";
@@ -58,8 +58,9 @@
 		$search = htmlspecialchars($search);
 		$exclude = $_GET['exclude'] ?? null;
 		$exclude = htmlspecialchars($exclude);
-		$select_id = $_GET['select_id'] ?? null;
-		$select_id = htmlspecialchars($select_id);
+		$edit_id = $_GET['edit_id'] ?? null;
+		$edit_id = htmlspecialchars($edit_id);
+
 
 		//$floatsearch = floatval($search);
 
@@ -75,7 +76,7 @@
 				echo 'Exclude not null%%';
 			}
 		}		
-		if ($select_id == null) {
+		if ($edit_id == null) {
 			if ($debug) {
 				echo 'select  null%%';
 			}
@@ -87,9 +88,20 @@
 			br();
 		}
 
+		if ($editID == true) {
+			$caption = "Edit booking:";
+			$btn_text = "Modify";
+
+		} else {
+			$caption = "Activity Details:";
+			$btn_text = "Book";
+
+		}
+
 		$table = <<< TABLE
-		 	<table class="act_table"><caption>Activity Details:</caption><tr>
-				<th class="act_name">Activity Name</th><th class="act_desc">Description</th>
+		 	<table class="act_table"><caption>${caption}</caption><tr>
+				<th class="act_name">Activity Name</th>
+				<th class="act_desc">Description</th>
 				<th class="price">Price</th>
 				<th class="loc">Location</th>
 				<th class="num_tix">Tickets required:</th>
@@ -117,8 +129,8 @@
 			$sql .= " `activity_name` NOT LIKE ? AND `description` NOT LIKE ? AND `location` NOT LIKE ? ";
 		}
 
-		if ($searchID == true) {
-			$sql = "SELECT * FROM `activities` WHERE `activityID` = ?";
+		if ($editID == true) {
+			$sql = "SELECT `activity_name`, `description`, `price`, `location`, `number_of_tickets`, `date_of_activity`, ba.customerID, a.activityID FROM booked_activities ba JOIN customers C ON c.customerID = ba.customerID JOIN activities a ON a.activityID = ba.activityID WHERE ba.activityID = ? AND username = ?";
 		}
 		//
 		if ($debug) {
@@ -139,25 +151,39 @@
 			else if ((isset($_GET['exclude']) && $_GET['exclude'] != '' ) && $_GET['search'] == '' ) {
 				$stmt->bind_param("sss", $exclude, $exclude, $exclude);
 				//echo 'if 2 exclude not null: ' . $exclude;
-			} else {
-				$stmt->bind_param("s", $select_id);
+			} 
+			else if ($editID == true) {
+				$stmt->bind_param("ss", $edit_id, $_SESSION['username']);
 			}
 
 			$stmt->execute();
-			$stmt->bind_result($act_id, $act_name, $desc, $price, $loc);
+			if ($editID == true) {
+				$stmt->bind_result($act_name, $desc, $price, $loc, $num_tix, $date, $custID, $act_id);
+			} else {
+				$stmt->bind_result($act_id, $act_name, $desc, $price, $loc);
+			}
 			//echo $act_id;
+			if ($editID == true) {
+					$action = "/KF7013-2021/content/php/doedit.php";
+					$num = '';
+					//echo $act_name. $desc. $price.$loc. $num_tix. $date. $custID. $act_id;
+					//echo 'edit true';
+			} else {
+				$action = "/KF7013-2021/content/php/dobook.php";
+				$num = $act_id;
+			}
 			while ($stmt->fetch()) {
-				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/dobook.php" method="post">
-						<select name="num_tix%d" required><label for="num_tix%d" hidden>Number of tickets for %s:</label>
-							<option label="1 ticket"value="1">1</option><option label="2 ticket" value="2">2</option>
-							<option label="3 ticket"value="3">3</option><option label="4 ticket" value="4">4</option>
-							<option label="5 ticket"value="5">5</option><option label="6 ticket" value="6">6</option>
-							<option label="7 ticket"value="7">7</option><option label="8 ticket" value="8">8</option>
-							<option label="9 ticket"value="9">9</option><option label="10 ticket" value="10">10</option>
-						</select></td>
-						<td><label for="date%s" hidden>Date to book:</label><input type="date" id="date%s" name="date" placeholder="dd/mm/yyyy" required></td>
-						<td><button type="submit" name="book" value="%s">Book</button>
-						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id, $act_name, $act_id, $act_id, $act_id, $act_id);
+					printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td><form action="%s" method="post">
+					<select name="num_tix%s" required><label for="num_tix%s" hidden>Number of tickets for %s:</label>
+						<option label="1 ticket"value="1">1</option><option label="2 tickets" value="2">2</option>
+						<option label="3 tickets"value="3">3</option><option label="4 tickets" value="4">4</option>
+						<option label="5 tickets"value="5">5</option><option label="6 tickets" value="6">6</option>
+						<option label="7 tickets"value="7">7</option><option label="8 tickets" value="8">8</option>
+						<option label="9 tickets"value="9">9</option><option label="10 tickets" value="10">10</option>
+					</select></td>
+					<td><label for="date%s" hidden>Date to book:</label><input type="date" id="date%s" name="date" placeholder="dd/mm/yyyy" required></td>
+					<td><button type="submit" name="book" value="%s">%s</button>
+					</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $act_name, $num, $num, $act_id, $btn_text);
 			}
 			$stmt->close();
 		}
@@ -192,23 +218,65 @@
 
 
 	function booked_act () {
-		echo '<table class="booked_act_table"><p><caption>Booked Activities:</caption></p><tr><th class="act_name">Your Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th></tr>';
+		echo '<table class="booked_act_table"><p><caption>Booked Activities:</caption></p><tr><th class="longcol">Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th><th>Edit</th></tr>';
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
 
 		//$sql = "SELECT a.activity_name, b.activityID, b.date_of_activity, b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID";
-		$sql = "SELECT a.activity_name, b.activityID, b.date_of_activity, b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID LEFT OUTER JOIN customers c ON b.customerID = c.customerID WHERE c.username=?";
+		$sql = "SELECT a.activity_name, b.activityID, DATE(b.date_of_activity), b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID LEFT OUTER JOIN customers c ON b.customerID = c.customerID WHERE c.username=?";
 		if ($stmt = $mysqli->prepare($sql)) {
 			$stmt->bind_param('s', $_SESSION['username']);
 			$stmt->execute();
 			$stmt->bind_result($act_name, $act_id, $date, $num_tix);
 			while ($stmt->fetch()) {
-				printf ('<tr><td class="act_name">%s</td><td class="act_id">%d</td><td class="act_date">%s</td><td class="price">%s</td><td><a href="account.php?select_id=%d">View Details</tr>', $act_name, $act_id, $date, $num_tix, $act_id);
+				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="price">%s</td><td><a href="account.php?select_id=%d">View Details</a></td><td><a href="account.php?edit_id=%d">Edit booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id);
 			}
 			echo '</table>';
 			$stmt->close();
 		}
 		$mysqli->close();
+	}
+
+	function booked_act_details() {
+		global $debug;
+		$select_id = $_GET['select_id'] ?? null;
+		$select_id = htmlspecialchars($select_id);
+		if ($select_id == null) {
+			if ($debug) {
+				echo 'select  null%%';
+			}
+		}
+		$table = <<< TABLE
+		 	<table class="act_table"><caption>Activity Details:</caption><tr>
+				<th class="act_name">Activity Name</th>
+				<th class="act_desc">Description</th>
+				<th class="shortcol">Activity date</th>
+				<th class="loc">Location</th>
+				<th class="th_date">Price per ticket</th>
+				<th class="num_tix">Tickets ordered</th>
+				<th class="price">Total</th>
+				
+		TABLE;
+
+		echo $table;
+
+		// Trying OO php . . .
+		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+		
+		$sql = "SELECT activity_name, description, DATE(date_of_activity), location, price, number_of_tickets, (number_of_tickets * price) AS total_cost FROM `booked_activities` ba join activities a on a.activityID = ba.activityID join customers c on c.customerID = ba.customerID WHERE c.username = ? AND a.activityID = ?";	
+
+		if ($stmt = $mysqli->prepare($sql)) {
+			$stmt->bind_param("sd", $_SESSION['username'], $select_id);
+			$stmt->execute();
+			$stmt->bind_result($act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
+			while ($stmt->fetch()) {
+				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="shortcol">%s</td><td class="shortcol">%s</td><td>£%d</td><td>%d</td><td>£%d</td>
+						</tr>', $act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
+			}
+			$stmt->close();
+		}
+		$mysqli->close();
+		echo '</table>';
 	}
 	
 	function br() {
