@@ -70,6 +70,7 @@
 		            echo "<p>Failed - Username $user, Password: >>$pass<< </p>";
 					echo "OK: >>$passok<< (not ok if empty) <br />";
 		        } else {
+		            echo 'Username and/or password incorrect. Please try <a href="/KF7013-2021/content/login.php">login</a> again.';
 		            //header('Location: /KF7013-2021/content/login.php');
 		        }
 		    }
