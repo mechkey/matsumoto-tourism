@@ -25,18 +25,22 @@
 		<?php 
 			echo '<H1>My Account page</h1>';
 			viewDetails();
+			//view details of a single booked activity
 			if (isset($_GET['select_id'])) {
 				booked_act_details(true);
 			}
+			//modify a booking
 			if (isset($_GET['a_id'])) {
 				act_book(false, false, true);
 			} 
-			booked_act();
+			//cancel a booking
 			if (isset($_GET['delete_id'])) {
 				echo '<h2 class="tworem">Are you sure you wish to delete the following booking?</h2>';
 				booked_act_details(true);
 				echo '<form id="confirmed" method="post" action="/KF7013-2021/content/php/dodelete.php?delete_id='.$_GET['delete_id'].'"><button type="submit" class="tworem">Confirm</button></form>';
 			}
+			booked_act();
+			
 		?>
 	</main>
 	<footer id="footer"> <!-- Beginning of footer -->
