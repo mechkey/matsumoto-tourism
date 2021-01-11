@@ -233,6 +233,13 @@ a:visited {
 	color: blue;
 }
 
+.dark a:visited {
+	color: #eee;
+} 
+
+.ref {
+	margin-bottom: 4%;
+}
 .tworem {
 	margin-top: 2rem;
 }
@@ -458,7 +465,6 @@ table td, table th {
   	padding: 0.5rem;
 }
 
-/* act_table table light mode colour */
 
 .flex_box {
 	display: flex;
@@ -473,7 +479,12 @@ table td, table th {
 	margin: 1rem; 
 }
 
-} /* <-- end of media*/
+#essay {
+	max-width: 70%;
+	text-align: justify;
+}
+
+} /* <-- end of large screen media*/
 
 
 
