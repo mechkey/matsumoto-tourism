@@ -24,24 +24,24 @@
 		
 		<form id="register" method="post" action="/KF7013-2021/content/php/doregistration.php">
 			<label for="fname">Fore Name:</label><br />
-			<input type="text" id="fname" name="fname" required><br />
+			<input type="text" id="fname" name="fname" pattern="[A-Za-z]" required><br />
 
 			<label for="lname">Last Name:</label><br />
-			<input type="text" id="lname" name="lname" required><br />
+			<input type="text" id="lname" name="lname" pattern="[A-Za-z]" required><br />
 
 			<label for="addr1">Address Line 1:</label><br />
-			<input type="text" id="addr1" name="addr1"><br />
+			<input type="text" id="addr1" name="addr1" pattern="[A-Za-z0-9]"><br />
 			<label for="addr2">Address Line 2:</label><br />
-			<input type="text" id="addr2" name="addr2"><br />
+			<input type="text" id="addr2" name="addr2" pattern="[A-Za-z0-9]"><br />
 			<label for="addrcode">Post/Zip code:</label><br />
-			<input type="text" id="addrcode" name="addrcode"><br />
+			<input type="text" id="addrcode" name="addrcode" pattern="[A-Za-z0-9]"><br />
 
 			<label for="dob">Date of Birth:</label><br />
 			<input type="date" id="dob" name="dob" required><br />
 
 
 			<label for="username">Username:</label><br />
-			<input type="text" id="usernmae" name="username" required><br />
+			<input type="text" id="usernmae" name="username" pattern="[A-Za-z0-9]"required><br />
 
 			<label for="password">Password:</label><br />
 			<input type="password" id="password" name="password" pattern=".{8,}" required><br />
