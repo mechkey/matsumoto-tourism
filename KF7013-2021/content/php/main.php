@@ -50,7 +50,7 @@
 	}
 
 	//This function prints out the content of the activities table.
-	function act_book($searching=false, $excluding=false, $editID=false) {
+	function act_book($searching=false, $excluding=false, $aID=false) {
 		global $debug;
 		$search = "";
 		$exclude = "";
@@ -58,8 +58,8 @@
 		$search = htmlspecialchars($search);
 		$exclude = $_GET['exclude'] ?? null;
 		$exclude = htmlspecialchars($exclude);
-		$edit_id = $_GET['edit_id'] ?? null;
-		$edit_id = htmlspecialchars($edit_id);
+		$a_id = $_GET['a_id'] ?? null;
+		$a_id = htmlspecialchars($a_id);
 
 
 		//$floatsearch = floatval($search);
@@ -76,7 +76,7 @@
 				echo 'Exclude not null%%';
 			}
 		}		
-		if ($edit_id == null) {
+		if ($a_id == null) {
 			if ($debug) {
 				echo 'select  null%%';
 			}
@@ -88,7 +88,7 @@
 			br();
 		}
 
-		if ($editID == true) {
+		if ($aID == true) {
 			$caption = "Edit booking:";
 			$btn_text = "Modify";
 
@@ -127,7 +127,7 @@
 			$sql .= " `activity_name` NOT LIKE ? AND `description` NOT LIKE ? AND `location` NOT LIKE ? ";
 		}
 
-		if ($editID == true) {
+		if ($aID == true) {
 			$sql = "SELECT `activity_name`, `description`, `price`, `location`, `number_of_tickets`, `date_of_activity`, ba.customerID, a.activityID FROM booked_activities ba JOIN customers C ON c.customerID = ba.customerID JOIN activities a ON a.activityID = ba.activityID WHERE ba.activityID = ? AND username = ?";
 		}
 		//
@@ -150,19 +150,19 @@
 				$stmt->bind_param("sss", $exclude, $exclude, $exclude);
 				//echo 'if 2 exclude not null: ' . $exclude;
 			} 
-			else if ($editID == true) {
-				$stmt->bind_param("ss", $edit_id, $_SESSION['username']);
+			else if ($aID == true) {
+				$stmt->bind_param("ss", $a_id, $_SESSION['username']);
 			}
 
 			$stmt->execute();
-			if ($editID == true) {
+			if ($aID == true) {
 				$stmt->bind_result($act_name, $desc, $price, $loc, $num_tix, $date, $custID, $act_id);
 			} else {
 				$stmt->bind_result($act_id, $act_name, $desc, $price, $loc);
 			}
 			//echo $act_id;
 			while ($stmt->fetch()) {
-				if ($editID == true) {
+				if ($aID == true) {
 					$action = "/KF7013-2021/content/php/doedit.php";
 					$num = '';
 					//echo $act_name. $desc. $price.$loc. $num_tix. $date. $custID. $act_id;
@@ -227,7 +227,7 @@
 			$stmt->bind_result($act_name, $act_id, $date, $num_tix);
 			while ($stmt->fetch()) {
 				$date = date('d-m-Y', strtotime($date));
-				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="price">%s</td><td><a href="account.php?select_id=%d">View Details</a></td><td><a href="account.php?edit_id=%d">Modify booking</a></td><td><a href="/KF7013-2021/content/account.php?delete_id=%d">Delete booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id, $act_id);
+				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="price">%s</td><td><a href="account.php?select_id=%d">View Details</a></td><td><a href="account.php?a_id=%d">Modify booking</a></td><td><a href="/KF7013-2021/content/account.php?delete_id=%d">Delete booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id, $act_id);
 			}
 			echo '</table>';
 			$stmt->close();
