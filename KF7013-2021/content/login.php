@@ -22,6 +22,7 @@
 		?>
 	</nav>
 	<main id="content"> <!-- Beginning of page content -->
+		<h1>Welcome! Please log in below.</h1>
 		<div class="login">
 			<?php
 			login_form();
