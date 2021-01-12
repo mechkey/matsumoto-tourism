@@ -38,15 +38,23 @@
 		</ul>
 		<h2>Code:</h2>
 		<ul>
-			<li class="ref"><p>w3schools. [No date].<span class="p_ita">CSS display Property</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3schools.com/cssref/pr_class_display.asp</p></li>
-
-			<li class="ref"><p>navbar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018.<span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</p></li>
-
-			<li class="ref"><p>main.css:line 254, 360. Based on: Alligator.io, 2020.<span class="p_ita">Cropping Images in CSS With object-fit</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit</p></li>
-
-			<li class="ref"><p>main.css:line 229. Based on: W3Docs, [No date].<span class="p_ita">Convert YYYY-MM-DD to DD-MM-YYYY</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3docs.com/snippets/php/how-to-convert-a-date-format-in-php.html</p></li>
 
 			<li class="ref"><p>login.php: login() function. Based on: Ellman, J. [No date]. <span class="p_ita">do_login.php</span>, from KF7013 Website Development and Deployment. Northumbria University [Online]. [Accessed 10 December 2020]. Available from: https://elp.northumbria.ac.uk/ultra/courses/_666688_1/outline/edit/document/_8625209_1?courseId=_666688_1</p></li>
+
+			<li class="ref"><p>main.css:line 254, 360. Based on: Alligator.io, 2020. <span class="p_ita">Cropping Images in CSS With object-fit</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit</p></li>
+
+			<li class="ref"><p>main.css:line 229. Based on: W3Docs, [No date]. <span class="p_ita">Convert YYYY-MM-DD to DD-MM-YYYY</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3docs.com/snippets/php/how-to-convert-a-date-format-in-php.html</p></li>
+
+			<li class="ref"><p>navbar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018. <span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</p></li>
+
+			<li class="ref"><p>w3schools. [No date]. <span class="p_ita">CSS display Property</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3schools.com/cssref/pr_class_display.asp</p></li>
+
+			<li class="ref"><p>w3schools. [No date]. <span class="p_ita">HTML &ltinput&gt max Attribute</span>. [Online]. [Accessed 11 January 2021]. Available at: https://www.w3schools.com/tags/att_input_max.asp</p></li>
+
+			<li class="ref"><p>w3schools. [No date]. <span class="p_ita">HTML pattern Attribute</span>. [Online]. [Accessed 11 January 2021]. Available at: https://www.w3schools.com/tags/att_pattern.asp</p></li>
+
+			<li class="ref"><p>w3schools. [No date]. <span class="p_ita">PHP Regular Expressions</span>. [Online]. [Accessed 11 January 2021]. Available at: https://www.w3schools.com/php/php_regex.asp</p></li>
+
 		</ul>
 		<?php 
 		?>

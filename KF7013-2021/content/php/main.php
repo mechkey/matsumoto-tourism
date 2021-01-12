@@ -175,15 +175,13 @@
 				} else {
 					$action = "/KF7013-2021/content/php/dobook.php";
 					$num = $act_id;
-				}
-				//$min = date("Y-m-d");  min=%s
-				$min = '';
-				
+				}			
 				
 				if ($custID != null) {
 						printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="http://localhost/KF7013-2021/content/account.php?select_id=%s" method="post"><button type="submit" name="book" value="%s">View booking</button></div>
 						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id, $act_id);
 				} else {
+					$min = date("Y-m-d"); 
 					printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="%s" method="post">
 					<div><label for="num_tix%s">Number of tickets:</label><select name="num_tix%s" required>
 						<option value="1">1</option><option value="2">2</option>
@@ -192,9 +190,9 @@
 						<option value="7">7</option><option value="8">8</option>
 						<option value="9">9</option><option value="10">10</option></select>
 					</div>
-					<div><label for="date%s">On date:</label><input type="date" id="date%s" name="date%s" required><button type="submit" name="book" value="%s">%s</button>
+					<div><label for="date%s">On date:</label><input type="date" id="date%s" name="date%s" min=%s max="2023-04-05" required><button type="submit" name="book" value="%s">%s</button>
 					</div>
-					</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $num, $num, $num, $act_id, $btn_text);
+					</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $num, $num, $num, $min, $act_id, $btn_text);
 				}
 			}
 			$stmt->close();

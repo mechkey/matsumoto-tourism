@@ -38,14 +38,14 @@
 			<input type="text" id="addrcode" name="addrcode" pattern="[A-Za-z0-9]*"><br />
 
 			<label for="dob">Date of Birth:</label><br />
-			<input type="date" id="dob" name="dob" required><br />
+			<input type="date" id="dob" min="1900-01-01" max="2004-01-10" name="dob" required><br />
 
 
 			<label for="username">Username:</label><br />
 			<input type="text" id="usernmae" name="username" pattern="[A-Za-z0-9]*"required><br />
 
 			<label for="password">Password:</label><br />
-			<input type="password" id="password" name="password" pattern=".{8,}" required><br />
+			<input type="password" id="password" name="password" minlength="8" required><br />
 
 			<input type="checkbox" id="gdpr" name="gdpr" value="gdpraccept" required>
 			<label for="gdpr">I consent to my details being stored in accordance with GDPR legislation </label><br>
