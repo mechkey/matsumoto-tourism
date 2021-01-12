@@ -111,7 +111,7 @@
 
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
-		$sql = "SELECT * FROM `activities` ";
+		$sql = "SELECT `b2_act_id`, `b2_act_name`, `b2_desc`, `b2_price`, `b2_loc`, `customerID` FROM (SELECT a.activityID as b2_act_id, `activity_name` as b2_act_name, `description` as b2_desc, `price` as b2_price, `location` as b2_loc, null as b2_custID FROM `activities` a) AS b2 LEFT JOIN (SELECT a.activityID, `activity_name`, `description`, `price`, `location`, `customerID` FROM `activities` a LEFT OUTER JOIN `booked_activities` ba ON ba.activityID = a.activityID WHERE `customerID` = ?) AS b1 on b1.activityID = b2_act_id";
 
 		if ($searching || $excluding) {
 			$sql .= "WHERE ";
@@ -152,14 +152,18 @@
 			} 
 			else if ($aID == true) {
 				$stmt->bind_param("ss", $a_id, $_SESSION['username']);
+			} else {
+				$stmt->bind_param("s", $_SESSION['username']);
 			}
 
 			$stmt->execute();
 			if ($aID == true) {
 				$stmt->bind_result($act_name, $desc, $price, $loc, $num_tix, $date, $custID, $act_id);
 			} else {
-				$stmt->bind_result($act_id, $act_name, $desc, $price, $loc);
+				$stmt->bind_result($act_id, $act_name, $desc, $price, $loc, $custID);
+				//echo 'aid false';
 			}
+
 			//echo $act_id;
 			while ($stmt->fetch()) {
 				if ($aID == true) {
@@ -173,16 +177,31 @@
 				}
 				//$min = date("Y-m-d");  min=%s
 				$min = '';
-				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="%s" method="post">
-					<div><label for="num_tix%s">Number of tickets:</label><select name="num_tix%s" required>
-						<option value="1">1</option><option value="2">2</option>
-						<option value="3">3</option><option value="4">4</option>
-						<option value="5">5</option><option value="6">6</option>
-						<option value="7">7</option><option value="8">8</option>
-						<option value="9">9</option><option value="10">10</option></select>
-					</div>
-					<div><label for="date%s">On date:</label><input type="date" id="date%s" name="date%s" required><button type="submit" name="book" value="%s">%s</button></div>
-				</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $num, $num, $num, $act_id, $btn_text);
+				
+				$mysqlib = new mysqli('localhost', 'root', 'root', 'travel');
+				if ($check = $mysqlib->prepare("SELECT * FROM `booked_activities` WHERE customerID = ? AND activityID = ?")) {
+					$check->bind_param("ss", $custID, $act_id);
+					$check->execute();
+					echo $act_id;
+					echo '<br />' . $custID;
+					if ($mysqlib->affected_rows == 0) {
+						printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="%s" method="post">
+							<div><label for="num_tix%s">Number of tickets:</label><select name="num_tix%s" required>
+								<option value="1">1</option><option value="2">2</option>
+								<option value="3">3</option><option value="4">4</option>
+								<option value="5">5</option><option value="6">6</option>
+								<option value="7">7</option><option value="8">8</option>
+								<option value="9">9</option><option value="10">10</option></select>
+							</div>
+							<div><label for="date%s">On date:</label><input type="date" id="date%s" name="date%s" required><button type="submit" name="book" value="%s">%s</button></div>
+						</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $num, $num, $num, $act_id, $btn_text);
+					} else if ($mysqlib->affected_rows > 0) {
+						printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="http://localhost/KF7013-2021/content/account.php?select_id=%s" method="post"><button type="submit" name="book" value="%s">View booking</button></div>
+						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id, $act_id);
+					}
+				$check->close();
+				}
+				$mysqlib->close();
 			}
 			$stmt->close();
 		}
