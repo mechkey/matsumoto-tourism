@@ -40,7 +40,7 @@
 		echo $h1string;
 	}
 	if (!(isset($_GET['search']) || isset($_GET['exclude'])) ) {
-		echo '<h1>Showing all activities. Please enter a search term: </h1>';
+		echo '<h1>Please enter a search term: </h1>';
 	}
 	
 

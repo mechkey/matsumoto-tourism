@@ -24,7 +24,7 @@
 		<h1> Welcome! Thanks for choosing to sign up.</h1>
 		
 		<form id="register" method="post" action="/KF7013-2021/content/php/doregistration.php">
-			<label for="fname">Fore Name:</label><br />
+			<label for="fname">Fore Name: </label><br />
 			<input type="text" id="fname" name="fname" pattern="[A-Za-z]*" required><br />
 
 			<label for="lname">Last Name:</label><br />
@@ -44,8 +44,8 @@
 			<label for="username">Username:</label><br />
 			<input type="text" id="usernmae" name="username" pattern="[A-Za-z0-9]*"required><br />
 
-			<label for="password">Password:</label><br />
-			<input type="password" id="password" name="password" minlength="8" required><br />
+			<label for="password">Password (minimum 8 alphanumeric characters): </label><br />
+			<input type="password" id="password" name="password" minlength="8" pattern="[A-Za-z0-9]*" required><br />
 
 			<input type="checkbox" id="gdpr" name="gdpr" value="gdpraccept" required>
 			<label for="gdpr">I consent to my details being stored in accordance with GDPR legislation </label><br>
