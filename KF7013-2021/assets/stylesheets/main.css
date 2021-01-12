@@ -13,8 +13,11 @@ body {
 	min-height: 100%;
 }
 
+
 #content{
 	background-color: azure;
+	padding-bottom: 1rem;
+
 }
 
 #displaytable {
