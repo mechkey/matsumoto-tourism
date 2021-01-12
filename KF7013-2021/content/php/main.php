@@ -217,19 +217,19 @@
 
 
 	function booked_act () {
-		echo '<table class="booked_act_table"><caption>Booked Activities:</caption><tr><th class="longcol">Booked Activities</th><th class="act_id">Activity ID</th><th class="act_desc">Activity Date</th><th class="price">Number of Tickets</th><th>Details</th><th>Modify</th><th>Cancel</th></tr>';
+		echo '<table class="booked_act_table"><caption>Booked Activities:</caption><tr><th class="longcol">Booked Activities</th><th class="act_id">Activity ID</th><th class="longcol">Activity Date</th><th class="tinycol">Number of Tickets</th><th>Details</th><th>Modify</th><th>Cancel</th></tr>';
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
 
-		//$sql = "SELECT a.activity_name, b.activityID, b.date_of_activity, b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID";
-		$sql = "SELECT a.activity_name, b.activityID, DATE(b.date_of_activity), b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID LEFT OUTER JOIN customers c ON b.customerID = c.customerID WHERE c.username=?";
+		//$sql = "SELECT a.activity_name, b.activityID, date_of_activity, b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID";
+		$sql = "SELECT `activity_name`, b.activityID, DATE(b.date_of_activity), b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN `activities` a ON a.activityID = b.activityID LEFT OUTER JOIN `customers` c ON b.customerID = c.customerID WHERE c.username=? ORDER BY `date_of_activity`";
 		if ($stmt = $mysqli->prepare($sql)) {
 			$stmt->bind_param('s', $_SESSION['username']);
 			$stmt->execute();
 			$stmt->bind_result($act_name, $act_id, $date, $num_tix);
 			while ($stmt->fetch()) {
 				$date = date('d-m-Y', strtotime($date));
-				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="price">%s</td><td><a href="account.php?select_id=%d">View Details</a></td><td><a href="account.php?a_id=%d">Modify booking</a></td><td><a href="/KF7013-2021/content/account.php?delete_id=%d">Delete booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id, $act_id);
+				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="tinycol">%s</td><td class="shortcol"><a href="account.php?select_id=%d">View Details</a></td><td class="shortcol"><a href="account.php?a_id=%d">Modify booking</a></td><td class="shortcol"><a href="/KF7013-2021/content/account.php?delete_id=%d">Delete booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id, $act_id);
 			}
 			echo '</table>';
 			$stmt->close();
@@ -254,7 +254,7 @@
 				<th class="shortcol">Activity date</th>
 				<th class="shortcol">Location</th>
 				<th class="tinycol">Price per ticket</th>
-				<th class="tinycol">Tickets ordered</th>
+				<th class="tinycol">Tickets</th>
 				<th class="tinycol">Total</th>
 				<th class="tinycol">Hide</th>
 				
@@ -265,14 +265,14 @@
 		// Trying OO php . . .
 		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
 		
-		$sql = "SELECT activity_name, description, DATE(date_of_activity), location, price, number_of_tickets, (number_of_tickets * price) AS total_cost FROM `booked_activities` ba join activities a on a.activityID = ba.activityID join customers c on c.customerID = ba.customerID WHERE c.username = ? AND a.activityID = ?";	
+		$sql = "SELECT `activity_name`, `description`, DATE(date_of_activity), `location`, `price`, `number_of_tickets`, (number_of_tickets * price) AS `total` FROM `booked_activities` ba join `activities` a on a.activityID = ba.activityID join `customers` c on c.customerID = ba.customerID WHERE c.username = ? AND a.activityID = ?";	
 
 		if ($stmt = $mysqli->prepare($sql)) {
 			$stmt->bind_param("sd", $_SESSION['username'], $select_id);
 			$stmt->execute();
 			$stmt->bind_result($act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
 			while ($stmt->fetch()) {
-				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="shortcol">%s</td><td class="shortcol">%s</td><td>£%d</td><td>%d</td><td>£%d</td><td><a href="/KF7013-2021/content/account.php" class"no_purple">Hide</a></td>
+				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="shortcol">%s</td><td class="shortcol">%s</td><td class="tinycol">£%d</td><td class="tinycol">%d</td><td class="tinycol">£%d</td><td class="tinycol"><a href="/KF7013-2021/content/account.php" class"no_purple">Hide</a></td>
 						</tr>', $act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
 			}
 			$stmt->close();

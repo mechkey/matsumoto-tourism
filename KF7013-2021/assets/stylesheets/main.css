@@ -222,6 +222,8 @@ table tr:nth-child(odd) {
 
 .shortcol {
 	width: 4rem;
+	text-align: center;	
+
 }
 
 .longcol {
@@ -230,6 +232,7 @@ table tr:nth-child(odd) {
 
 .tinycol {
 	width: 0.5rem;
+	text-align: center;	
 }
 
 a:visited {
@@ -255,6 +258,10 @@ a:visited {
 .dark .act_table tr:hover, 
 .dark .booked_act_table tr:hover {
 	background-color: #91000e;
+}
+
+#details_table {
+	max-width: 50%;
 }
 
 /*------------------------------------------------------*/
@@ -356,6 +363,7 @@ img.card_img {
 
 
 #footer {
+	border-top: 1px solid grey;
 	bottom: 0;
 	padding: 0.5rem 2rem;
 }
