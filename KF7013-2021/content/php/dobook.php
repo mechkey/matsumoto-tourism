@@ -6,8 +6,11 @@
 	$debug = false;
 
 	$actID 		= htmlspecialchars($_POST['book']);
-	$date  		= htmlspecialchars($_POST['date']);
-	$num_tix 	= htmlspecialchars($_POST['num_tix']);
+	$date 		= "date$actID";
+	$date  		= htmlspecialchars($_POST[$date]);
+	$num_tix 	= "num_tix$actID";
+	//echo $num_tix;
+	$num_tix 	= htmlspecialchars($_POST[$num_tix]);
 	$user = $_SESSION['username'];
 
 	if (!isset($_SESSION['username'])) {
@@ -54,5 +57,5 @@
 	}
 	/*
 	mysqli_stmt_execute($stmt) or die( mysqli_stmt_error($stmt) );
-	*/
+	*/ 
 ?>

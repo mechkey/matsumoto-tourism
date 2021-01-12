@@ -171,17 +171,18 @@
 					$action = "/KF7013-2021/content/php/dobook.php";
 					$num = $act_id;
 				}
-				$min = date("Y-m-d");
-				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="%s" method="post"><label for="num_tix%s">Number of tickets:</label>
-				<select name="num_tix%s" id="num_tix%s" required>
-					<option label=" " value=""></option>
-					<option label="1 ticket" value="1">1</option><option label="2 tickets" value="2">2</option>
-					<option label="3 tickets" value="3">3</option><option label="4 tickets" value="4">4</option>
-					<option label="5 tickets" value="5">5</option><option label="6 tickets" value="6">6</option>
-					<option label="7 tickets" value="7">7</option><option label="8 tickets" value="8">8</option>
-					<option label="9 tickets" value="9">9</option><option label="10 tickets" value="10">10</option>
-				</select><label for="date%s" >Date:</label><input type="date" max="2023-01-18" min=%s id="date%s" name="date%s" required><button type="submit" name="book" value="%s">%s</button>
-				</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $num, $num, $min, $num, $num, $act_id, $btn_text);
+				//$min = date("Y-m-d");  min=%s
+				$min = '';
+				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="%s" method="post">
+					<div><label for="num_tix%s">Number of tickets:</label><select name="num_tix%s" required>
+						<option value="1">1</option><option value="2">2</option>
+						<option value="3">3</option><option value="4">4</option>
+						<option value="5">5</option><option value="6">6</option>
+						<option value="7">7</option><option value="8">8</option>
+						<option value="9">9</option><option value="10">10</option></select>
+					</div>
+					<div><label for="date%s">On date:</label><input type="date" id="date%s" name="date%s" required><button type="submit" name="book" value="%s">%s</button></div>
+				</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $num, $num, $num, $act_id, $btn_text);
 			}
 			$stmt->close();
 		}
