@@ -11,7 +11,7 @@
 	$user = $_SESSION['username'];
 
 	if (!isset($_SESSION['username'])) {
-		header('Location: /KF7013-2021/content/login.php');
+		header('Location: /kf7013-2021/content/login.php');
 	}
 
 	if ($debug) {
@@ -50,7 +50,7 @@
 			print_r($_SESSION); 
 			echo "</pre>";
 		}
-		header('Location: /KF7013-2021/content/account.php');
+		header('Location: /kf7013-2021/content/account.php');
 	}
 	/*
 	mysqli_stmt_execute($stmt) or die( mysqli_stmt_error($stmt) );

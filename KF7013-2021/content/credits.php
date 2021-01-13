@@ -39,7 +39,7 @@
 		<h2>Code:</h2>
 		<ul>
 
-			<li class="ref"><p>login.php: login() function. Based on: Ellman, J. [No date]. <span class="p_ita">do_login.php</span>, from KF7013 Website Development and Deployment. Northumbria University [Online]. [Accessed 10 December 2020]. Available from: https://elp.northumbria.ac.uk/ultra/courses/_666688_1/outline/edit/document/_8625209_1?courseId=_666688_1</p></li>
+			<li class="ref"><p>login.php: login() function. Based on: Ellman, J. [No date]. <span class="p_ita">do_login.php</span>, from kf7013 Website Development and Deployment. Northumbria University [Online]. [Accessed 10 December 2020]. Available from: https://elp.northumbria.ac.uk/ultra/courses/_666688_1/outline/edit/document/_8625209_1?courseId=_666688_1</p></li>
 
 			<li class="ref"><p>main.css:line 254, 360. Based on: Alligator.io, 2020. <span class="p_ita">Cropping Images in CSS With object-fit</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit</p></li>
 
