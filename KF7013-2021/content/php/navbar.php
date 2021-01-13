@@ -1,5 +1,5 @@
 <?php
-include 'main.php';
+include_once 'main.php';
 
 //Init dark mode vars
 $themeType = '';

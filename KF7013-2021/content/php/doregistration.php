@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include 'main.php';
+	include_once 'main.php';
 	include 'dologin.php';
 
 	$fname 		= htmlspecialchars(trim($_POST['fname']));

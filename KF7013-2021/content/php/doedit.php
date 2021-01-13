@@ -1,7 +1,7 @@
 <?php
 	//This file containts the booking logic for inserting SQL 
 	session_start();
-	include 'main.php';
+	include_once 'main.php';
 
 	$debug = true;
 

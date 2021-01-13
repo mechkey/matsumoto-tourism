@@ -25,17 +25,17 @@
 		
 		<form id="register" method="post" action="/KF7013-2021/content/php/doregistration.php">
 			<label for="fname">Fore Name: </label><br />
-			<input type="text" id="fname" name="fname" pattern="[A-Za-z]*" required><br />
+			<input type="text" id="fname" name="fname" pattern="[A-Za-z ]*" required><br />
 
 			<label for="lname">Last Name:</label><br />
-			<input type="text" id="lname" name="lname" pattern="[A-Za-z]?[']?[A-Za-z]*" required><br />
+			<input type="text" id="lname" name="lname" pattern="[A-Za-z ]?[']?[A-Za-z ]*" required><br />
 
 			<label for="addr1">Address Line 1:</label><br />
-			<input type="text" id="addr1" name="addr1" pattern="[A-Za-z0-9]*"><br />
+			<input type="text" id="addr1" name="addr1" pattern="[A-Za-z0-9 ]*"><br />
 			<label for="addr2">Address Line 2:</label><br />
-			<input type="text" id="addr2" name="addr2" pattern="[A-Za-z0-9]*"><br />
+			<input type="text" id="addr2" name="addr2" pattern="[A-Za-z0-9 ]*"><br />
 			<label for="addrcode">Post/Zip code:</label><br />
-			<input type="text" id="addrcode" name="addrcode" pattern="[A-Za-z0-9]*"><br />
+			<input type="text" id="addrcode" name="addrcode" pattern="[A-Za-z0-9 ]*"><br />
 
 			<label for="dob">Date of Birth:</label><br />
 			<input type="date" id="dob" min="1900-01-01" max="2004-01-10" name="dob" required><br />

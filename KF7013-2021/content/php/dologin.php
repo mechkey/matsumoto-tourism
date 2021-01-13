@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	session_regenerate_id();
+	include_once 'main.php';
 
 	//$user = isset($_POST['username']) ?? '';
 	//$pass = isset($_POST['password']) ?? '';
@@ -14,10 +15,10 @@
 		$pass = htmlspecialchars(trim($pass));
 	}*/
 
-	$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
+	/*$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
 	if ($conn) {
 		mysqli_set_charset($conn, 'utf8');
-	}
+	}*/
 
 	if ($conn === false) {
 		echo "<p>conn failed:" . mysqli_connect_error() . " </p>\n";
