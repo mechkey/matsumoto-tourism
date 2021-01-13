@@ -28,7 +28,7 @@
 			login_form();
 			?>
 		</div>
-		<p>Not got an account?</p> <form method="get" action="/kf7013-2021/content/register.php"><button>Register here</button></form>
+		<p>Not got an account?</p> <form method="get" action="register.php"><button>Register here</button></form>
 	</main>
 	<footer id="footer"> <!-- Beginning of footer -->
 		<?php

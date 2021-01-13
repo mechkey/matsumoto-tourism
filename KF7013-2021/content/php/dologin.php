@@ -64,15 +64,15 @@
 					echo '<br />Password is >>$pass<< <br />';
 					echo 'OK: >>$passok<< <br />';
 		        } else {
-		            header('Location: /kf7013-2021/content/account.php');
+		            header('Location: ../account.php');
 		        }
 		    } else { // == if passok is false
 		        if ($debug) {
 		            echo "<p>Failed - Username $user, Password: >>$pass<< </p>";
 					echo "OK: >>$passok<< (not ok if empty) <br />";
 		        } else {
-		            echo 'Username and/or password incorrect. Please try <a href="/kf7013-2021/content/login.php">login</a> again.';
-		            //header('Location: /kf7013-2021/content/login.php');
+		            echo 'Username and/or password incorrect. Please try <a href="../login.php">login</a> again.';
+		            //header('Location: ../login.php');
 		        }
 		    }
 		}
@@ -80,14 +80,14 @@
 		    if ($debug) {
 		        echo("Array key username or pass  does not exist,<br />");
 		    } else {
-		        //header('Location: /kf7013-2021/content/login.php');
+		        //header('Location: ../login.php');
 		    }
 		}
 	}
 
 	function logincheck() {
 		if (!isset($_SESSION['username'])) 
-			header('Location: /kf7013-2021/content/lost.php');
+			header('Location: lost.php');
 		//exit();
 	}
 

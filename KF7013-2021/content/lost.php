@@ -31,7 +31,7 @@
 		</div>
 		<!-- Tried to use JavaScript here, couldn't get it to work -->
 		<h3>Register</h3>
-		<p>Not got an account?</p> <form action="/kf7013-2021/content/register.php"><button id="reg_button">Register here!</button></form>
+		<p>Not got an account?</p> <form action="register.php"><button id="reg_button">Register here!</button></form>
 	</main>
 	<footer id="footer"> <!-- Beginning of footer -->
 		<?php

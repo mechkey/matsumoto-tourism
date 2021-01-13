@@ -4,7 +4,7 @@
 	include_once 'main.php';
 
 	if (!isset($_SESSION['username'])) {
-		header('Location: /kf7013-2021/content/login.php');
+		header('Location: ../login.php');
 	}
 
 	$debug = false;
@@ -42,7 +42,7 @@
 			print_r($_SESSION); 
 			echo "</pre>";
 		}
-		header('Location: /kf7013-2021/content/account.php');
+		header('Location: ../account.php');
 	}
 	
 	

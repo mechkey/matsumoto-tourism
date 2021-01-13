@@ -37,7 +37,7 @@
 			if (isset($_GET['delete_id'])) {
 				echo '<h2 class="tworem">Are you sure you wish to delete the following booking?</h2>';
 				booked_act_details(true);
-				echo '<form id="confirmed" method="post" action="/kf7013-2021/content/php/dodelete.php?delete_id='.$_GET['delete_id'].'"><button type="submit" class="tworem">Confirm</button></form>';
+				echo '<form id="confirmed" method="post" action="./php/dodelete.php?delete_id='.$_GET['delete_id'].'"><button type="submit" class="tworem">Confirm</button></form>';
 			}
 			booked_act();
 			

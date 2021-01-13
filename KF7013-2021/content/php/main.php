@@ -300,7 +300,6 @@
 	
 
 	//  <form id="login" method="post" action="./php/dologin.php"> 
-	//	<form id="login" method="post" action="/kf7013-2021/content/php/dologin.php"> 
 	function login_form ($nav_sub=false) {
 		$login = '
 		<form id="login" method="post" action="./php/dologin.php"> 
@@ -413,7 +412,7 @@
 	}
 
 
-	// This function makes a text box and submit button that searches the activity name, description and location. // It was originally also on the nav bar, hence a function for reuseability. /kf7013-2021/content/search.php
+	// This function makes a text box and submit button that searches the activity name, description and location. // It was originally also on the nav bar, hence a function for reuseability. /content/search.php
 	function searchbar() {
 		echo '<form id="search_form" method="get">
 			<label for="search">Search (optional):</label>
