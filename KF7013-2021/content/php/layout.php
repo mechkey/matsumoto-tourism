@@ -45,7 +45,7 @@ function makeHeadToMain ($pageTitle) {
 		if (isset($_SESSION['username'])) {
 			//echo 'Session set';
 		} else {
-			header("Location: /w19041690/kf7013-2021/index.php");
+			header("Location: /kf7013-2021/index.php");
 		}	
 	?>
 	*/

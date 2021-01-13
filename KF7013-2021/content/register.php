@@ -23,7 +23,7 @@
 	<main id="content"> <!-- Beginning of page content -->
 		<h1> Welcome! Thanks for choosing to sign up.</h1>
 		
-		<form id="register" method="post" action="/w19041690/kf7013-2021/content/php/doregistration.php">
+		<form id="register" method="post" action="/kf7013-2021/content/php/doregistration.php">
 			<label for="fname">Fore Name: </label><br />
 			<input type="text" id="fname" name="fname" pattern="[A-Za-z ]*" required><br />
 
