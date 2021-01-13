@@ -38,13 +38,13 @@ function makenav_bar () {
 	}
 
 	//set curpagepath so that glob works correctly
-	if (($path == 'index.php') || ($path == '/kf7013-2021/index.php')) {
+	if (($path == '/kf7013-2021/') || ($path == '/kf7013-2021/index.php')) {
 		$curpagepath = 'content/';
 	} else {
 		$curpagepath = '';
 	}
 	if ($debug) {
-		echo 'cur page path is: ' . $curpagepath;
+		echo 'cur page path is: ooo' . $curpagepath . 'ooo';
 	}
 
 
@@ -117,6 +117,11 @@ function makenav_bar () {
 function contentAsArray($rel) { 
 	global $debug;
 	$tmpPageArray = [];
+	if ($rel == null) {
+		//echo "rel == null setting to content slash";
+		//echo $rel;
+	}
+	//echo 'rel is: '. $rel;
 	foreach (glob($rel . '*.php') as $filename)
 	{
 		if ($debug) { echo $filename; }
