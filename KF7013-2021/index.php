@@ -29,8 +29,8 @@
 				foreach ($act_array as $value) {
 					extract($value);
 					$img_alt = alt($activityID);
-					echo '<div class="card"><img class="card_img" src="/KF7013-2021/assets/images/'.$activityID.'.jpg" alt="'.$img_alt.'">';
-					echo '<div class="copy"><a href="/KF7013-2021/content/search.php?a_id='.$activityID.'"><h1>'.$activity_name.'</h1></a><p>'.$description.'</p></div></div>';
+					echo '<div class="card"><img class="card_img" src="./assets/images/'.$activityID.'.jpg" alt="'.$img_alt.'">';
+					echo '<div class="copy"><a href="./content/search.php?a_id='.$activityID.'"><h1>'.$activity_name.'</h1></a><p>'.$description.'</p></div></div>';
 				}
 				
 				
@@ -43,7 +43,7 @@
 				//echo'<li><form id="theme" method="post" action="./index.php"><input type="submit" name="theme" value="dark"/> </form></li>';
 				?>
 				<aside>
-					<p>Please <a href="/KF7013-2021/content/register.php">register</a> to book these activities!</p>
+					<p>Please <a href="./content/register.php">register</a> to book these activities!</p>
 				</aside>
 			</div>
 	</main>
