@@ -48,56 +48,12 @@
 
 
 	//This function prints out the content of the activities table.
-	function act_book($searching=false, $excluding=false, $aID=false) {
+	function act_book($aID=false) {
+		global $conn;
 		global $debug;
-		$search = "";
-		$exclude = "";
-		$search = $_GET['search']  ?? null;
-		$search = htmlspecialchars($search);
-		$exclude = $_GET['exclude'] ?? null;
-		$exclude = htmlspecialchars($exclude);
-		$a_id = $_GET['a_id'] ?? null;
-		$a_id = htmlspecialchars($a_id);
-
-
-		//$floatsearch = floatval($search);
-
-		if ($search != null) {
-			$search = '%' . $search . '%';
-			if ($debug) {
-				echo 'search not null%%';
-			}
-		}
-		if ($exclude != null) {
-			$exclude = '%' . $exclude . '%';
-			if ($debug) {
-				echo 'Exclude not null%%';
-			}
-		}		
-		if ($a_id == null) {
-			if ($debug) {
-				echo 'select  null%%';
-			}
-		}
-		if ($debug) {
-			echo $search;
-			br();
-			echo $exclude;
-			br();
-		}
-
-		if ($aID == true) {
-			$caption = "Edit booking:";
-			$btn_text = "Modify";
-
-		} else {
-			$caption = "Activity Details:";
-			$btn_text = "Book";
-
-		}
-
+		
 		$table = <<< TABLE
-		 	<table class="act_table"><caption>${caption}</caption><tr>
+		 	<table class="act_table"><caption>Activity Details:</caption><tr>
 				<th class="shortcol">Activity Name</th>
 				<th class="longcol">Description</th>
 				<th class="tonycol">Price</th>
@@ -107,80 +63,37 @@ TABLE;
 
 		echo $table;
 
-		// Trying OO php . . .
 		$sql = "SELECT `b2_act_id`, `b2_act_name`, `b2_desc`, `b2_price`, `b2_loc`, `customerID` FROM (SELECT a.activityID AS b2_act_id, `activity_name` AS b2_act_name, `description` AS b2_desc, `price` AS b2_price, `location` AS b2_loc, null AS b2_custID FROM `activities` a) AS b2 LEFT JOIN (SELECT a.activityID, `activity_name`, `description`, `price`, `location`, `customerID` FROM `activities` a LEFT OUTER JOIN `booked_activities` ba ON ba.activityID = a.activityID WHERE `customerID` = (SELECT customerID FROM customers WHERE username = ?)) AS b1 on b1.activityID = b2_act_id";
 
-		if ($searching || $excluding) {
-			$sql .= "WHERE ";
-		}
-		if ($searching) {
-			$sql .= "(`activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ?) ";
-		}
-		if ($search != null && $exclude != null) {
-			$sql .= " AND ";
-		}
-		//if ($excluding) {
-		if ($exclude != null) {
-			$sql .= " `activity_name` NOT LIKE ? AND `description` NOT LIKE ? AND `location` NOT LIKE ? ";
-		}
-
-		if ($aID == true) {
-			$sql = "SELECT `activity_name`, `description`, `price`, `location`, `number_of_tickets`, `date_of_activity`, ba.customerID, a.activityID FROM booked_activities ba JOIN customers C ON c.customerID = ba.customerID JOIN activities a ON a.activityID = ba.activityID WHERE ba.activityID = ? AND username = ?";
-		}
 		//
 		if ($debug) {
 			echo $sql;	
 			echo '-xclude is : '. $exclude . ' ';		
 		}
-		global $conn;
 		if ($stmt = mysqli_prepare($conn, $sql)) {
 
-			if ((isset($_GET['search']) && $_GET['search'] != '' ) && (isset($_GET['exclude']) && $_GET['exclude'] != '' )) {
-				mysqli_stmt_bind_param($stmt, "ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
-				//echo 'search not null exclude not null';
-			}
-			else if (($_GET['search'] != '' ) && $_GET['exclude'] == '' ) {
-				mysqli_stmt_bind_param($stmt, "sss", $search, $search, $search);
-				//echo 'if 1 search not null: ' . $search;
-			}
-			else if ((isset($_GET['exclude']) && $_GET['exclude'] != '' ) && $_GET['search'] == '' ) {
-				mysqli_stmt_bind_param($stmt, "sss", $exclude, $exclude, $exclude);
-				//echo 'if 2 exclude not null: ' . $exclude;
-			} 
-			else if ($aID == true) {
-				mysqli_stmt_bind_param($stmt, "ss", $a_id, $_SESSION['username']);
-			} else {
-				mysqli_stmt_bind_param($stmt, "s", $_SESSION['username']);
-			}
+			mysqli_stmt_bind_param($stmt, "s", $_SESSION['username']);
 
-			$res = mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_execute($stmt);
 			if ($result) {
 
-				if ($aID == true) {
-					mysqli_stmt_bind_result($stmt, $act_name, $desc, $price, $loc, $num_tix, $date, $custID, $act_id);
-				} else {
-					mysqli_stmt_bind_result($stmt, $act_id, $act_name, $desc, $price, $loc, $custID);
-					//echo 'aid false';
-					echo $custID;
-				}
+				
+				mysqli_stmt_bind_result($stmt, $act_id, $act_name, $desc, $price, $loc, $custID);
+				//echo 'aid false';
+				echo $custID;
 
 				//echo $act_id;
 				while (mysqli_stmt_fetch($stmt)) {
-					if ($aID == true) {
-						$action = "./php/doedit.php";
-						$num = '';
-						//echo $act_name. $desc. $price.$loc. $num_tix. $date. $custID. $act_id;
-						//echo 'edit true';
-					} else {
-						$action = "./php/dobook.php";
-						$num = $act_id;
-					}			
+					
+					$action = "./php/dobook.php";
+					$num = $act_id;		
 					
 					if ($custID != null) {
 						//view existing booking
 							printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="account.php?select_id=%s" method="post"><button type="submit" name="book" value="%s">View booking</button></div>
 							</form></td></tr>', $act_name, $desc, $price, $loc, $act_id, $act_id);
 					} else {
+						$btn_text = "Book";
 						$min = date("Y-m-d"); 
 						printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="%s" method="post">
 						<div><label for="num_tix%s">Number of tickets:</label><select name="num_tix%s" required>
@@ -323,7 +236,7 @@ LOGOUT;
 		echo $logout;
 	}
 
-	function mod_book($searching=false, $excluding=false, $aID=false) {
+	function mod_book($aID=false) {
 		global $debug;
 		$a_id = $_GET['a_id'] ?? null;
 		$a_id = htmlspecialchars($a_id);
@@ -333,12 +246,7 @@ LOGOUT;
 				echo 'select  null%%';
 			}
 		}
-		if ($debug) {
-			echo $search;
-			br();
-			echo $exclude;
-			br();
-		}
+
 
 		if ($aID == true) {
 			$caption = "Edit booking:";

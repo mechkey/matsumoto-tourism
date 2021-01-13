@@ -31,7 +31,7 @@
 			}
 			//modify a booking
 			if (isset($_GET['a_id'])) {
-				mod_book(false, false, true);
+				mod_book(true);
 			} 
 			//cancel a booking
 			if (isset($_GET['delete_id'])) {
