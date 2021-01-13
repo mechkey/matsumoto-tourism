@@ -1,3 +1,5 @@
+Most of the php functionality is in main.php, which connects to pages by being including in navbar, which itself is included on content pages.
+
 1. Provide one login page...
 	Implementation page:
 	-> /KF7013-2021/content/login.php
@@ -17,6 +19,9 @@
 4. All customers should be able to see their booked_activities table. From the booked activities table customers should be able to navigate to activities to see activity details...
 	Implementation page:
 	-> /KF7013-2021/content/account.php
+	->view booking details
+	->modifiy bookings
+	->delete bookings
 
 
 5. ...search for an activity and display the results that match the search criteria...advanced searching such as combining two search fields together using AND/OR logic.
