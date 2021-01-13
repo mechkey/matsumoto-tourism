@@ -2,23 +2,23 @@ Most of the php functionality is in main.php, which connects to pages by being i
 
 1. Provide one login page...
 	Implementation page:
-	-> /kf7013-2021/content/login.php
+	-> /w19041690/kf7013-2021/content/login.php
 
 2. ...insert a new customer’s details into the customers table using an HTML5 form to gather the customer data and PHP to connect to the MySQL database and insert the values...
 	Implementation page:
-	-> /kf7013-2021/content/registration.php
-	Relevant php located in /kf7013-2021/content/php/doregistration.php
+	-> /w19041690/kf7013-2021/content/registration.php
+	Relevant php located in /w19041690/kf7013-2021/content/php/doregistration.php
 	Check database for inputted username before registering user.
 
 
 3. One page of your website should link to the activities table in your MySQL database using PHP ...
 	Implementation page:
-	-> /kf7013-2021/content/activities.php
+	-> /w19041690/kf7013-2021/content/activities.php
 	
 
 4. All customers should be able to see their booked_activities table. From the booked activities table customers should be able to navigate to activities to see activity details...
 	Implementation page:
-	-> /kf7013-2021/content/account.php
+	-> /w19041690/kf7013-2021/content/account.php
 	->view booking details
 	->modifiy bookings
 	->delete bookings
@@ -27,18 +27,18 @@ Most of the php functionality is in main.php, which connects to pages by being i
 5. ...search for an activity and display the results that match the search criteria...advanced searching such as combining two search fields together using AND/OR logic.
 	I have implemented a two-field search using AND logic.
 	Implementation page:
-	-> /kf7013-2021/content/search.php
-	Relevant php functions (located in /kf7013-2021/content/php/main.php):
+	-> /w19041690/kf7013-2021/content/search.php
+	Relevant php functions (located in /w19041690/kf7013-2021/content/php/main.php):
 	-> searchbar()
 	-> act_book()
 
 6. An academic security report web page 
 	Implementation page:
-	-> /kf7013-2021/content/report.php
+	-> /w19041690/kf7013-2021/content/report.php
 
 7. An appropriately designed homepage/index page.
 	Implementation page:
-	-> /kf7013-2021/index.php
+	-> /w19041690/kf7013-2021/index.php
 
 (8) Credits page
-	-> /kf7013-2021/content/credits.php
+	-> /w19041690/kf7013-2021/content/credits.php

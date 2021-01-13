@@ -29,7 +29,7 @@
 			$text = ucfirst($text);
 			//echo $text;
 			$logout = '
-				<form id="confirm_logout" method="post" action="/kf7013-2021/content/php/dologout.php"><button type="submit"> Confirm</button></form>';
+				<form id="confirm_logout" method="post" action="/w19041690/kf7013-2021/content/php/dologout.php"><button type="submit"> Confirm</button></form>';
 			echo $logout;
 			?>
 		</div>

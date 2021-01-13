@@ -38,14 +38,14 @@
 				mysqli_stmt_bind_param($stmt, "ssssssss", $username, $passwordha, $fname, $lname, $addrcode, $addr1, $addr2, $dob);
 				/*
 				mysqli_stmt_execute($stmt) or die( mysqli_stmt_error($stmt) );
-				header('Location: /kf7013-2021/content/ account.php');
+				header('Location: /w19041690/kf7013-2021/content/ account.php');
 				*/
 				$result = mysqli_stmt_execute($stmt);
 				if ($result) {
 
 					login($username, $passwordha);
 				    $_SESSION['username'] = $username;
-					header('Location: /kf7013-2021/content/account.php');
+					header('Location: /w19041690/kf7013-2021/content/account.php');
 				} else {
 					echo 'pass not ok i gues';
 				}
@@ -56,7 +56,7 @@
 
 		/*} else {
 			echo "Username exists. Please try again.";
-			header('Location: /kf7013-2021/ content/register.php');
+			header('Location: /w19041690/kf7013-2021/ content/register.php');
 		}*/
 
 		 
