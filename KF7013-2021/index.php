@@ -30,7 +30,7 @@
 					extract($value);
 					$img_alt = alt($activityID);
 					echo '<div class="card"><img class="card_img" src="/KF7013-2021/assets/images/'.$activityID.'.jpg" alt="'.$img_alt.'">';
-					echo '<div class="copy"><a href="/KF7013-2021/content/search.php?a_id=1"><h1>'.$activity_name.'</h1></a><p>'.$description.'</p></div></div>';
+					echo '<div class="copy"><a href="/KF7013-2021/content/search.php?a_id='.$activityID.'"><h1>'.$activity_name.'</h1></a><p>'.$description.'</p></div></div>';
 				}
 				
 				

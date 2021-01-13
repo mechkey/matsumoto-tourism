@@ -326,29 +326,79 @@
 		echo $logout;
 	}
 
+	function mod_book($searching=false, $excluding=false, $aID=false) {
+		global $debug;
+		$a_id = $_GET['a_id'] ?? null;
+		$a_id = htmlspecialchars($a_id);
 
-	/* deprecated
-	function nav_barlogout_form ($value) {
-		$logout = <<<LOGOUT
-		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
-		<input type="submit" class="nav_button" id="logoutbutton" value="$value" /> 
-		</form>
-		LOGOUT;
+		if ($a_id == null) {
+			if ($debug) {
+				echo 'select  null%%';
+			}
+		}
+		if ($debug) {
+			echo $search;
+			br();
+			echo $exclude;
+			br();
+		}
 
-		echo $logout;
-	} */
+		if ($aID == true) {
+			$caption = "Edit booking:";
+			$btn_text = "Modify";
 
-	/* deprecated	
-	function nav_barlogout_form2
-	 () {
-		$logout = '
-		<form id="logout" method="post" action="/KF7013-2021/content/php/dologout.php"> 
-		<input type="submit" value="Logout" /> 
-		</form>
-		';
-		echo $logout;
+		}
+
+		$table = <<< TABLE
+		 	<table class="act_table"><caption>${caption}</caption><tr>
+				<th class="shortcol">Activity Name</th>
+				<th class="longcol">Description</th>
+				<th class="tonycol">Price</th>
+				<th class="shortcol">Location</th>
+				<th class="longcol">Booking</th>
+		TABLE;
+
+		echo $table;
+
+		// Trying OO php . . .
+		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
+		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` ";
+
+		
+
+		if ($aID == true) {
+			$AID = $_REQUEST['a_id'];
+			$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` WHERE `activityID` = $AID";
+		}
+		//
+		if ($debug || true) {
+			//echo $sql;	
+			//echo '-xclude is : '. $exclude . ' ';		
+		}
+		if ($stmt = $mysqli->prepare($sql)) {
+			//if ($exclude == null) {
+
+			
+
+			$stmt->execute();
+			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
+			//echo $act_id;
+			while ($stmt->fetch()) {
+				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/doedit.php" method="post">
+						<select name="num_tix" required>
+							<option value="1">1</option><option value="2">2</option>
+							<option value="3">3</option><option value="4">4</option>
+							<option value="5">5</option><option value="6">6</option>
+							<option value="7">7</option><option value="8">8</option>
+							<option value="9">9</option><option value="10">10</option>
+						</select><input type="date" id="date" name="date" required><button type="submit" name="book" value="%s">Book</button>
+						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id);
+			}
+			$stmt->close();
+		}
+		$mysqli->close();
+		echo '</table>';
 	}
-	*/
 
 
 	// This function makes a text box and submit button that searches the activity name, description and location. // It was originally also on the nav bar, hence a function for reuseability. /KF7013-2021/content/search.php
@@ -377,8 +427,132 @@
 		echo '</select><input type="submit" value="Submit" class="nav_button"></form>';*/
 	}
 
-	//The website logo light mode and dark mode selector.
+	function search_res($searching=false, $excluding=false, $aID=false) {
+		global $debug;
+		$search = "";
+		$exclude = "";
+		$search = $_GET['search']  ?? null;
+		$search = htmlspecialchars($search);
+		$exclude = $_GET['exclude'] ?? null;
+		$exclude = htmlspecialchars($exclude);
+		$a_id = $_GET['a_id'] ?? null;
+		$a_id = htmlspecialchars($a_id);
 
+
+		//$floatsearch = floatval($search);
+
+		if ($search != null) {
+			$search = '%' . $search . '%';
+			if ($debug) {
+				echo 'search not null%%';
+			}
+		}
+		if ($exclude != null) {
+			$exclude = '%' . $exclude . '%';
+			if ($debug) {
+				echo 'Exclude not null%%';
+			}
+		}		
+		if ($a_id == null) {
+			if ($debug) {
+				echo 'select  null%%';
+			}
+		}
+		if ($debug) {
+			echo $search;
+			br();
+			echo $exclude;
+			br();
+		}
+
+		if ($aID == true) {
+			$caption = "Edit booking:";
+			$btn_text = "Modify";
+
+		} else {
+			$caption = "Activity Details:";
+			$btn_text = "Book";
+
+		}
+
+		$table = <<< TABLE
+		 	<table class="act_table"><caption>${caption}</caption><tr>
+				<th class="shortcol">Activity Name</th>
+				<th class="longcol">Description</th>
+				<th class="tonycol">Price</th>
+				<th class="shortcol">Location</th>
+				<th class="longcol">Booking</th>
+		TABLE;
+
+		echo $table;
+
+		// Trying OO php . . .
+		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
+		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` ";
+
+		if ($searching || $excluding) {
+			$sql .= "WHERE ";
+		}
+		if ($searching) {
+			$sql .= "(`activity_name` LIKE ? OR `description` LIKE ? OR `location` LIKE ?) ";
+		}
+		if ($search != null && $exclude != null) {
+			$sql .= " AND ";
+		}
+		//if ($excluding) {
+		if ($exclude != null) {
+			$sql .= " `activity_name` NOT LIKE ? AND `description` NOT LIKE ? AND `location` NOT LIKE ? ";
+		}
+
+		if ($aID == true) {
+			$AID = $_REQUEST['a_id'];
+			$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` WHERE `activityID` = $AID";
+		}
+		//
+		if ($debug || true) {
+			//echo $sql;	
+			//echo '-xclude is : '. $exclude . ' ';		
+		}
+		if ($stmt = $mysqli->prepare($sql)) {
+			//if ($exclude == null) {
+
+			if ((isset($_GET['search']) && $_GET['search'] != '' ) && (isset($_GET['exclude']) && $_GET['exclude'] != '' )) {
+				$stmt->bind_param("ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
+				//echo 'search not null exclude not null';
+			}
+
+			else if ((isset($_GET['search']) && $_GET['search'] != '' ) && $_GET['exclude'] == '' ) {
+				//echo 'if 1 search not null: ' . $search;
+				$stmt->bind_param("sss", $search, $search, $search);
+			}
+			else if ((isset($_GET['exclude']) && $_GET['exclude'] != '' ) && $_GET['search'] == '' ) {
+				//echo 'if 2 exclude not null: ' . $exclude;
+				$stmt->bind_param("sss", $exclude, $exclude, $exclude);
+
+			} else {
+				//echo 'else statement - exclude = null';
+			}
+
+			$stmt->execute();
+			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
+			//echo $act_id;
+			while ($stmt->fetch()) {
+				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/book.php" method="post">
+						<select name="num_tix" required>
+							<option value="1">1</option><option value="2">2</option>
+							<option value="3">3</option><option value="4">4</option>
+							<option value="5">5</option><option value="6">6</option>
+							<option value="7">7</option><option value="8">8</option>
+							<option value="9">9</option><option value="10">10</option>
+						</select><input type="date" id="date" name="date" required><button type="submit" name="book" value="%s">Book</button>
+						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id);
+			}
+			$stmt->close();
+		}
+		$mysqli->close();
+		echo '</table>';
+	}
+	 
 
 	//Shows the account, first and last names for the logged in user.
 	function viewDetails () {

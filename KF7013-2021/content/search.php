@@ -47,17 +47,17 @@
 	searchbar();
 
 	if (isset($_GET['search']) && $_GET['search'] != '' )
-		act_book(true);
+		search_res(true);
 	else if (isset($_GET['exclude']) && $_GET['exclude'] != '' )
-		act_book(false,true);
+		search_res(false,true);
 	else if (
 			isset($_GET['search'])  && 
 			isset($_GET['exclude']) &&
 			$_GET['search'] != ''   &&
 			$_GET['exclude'] != ''  )
-		act_book(true, true);
+		search_res(true, true);
 	else {
-		act_book(false, false, true);
+		search_res(false, false, true);
 	}
 	?>
 	</main>
