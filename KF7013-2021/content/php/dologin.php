@@ -18,11 +18,11 @@
 	/*$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
 	if ($conn) {
 		mysqli_set_charset($conn, 'utf8');
-	}*/
+	}
 
 	if ($conn === false) {
 		echo "<p>conn failed:" . mysqli_connect_error() . " </p>\n";
-	} 
+	} */
 
 	login($user, $pass);
 

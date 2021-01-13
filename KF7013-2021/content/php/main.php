@@ -6,7 +6,7 @@
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-	$conn = mysqli_connect ('localhost', 'root', 'root', 'travel');
+	$conn = mysqli_connect ('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
 	if ($conn) {
 		mysqli_set_charset($conn, 'utf8');
 	}
@@ -34,7 +34,7 @@
 		}
 		$acts = [];
 		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
 		/* database of alt images - v1
 		$sql = "SELECT `activity_name`, `description`, `price`, `location`, a.activityID, i.alt FROM `activities` a JOIN `images` i ON a.activityID = i.activityID";*/
 		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities`";
@@ -110,7 +110,7 @@
 		echo $table;
 
 		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
 		$sql = "SELECT `b2_act_id`, `b2_act_name`, `b2_desc`, `b2_price`, `b2_loc`, `customerID` FROM (SELECT a.activityID AS b2_act_id, `activity_name` AS b2_act_name, `description` AS b2_desc, `price` AS b2_price, `location` AS b2_loc, null AS b2_custID FROM `activities` a) AS b2 LEFT JOIN (SELECT a.activityID, `activity_name`, `description`, `price`, `location`, `customerID` FROM `activities` a LEFT OUTER JOIN `booked_activities` ba ON ba.activityID = a.activityID WHERE `customerID` = (SELECT customerID FROM customers WHERE username = ?)) AS b1 on b1.activityID = b2_act_id";
 
 		if ($searching || $excluding) {
@@ -230,7 +230,7 @@
 	function booked_act () {
 		echo '<table class="booked_act_table"><caption>Booked Activities:</caption><tr><th class="longcol">Booked Activities</th><th class="act_id">Activity ID</th><th class="longcol">Activity Date</th><th class="tinycol">Number of Tickets</th><th>Details</th><th>Modify</th><th>Cancel</th></tr>';
 		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
 
 		//$sql = "SELECT a.activity_name, b.activityID, date_of_activity, b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID";
 		$sql = "SELECT `activity_name`, b.activityID, DATE(b.date_of_activity), b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN `activities` a ON a.activityID = b.activityID LEFT OUTER JOIN `customers` c ON b.customerID = c.customerID WHERE c.username=? ORDER BY `date_of_activity`";
@@ -274,7 +274,7 @@
 		echo $table;
 
 		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
 		
 		$sql = "SELECT `activity_name`, `description`, DATE(date_of_activity), `location`, `price`, `number_of_tickets`, (number_of_tickets * price) AS `total` FROM `booked_activities` ba join `activities` a on a.activityID = ba.activityID join `customers` c on c.customerID = ba.customerID WHERE c.username = ? AND a.activityID = ?";	
 
@@ -385,7 +385,7 @@
 		echo '<table id="details_table"><caption>Your details:</caption><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
 
 				// Trying OO php . . .
-				$mysqli = new mysqli('localhost', 'root', 'root', 'travel');
+				$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
 
 				$sql = "SELECT `username`, `customer_forename`, `customer_surname` FROM `customers` WHERE `username` = ?";
 				if ($stmt = $mysqli->prepare($sql)) {
