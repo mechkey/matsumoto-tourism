@@ -1,3 +1,5 @@
+Most of the php functionality is in main.php, which connects to pages by being including in navbar, which itself is included on content pages.
+
 1. Provide one login page...
 	Implementation page:
 	-> /KF7013-2021/content/login.php
