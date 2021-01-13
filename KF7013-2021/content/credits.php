@@ -47,6 +47,8 @@
 
 			<li class="ref"><p>navbar.php: line 19, main.css: lines 19-21. Based on: CSS Tricks. 2018. <span class="p_ita">Centering List Items Horizontally (Slightly Trickier Than You Might Think)</span>. [Online]. [Accessed 07 January 2021]. Available at: https://css-tricks.com/centering-list-items-horizontally-slightly-trickier-than-you-might-think/</p></li>
 
+			<li class="ref"><p>StackOverflow. 2016. <span class="p_ita">Regular Expression to select everything before and up to a particular text</span>. [Online]. [Accessed 07 January 2021]. Available at: https://stackoverflow.com/questions/18413204/regular-expression-to-select-everything-before-and-up-to-a-particular-text</p></li>
+
 			<li class="ref"><p>w3schools. [No date]. <span class="p_ita">CSS display Property</span>. [Online]. [Accessed 07 January 2021]. Available at: https://www.w3schools.com/cssref/pr_class_display.asp</p></li>
 
 			<li class="ref"><p>w3schools. [No date]. <span class="p_ita">HTML &ltinput&gt max Attribute</span>. [Online]. [Accessed 11 January 2021]. Available at: https://www.w3schools.com/tags/att_input_max.asp</p></li>

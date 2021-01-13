@@ -168,17 +168,18 @@
 			//echo $act_id;
 			while ($stmt->fetch()) {
 				if ($aID == true) {
-					$action = "/kf7013-2021/content/php/doedit.php";
+					$action = "./php/doedit.php";
 					$num = '';
 					//echo $act_name. $desc. $price.$loc. $num_tix. $date. $custID. $act_id;
 					//echo 'edit true';
 				} else {
-					$action = "/kf7013-2021/content/php/dobook.php";
+					$action = "./php/dobook.php";
 					$num = $act_id;
 				}			
 				
 				if ($custID != null) {
-						printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="/kf7013-2021/content/account.php?select_id=%s" method="post"><button type="submit" name="book" value="%s">View booking</button></div>
+					//view existing booking
+						printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="account.php?select_id=%s" method="post"><button type="submit" name="book" value="%s">View booking</button></div>
 						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id, $act_id);
 				} else {
 					$min = date("Y-m-d"); 
@@ -240,7 +241,7 @@
 			$stmt->bind_result($act_name, $act_id, $date, $num_tix);
 			while ($stmt->fetch()) {
 				$date = date('d-m-Y', strtotime($date));
-				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="tinycol">%s</td><td class="shortcol"><a href="account.php?select_id=%d">View Details</a></td><td class="shortcol"><a href="account.php?a_id=%d">Modify booking</a></td><td class="shortcol"><a href="/kf7013-2021/content/account.php?delete_id=%d">Delete booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id, $act_id);
+				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="tinycol">%s</td><td class="shortcol"><a href="account.php?select_id=%d">View Details</a></td><td class="shortcol"><a href="account.php?a_id=%d">Modify booking</a></td><td class="shortcol"><a href="account.php?delete_id=%d">Delete booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id, $act_id);
 			}
 			echo '</table>';
 			$stmt->close();
@@ -283,7 +284,7 @@
 			$stmt->execute();
 			$stmt->bind_result($act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
 			while ($stmt->fetch()) {
-				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="shortcol">%s</td><td class="shortcol">%s</td><td class="tinycol">£%d</td><td class="tinycol">%d</td><td class="tinycol">£%d</td><td class="tinycol"><a href="/kf7013-2021/content/account.php" class"no_purple">Hide</a></td>
+				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="shortcol">%s</td><td class="shortcol">%s</td><td class="tinycol">£%d</td><td class="tinycol">%d</td><td class="tinycol">£%d</td><td class="tinycol"><a href="account.php" class"no_purple">Hide</a></td>
 						</tr>', $act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
 			}
 			$stmt->close();
@@ -302,7 +303,7 @@
 	//	<form id="login" method="post" action="/kf7013-2021/content/php/dologin.php"> 
 	function login_form ($nav_sub=false) {
 		$login = '
-		<form id="login" method="post" action="/kf7013-2021/content/php/dologin.php"> 
+		<form id="login" method="post" action="./php/dologin.php"> 
 		<label for="username">Username:</label><input type= "text" id="username" name="username" size="8" required/><br />
 		<label for="password">Password:</label><input type= "password" id="password" name="password" size="8" pattern=".{8,}" required/>'; 
 		$login .= '<input type="submit" id="loginbutton" class="nav_button" value="Login" /> 
@@ -318,11 +319,21 @@
 		}
 		$text = ucfirst($text);
 		//echo $text;
-		$logout = <<<LOGOUT
-		<form id="logout" method="post" action="/kf7013-2021/content/logout.php"> 
-		<button type="submit" ${class} id="logoutbutton"> ${text} </button>
-		</form>
-		LOGOUT;
+		if ('index.php' == getpath2()) {
+			$logout = <<<LOGOUT
+			<form id="logout" method="post" action="./content/logout.php"> 
+			<button type="submit" ${class} id="logoutbutton"> ${text} </button>
+			</form>
+			LOGOUT;
+
+		} else {
+			$logout = <<<LOGOUT
+			<form id="logout" method="post" action="./logout.php"> 
+			<button type="submit" ${class} id="logoutbutton"> ${text} </button>
+			</form>
+			LOGOUT;
+
+		}
 		echo $logout;
 	}
 

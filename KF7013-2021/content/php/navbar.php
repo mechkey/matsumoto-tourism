@@ -20,6 +20,10 @@ function makenav_bar () {
 	
 	//Logic to choose logo or brighter logo for dark mode - from logo.php
 	showLogo($_SERVER['REQUEST_URI']);
+	//echo 'server bla' . $_SERVER['REQUEST_URI'];
+
+	//echo getpath2();
+
 
 	$path = getpath();
 	if ($debug) {echo 'path is: ' . $path . '	';}
@@ -157,6 +161,15 @@ function contentAsArray($rel) {
 
 function getpath() {
 	$path = $_SERVER['REQUEST_URI'];
+
+	return $path;
+}
+
+function getpath2() {
+	$path = $_SERVER['REQUEST_URI'];
+	//$path = str_replace('^.*(?=(\/))', '', $path);
+	$path = str_replace('/kf7013-2021/', '', $path);
+	//$path = str_replace('^.*(?=(\/))', '', $path);
 	return $path;
 }
 
