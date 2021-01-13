@@ -30,24 +30,22 @@
 		
 		if ($debug) {
 			echo $search;
-			br();
 		}
 		$acts = [];
-		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
+		//
 		/* database of alt images - v1
 		$sql = "SELECT `activity_name`, `description`, `price`, `location`, a.activityID, i.alt FROM `activities` a JOIN `images` i ON a.activityID = i.activityID";*/
+		global $conn;
 		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities`";
-		if ($res = $mysqli->query($sql)) {
-
-			while ($row = $res->fetch_assoc()) {
+			
+		if ($result = mysqli_query($conn, $sql)) {
+			while ($row = mysqli_fetch_assoc($result)) {
 				$acts[] = $row;
 			}
-			$res->free();
 		}
-		$mysqli->close();
 		return $acts;
 	}
+
 
 	//This function prints out the content of the activities table.
 	function act_book($searching=false, $excluding=false, $aID=false) {
@@ -105,12 +103,11 @@
 				<th class="tonycol">Price</th>
 				<th class="shortcol">Location</th>
 				<th class="longcol">Booking</th>
-		TABLE;
+TABLE;
 
 		echo $table;
 
 		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
 		$sql = "SELECT `b2_act_id`, `b2_act_name`, `b2_desc`, `b2_price`, `b2_loc`, `customerID` FROM (SELECT a.activityID AS b2_act_id, `activity_name` AS b2_act_name, `description` AS b2_desc, `price` AS b2_price, `location` AS b2_loc, null AS b2_custID FROM `activities` a) AS b2 LEFT JOIN (SELECT a.activityID, `activity_name`, `description`, `price`, `location`, `customerID` FROM `activities` a LEFT OUTER JOIN `booked_activities` ba ON ba.activityID = a.activityID WHERE `customerID` = (SELECT customerID FROM customers WHERE username = ?)) AS b1 on b1.activityID = b2_act_id";
 
 		if ($searching || $excluding) {
@@ -135,70 +132,71 @@
 			echo $sql;	
 			echo '-xclude is : '. $exclude . ' ';		
 		}
-		if ($stmt = $mysqli->prepare($sql)) {
-			//if ($exclude == null) {
+		global $conn;
+		if ($stmt = mysqli_prepare($conn, $sql)) {
 
 			if ((isset($_GET['search']) && $_GET['search'] != '' ) && (isset($_GET['exclude']) && $_GET['exclude'] != '' )) {
-				$stmt->bind_param("ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
+				mysqli_stmt_bind_param($stmt, "ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
 				//echo 'search not null exclude not null';
 			}
 			else if (($_GET['search'] != '' ) && $_GET['exclude'] == '' ) {
-				$stmt->bind_param("sss", $search, $search, $search);
+				mysqli_stmt_bind_param($stmt, "sss", $search, $search, $search);
 				//echo 'if 1 search not null: ' . $search;
 			}
 			else if ((isset($_GET['exclude']) && $_GET['exclude'] != '' ) && $_GET['search'] == '' ) {
-				$stmt->bind_param("sss", $exclude, $exclude, $exclude);
+				mysqli_stmt_bind_param($stmt, "sss", $exclude, $exclude, $exclude);
 				//echo 'if 2 exclude not null: ' . $exclude;
 			} 
 			else if ($aID == true) {
-				$stmt->bind_param("ss", $a_id, $_SESSION['username']);
+				mysqli_stmt_bind_param($stmt, "ss", $a_id, $_SESSION['username']);
 			} else {
-				$stmt->bind_param("s", $_SESSION['username']);
+				mysqli_stmt_bind_param($stmt, "s", $_SESSION['username']);
 			}
 
-			$stmt->execute();
-			if ($aID == true) {
-				$stmt->bind_result($act_name, $desc, $price, $loc, $num_tix, $date, $custID, $act_id);
-			} else {
-				$stmt->bind_result($act_id, $act_name, $desc, $price, $loc, $custID);
-				//echo 'aid false';
-				echo $custID;
-			}
+			$res = mysqli_stmt_execute($stmt);
+			if ($result) {
 
-			//echo $act_id;
-			while ($stmt->fetch()) {
 				if ($aID == true) {
-					$action = "./php/doedit.php";
-					$num = '';
-					//echo $act_name. $desc. $price.$loc. $num_tix. $date. $custID. $act_id;
-					//echo 'edit true';
+					mysqli_stmt_bind_result($stmt, $act_name, $desc, $price, $loc, $num_tix, $date, $custID, $act_id);
 				} else {
-					$action = "./php/dobook.php";
-					$num = $act_id;
-				}			
-				
-				if ($custID != null) {
-					//view existing booking
-						printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="account.php?select_id=%s" method="post"><button type="submit" name="book" value="%s">View booking</button></div>
-						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id, $act_id);
-				} else {
-					$min = date("Y-m-d"); 
-					printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="%s" method="post">
-					<div><label for="num_tix%s">Number of tickets:</label><select name="num_tix%s" required>
-						<option value="1">1</option><option value="2">2</option>
-						<option value="3">3</option><option value="4">4</option>
-						<option value="5">5</option><option value="6">6</option>
-						<option value="7">7</option><option value="8">8</option>
-						<option value="9">9</option><option value="10">10</option></select>
-					</div>
-					<div><label for="date%s">On date:</label><input type="date" id="date%s" name="date%s" min=%s max="2023-04-05" required><button type="submit" name="book" value="%s">%s</button>
-					</div>
-					</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $num, $num, $num, $min, $act_id, $btn_text);
+					mysqli_stmt_bind_result($stmt, $act_id, $act_name, $desc, $price, $loc, $custID);
+					//echo 'aid false';
+					echo $custID;
+				}
+
+				//echo $act_id;
+				while (mysqli_stmt_fetch($stmt)) {
+					if ($aID == true) {
+						$action = "./php/doedit.php";
+						$num = '';
+						//echo $act_name. $desc. $price.$loc. $num_tix. $date. $custID. $act_id;
+						//echo 'edit true';
+					} else {
+						$action = "./php/dobook.php";
+						$num = $act_id;
+					}			
+					
+					if ($custID != null) {
+						//view existing booking
+							printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="account.php?select_id=%s" method="post"><button type="submit" name="book" value="%s">View booking</button></div>
+							</form></td></tr>', $act_name, $desc, $price, $loc, $act_id, $act_id);
+					} else {
+						$min = date("Y-m-d"); 
+						printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">£%s</td><td class="shortcol">%s</td><td class="longcol"><form action="%s" method="post">
+						<div><label for="num_tix%s">Number of tickets:</label><select name="num_tix%s" required>
+							<option value="1">1</option><option value="2">2</option>
+							<option value="3">3</option><option value="4">4</option>
+							<option value="5">5</option><option value="6">6</option>
+							<option value="7">7</option><option value="8">8</option>
+							<option value="9">9</option><option value="10">10</option></select>
+						</div>
+						<div><label for="date%s">On date:</label><input type="date" id="date%s" name="date%s" min=%s max="2023-04-05" required><button type="submit" name="book" value="%s">%s</button>
+						</div>
+						</form></td></tr>', $act_name, $desc, $price, $loc, $action, $num, $num, $num, $num, $num, $min, $act_id, $btn_text);
+					}
 				}
 			}
-			$stmt->close();
 		}
-		$mysqli->close();
 		echo '</table>';
 	}
 
@@ -229,28 +227,29 @@
 
 
 	function booked_act () {
+		global $conn;
 		echo '<table class="booked_act_table"><caption>Booked Activities:</caption><tr><th class="longcol">Booked Activities</th><th class="act_id">Activity ID</th><th class="longcol">Activity Date</th><th class="tinycol">Number of Tickets</th><th>Details</th><th>Modify</th><th>Cancel</th></tr>';
 		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
 
 		//$sql = "SELECT a.activity_name, b.activityID, date_of_activity, b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN activities a ON a.activityID = b.activityID";
 		$sql = "SELECT `activity_name`, b.activityID, DATE(b.date_of_activity), b.number_of_tickets FROM `booked_activities` b LEFT OUTER JOIN `activities` a ON a.activityID = b.activityID LEFT OUTER JOIN `customers` c ON b.customerID = c.customerID WHERE c.username=? ORDER BY `date_of_activity`";
-		if ($stmt = $mysqli->prepare($sql)) {
-			$stmt->bind_param('s', $_SESSION['username']);
-			$stmt->execute();
-			$stmt->bind_result($act_name, $act_id, $date, $num_tix);
-			while ($stmt->fetch()) {
+		if ($stmt = mysqli_prepare($conn, $sql)) {
+			mysqli_stmt_bind_param($stmt, 's', $_SESSION['username']);
+			mysqli_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $act_name, $act_id, $date, $num_tix);
+			while (mysqli_stmt_fetch($stmt)) {
 				$date = date('d-m-Y', strtotime($date));
 				printf ('<tr><td class="longcol">%s</td><td class="tinycol">%d</td><td class="shortcol">%s</td><td class="tinycol">%s</td><td class="shortcol"><a href="account.php?select_id=%d">View Details</a></td><td class="shortcol"><a href="account.php?a_id=%d">Modify booking</a></td><td class="shortcol"><a href="account.php?delete_id=%d">Delete booking</a></td></tr>', $act_name, $act_id, $date, $num_tix, $act_id, $act_id, $act_id);
 			}
 			echo '</table>';
-			$stmt->close();
+			
 		}
-		$mysqli->close();
+		
 	}
 
 	function booked_act_details() {
 		global $debug;
+		global $conn;
 		$select_id = $_GET['select_id'] ?? null;
 		$select_id = htmlspecialchars($select_id);
 		if ($select_id == null) {
@@ -269,27 +268,23 @@
 				<th class="tinycol">Tickets</th>
 				<th class="tinycol">Total</th>
 				<th class="tinycol">Hide</th>
-				
-		TABLE;
+TABLE;
 
 		echo $table;
 
 		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
+		//
 		
 		$sql = "SELECT `activity_name`, `description`, DATE(date_of_activity), `location`, `price`, `number_of_tickets`, (number_of_tickets * price) AS `total` FROM `booked_activities` ba join `activities` a on a.activityID = ba.activityID join `customers` c on c.customerID = ba.customerID WHERE c.username = ? AND a.activityID = ?";	
-
-		if ($stmt = $mysqli->prepare($sql)) {
-			$stmt->bind_param("sd", $_SESSION['username'], $select_id);
-			$stmt->execute();
-			$stmt->bind_result($act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
-			while ($stmt->fetch()) {
+		if ($stmt = mysqli_prepare($conn, $sql)) {
+			mysqli_stmt_bind_param($stmt, "sd", $_SESSION['username'], $select_id);
+			mysqli_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
+			while (mysqli_stmt_fetch($stmt)) {
 				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="shortcol">%s</td><td class="shortcol">%s</td><td class="tinycol">£%d</td><td class="tinycol">%d</td><td class="tinycol">£%d</td><td class="tinycol"><a href="account.php" class"no_purple">Hide</a></td>
 						</tr>', $act_name, $desc, $booked_date, $loc, $price, $num_tix, $total);
 			}
-			$stmt->close();
 		}
-		$mysqli->close();
 		echo '</table>';
 	}
 	
@@ -318,21 +313,13 @@
 		}
 		$text = ucfirst($text);
 		//echo $text;
-		if ('index.php' == getpath2()) {
 			$logout = <<<LOGOUT
-			<form id="logout" method="post" action="./content/logout.php"> 
+			<form id="logout" method="post" action="logout.php"> 
 			<button type="submit" ${class} id="logoutbutton"> ${text} </button>
 			</form>
-			LOGOUT;
+LOGOUT;
 
-		} else {
-			$logout = <<<LOGOUT
-			<form id="logout" method="post" action="./logout.php"> 
-			<button type="submit" ${class} id="logoutbutton"> ${text} </button>
-			</form>
-			LOGOUT;
-
-		}
+			
 		echo $logout;
 	}
 
@@ -366,34 +353,32 @@
 				<th class="tonycol">Price</th>
 				<th class="shortcol">Location</th>
 				<th class="longcol">Booking</th>
-		TABLE;
+TABLE;
 
 		echo $table;
 
 		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
+		//
 		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` ";
 
 		
 
 		if ($aID == true) {
 			$AID = $_REQUEST['a_id'];
-			$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` WHERE `activityID` = $AID";
+			$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` WHERE `activityID` = ?";
 		}
 		//
 		if ($debug || true) {
 			//echo $sql;	
 			//echo '-xclude is : '. $exclude . ' ';		
 		}
-		if ($stmt = $mysqli->prepare($sql)) {
-			//if ($exclude == null) {
-
-			
-
-			$stmt->execute();
-			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
+		global $conn;
+		if ($stmt = mysqli_prepare($conn, $sql)) {
+			mysqli_stmt_bind_param($stmt, "s", $AID);
+			mysqli_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $act_name, $desc, $price, $loc, $act_id);
 			//echo $act_id;
-			while ($stmt->fetch()) {
+			while (mysqli_stmt_fetch($stmt)) {
 				$min = date("Y-m-d"); 
 				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/doedit.php" method="post">
 						<select name="num_tix" required>
@@ -405,9 +390,7 @@
 						</select><input type="date" id="date" min=%s max="2023-04-05" name="date" required><button type="submit" name="book" value="%s">Book</button>
 						</form></td></tr>', $act_name, $desc, $price, $loc, $min, $act_id);
 			}
-			$stmt->close();
 		}
-		$mysqli->close();
 		echo '</table>';
 	}
 
@@ -437,7 +420,7 @@
 				
 		echo '</select><input type="submit" value="Submit" class="nav_button"></form>';*/
 	}
-
+	
 	function search_res($searching=false, $excluding=false, $aID=false) {
 		global $debug;
 		$search = "";
@@ -493,12 +476,12 @@
 				<th class="tonycol">Price</th>
 				<th class="shortcol">Location</th>
 				<th class="longcol">Booking</th>
-		TABLE;
+TABLE;
 
 		echo $table;
 
 		// Trying OO php . . .
-		$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
+		//
 		$sql = "SELECT `activity_name`, `description`, `price`, `location`, `activityID` FROM `activities` ";
 
 		if ($searching || $excluding) {
@@ -524,30 +507,34 @@
 			//echo $sql;	
 			//echo '-xclude is : '. $exclude . ' ';		
 		}
-		if ($stmt = $mysqli->prepare($sql)) {
+
+		global $conn;
+		if ($stmt = mysqli_prepare($conn, $sql)) {
+			
+
 			//if ($exclude == null) {
 
 			if ((isset($_GET['search']) && $_GET['search'] != '' ) && (isset($_GET['exclude']) && $_GET['exclude'] != '' )) {
-				$stmt->bind_param("ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
+				mysqli_stmt_bind_param($stmt, "ssssss", $search, $search, $search, $exclude, $exclude, $exclude);
 				//echo 'search not null exclude not null';
 			}
 
 			else if ((isset($_GET['search']) && $_GET['search'] != '' ) && $_GET['exclude'] == '' ) {
 				//echo 'if 1 search not null: ' . $search;
-				$stmt->bind_param("sss", $search, $search, $search);
+				mysqli_stmt_bind_param($stmt, "sss", $search, $search, $search);
 			}
 			else if ((isset($_GET['exclude']) && $_GET['exclude'] != '' ) && $_GET['search'] == '' ) {
 				//echo 'if 2 exclude not null: ' . $exclude;
-				$stmt->bind_param("sss", $exclude, $exclude, $exclude);
+				mysqli_stmt_bind_param($stmt, "sss", $exclude, $exclude, $exclude);
 
 			} else {
 				//echo 'else statement - exclude = null';
 			}
 
-			$stmt->execute();
-			$stmt->bind_result($act_name, $desc, $price, $loc, $act_id);
+			mysqli_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $act_name, $desc, $price, $loc, $act_id);
 			//echo $act_id;
-			while ($stmt->fetch()) {
+			while (mysqli_stmt_fetch($stmt)) {
 				printf ('<tr><td class="shortcol">%s</td><td class="longcol">%s</td><td class="tinycol">%s</td><td class="shortcol">%s</td><td><form action="./php/book.php" method="post">
 						<select name="num_tix" required>
 							<option value="1">1</option><option value="2">2</option>
@@ -558,31 +545,28 @@
 						</select><input type="date" id="date" name="date" required><button type="submit" name="book" value="%s">Book</button>
 						</form></td></tr>', $act_name, $desc, $price, $loc, $act_id);
 			}
-			$stmt->close();
 		}
-		$mysqli->close();
 		echo '</table>';
 	}
 	 
-
+	
 	//Shows the account, first and last names for the logged in user.
 	function viewDetails () {
 		echo '<table id="details_table"><caption>Your details:</caption><tr><th>Username:</th><th>First Name:</th><th>Last Name:</th></tr>';
 
 				// Trying OO php . . .
-				$mysqli = new mysqli('localhost', 'w19041690', 'HEMMINGS', 'w19041690');
+				//
 
 				$sql = "SELECT `username`, `customer_forename`, `customer_surname` FROM `customers` WHERE `username` = ?";
-				if ($stmt = $mysqli->prepare($sql)) {
-					$stmt->bind_param('s', $_SESSION['username']);
-					$stmt->execute();
-					$stmt->bind_result($uname, $fir, $last);
-					while ($stmt->fetch()) {
+				global $conn;
+				if ($stmt = mysqli_prepare($conn, $sql)) {
+					mysqli_stmt_bind_param($stmt, "s", $_SESSION['username']);
+					mysqli_execute($stmt);
+					mysqli_stmt_bind_result($stmt, $uname, $fir, $last);
+					while (mysqli_stmt_fetch($stmt)) {
 						printf ('<tr><td>%s</td><td>%s</td><td>%s</td></tr>', $uname, $fir, $last);
 					}
-					$stmt->close();
 				}
 				echo '</table>';
-				$mysqli->close();
 	}
 ?>

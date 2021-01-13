@@ -27,16 +27,18 @@ function makenav_bar () {
 
 	$path = getpath();
 	if ($debug) {echo 'path is: ' . $path . '	';}
-
-	$path = str_replace('/KF7013-2021/index', 'index', $path);
-	$path = str_replace('/kf7013-2021/index', 'index', $path);
+	/*
+	$pattern = "/[a-z0-9]*[\/][\/a-zA-Z0-9\-]*[^content]/";
+	$path = preg_replace($pattern, "/", $path);
+	*/
+	$path = str_replace('/w19041690/kf7013-2021/', '/kf7013-2021/', $path);
 	if ($debug) {
 		echo "path is now: " . $path . "<br />";
 		$fPage = '<li><a href="' . $path . '" id="current">1</a></li>';
 	}
 
 	//set curpagepath so that glob works correctly
-	if (($path == 'index.php') || ($path == '/kf7013-2021/')) {
+	if (($path == 'index.php') || ($path == '/kf7013-2021/index.php')) {
 		$curpagepath = 'content/';
 	} else {
 		$curpagepath = '';
@@ -176,11 +178,10 @@ function getpath2() {
 function showLogo ($path) {
 	$logosrc = ''; 	
 	if (isset($_SESSION['themeType']) && $_SESSION['themeType'] == 'dark') { 		
-		$logosrc = '/kf7013-2021/assets/images/logogray.png'; 	
+		$logosrc = '/w19041690/kf7013-2021/assets/images/logogray.png'; 	
 	} else { 
-		$logosrc = '/kf7013-2021/assets/images/logo.png';
+		$logosrc = '/w19041690/kf7013-2021/assets/images/logo.png';
 	}
-	
-	echo '<li id="navlogo"><a href="/kf7013-2021/index.php" accesskey="1"><img id="logo" src="' . $logosrc . '" alt="visit Matsumoto Logo" height="30"/></a></li>';
+	echo '<li id="navlogo"><a href="/w19041690/kf7013-2021/index.php" accesskey="1"><img id="logo" src="' . $logosrc . '" alt="visit Matsumoto Logo" height="30"/></a></li>';
 }
 ?>

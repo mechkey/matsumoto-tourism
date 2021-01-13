@@ -19,13 +19,13 @@
 
 	if ($debug) {
 		echo 'Activity id is ' . $actID;
-		br();
+		
 		echo 'Date is ' . $date;
-		br();
+		
 		echo 'Number of tickets is ' . $num_tix;
-		br();
+		
 		echo 'User is ' . $user;
-		br();
+		
 	}
 
 	$b_sql = "INSERT INTO `booked_activities`( `customerID`, `activityID`, `date_of_activity`, `number_of_tickets`) VALUES ((SELECT customerID FROM customers WHERE username = ?), ?, ?, ?)";
